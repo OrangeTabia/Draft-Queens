@@ -19,8 +19,8 @@ class Team(db.Model):
     # one to many - user to teams
     user = db.relationship('User', back_populates='team')
     # two to many - two teams to games
-    home = db.relationship('Game', back_populates='home_team')
-    away = db.relationship('Game', back_populates='away_team')
+    # home = db.relationship('Game', back_populates='home_team')
+    # away = db.relationship('Game', back_populates='away_team')
     # one to many - team to odds
     odd = db.relationship('Odd', back_populates='team')
 

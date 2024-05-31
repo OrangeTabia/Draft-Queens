@@ -9,17 +9,17 @@ class Game(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    home_team_id = db.Column(db.Integer, db.ForegnKey(add_prefix_for_prod('teams.id')), unique=True, nullable=False)
-    away_team_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('teams.id')), unique=True, nullable=False)
-    start_time = db.Column(db.Datetime, nullable=False)
+    home_team_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('teams.id')), nullable=False)
+    away_team_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('teams.id')), nullable=False)
+    start_time = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
 
     # one to many - user to games
     user = db.relationship('User', back_populates='game')
     # two to many - two teams to games
-    home_team = db.relationship('Team', back_populates='home')
-    away_team = db.relationship('Team', back_populates='away')
+    home_team = db.relationship('Team', foreign_keys='Game.home_team_id')
+    away_team = db.relationship('Team', foreign_keys='Game.away_team_id')
     # one to many - game to odds
     odd = db.relationship('Odd', back_populates='game')
     # one to one - one game to one game result

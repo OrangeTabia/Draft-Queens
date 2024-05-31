@@ -52,12 +52,12 @@ def seed_teams():
         logo='https://draft-queens-logo-images.s3.amazonaws.com/washington-mystics.png'
     )
 
-    db.sesion.add(team1)
-    db.sesion.add(team2)
-    db.sesion.add(team3)
-    db.sesion.add(team4)
-    db.sesion.add(team5)
-    db.sesion.add(team6)
+    db.session.add(team1)
+    db.session.add(team2)
+    db.session.add(team3)
+    db.session.add(team4)
+    db.session.add(team5)
+    db.session.add(team6)
     db.session.commit()
 
 
