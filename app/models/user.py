@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, environment, SCHEMA
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -10,9 +10,20 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
+    username = db.Column(db.String(50), nullable=False, unique=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    # one to many - user to teams
+    team = db.relationship('Team', back_populates='user')
+    # one to many - user to games
+    game = db.relationship('Game', back_populates='user')
+    # one to many - user to odds
+    odd = db.relationship('Odd', back_populates='user')
+    # one to many - user to results
+    result = db.relationship('Result', back_populates='user')
+
+    
 
     @property
     def password(self):
