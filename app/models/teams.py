@@ -9,7 +9,7 @@ class Team(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(100), unique=True, nullable=False)
     sport_type = db.Column(db.String(50), nullable=False)
     location = db.Column(db.String(100), nullable=False)
     logo = db.Column(db.String(1000), nullable=True) #this is an image
@@ -18,9 +18,6 @@ class Team(db.Model):
 
     # one to many - user to teams
     user = db.relationship('User', back_populates='team')
-    # two to many - two teams to games
-    # home = db.relationship('Game', back_populates='home_team')
-    # away = db.relationship('Game', back_populates='away_team')
     # one to many - team to odds
     odd = db.relationship('Odd', back_populates='team')
 
