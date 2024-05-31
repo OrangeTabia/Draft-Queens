@@ -1,11 +1,11 @@
-# from flask import Blueprint, request
-# from app.models import db, ImageForm
-# from flask_login import current_user, login_required
-# # import from name of the helper function file
-# from .AWS_helpers import (
-#     upload_file_to_s3, get_unique_filename)
+from flask import Blueprint, request
+from app.models import db, TeamForm
+from flask_login import current_user, login_required
+# import from name of the helper function file
+from .AWS_helpers import (
+    upload_file_to_s3, get_unique_filename)
 
-# image_routes = Blueprint("images", __name__)
+team_routes = Blueprint("teams", __name__)
 
 
 # @image_routes.route("", methods=["POST"])
