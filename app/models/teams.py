@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import datetime
 
 
 class Team(db.Model): 
@@ -13,8 +14,8 @@ class Team(db.Model):
     sport_type = db.Column(db.String(50), nullable=False)
     location = db.Column(db.String(100), nullable=False)
     logo = db.Column(db.String(1000), nullable=True) #this is an image
-    created_at = db.Column(db.DateTime)
-    updated_at = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime, defualt=datetime.now())
+    updated_at = db.Column(db.DateTime, defualt=datetime.now())
 
     # one to many - user to teams
     user = db.relationship('User', back_populates='team')

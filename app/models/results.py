@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from datetime import datetime
 
 class Result(db.Model): 
     __tablename__ = 'results'
@@ -13,8 +13,8 @@ class Result(db.Model):
     home_team_score = db.Column(db.Integer, nullable=False)
     away_team_score = db.Column(db.Integer, nullable=False)
     notes = db.Column(db.String(1000), nullable=True)
-    created_at = db.Column(db.DateTime)
-    updated_at = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime, defualt=datetime.now())
+    updated_at = db.Column(db.DateTime, defualt=datetime.now())
 
 
     # one to many - user to game results

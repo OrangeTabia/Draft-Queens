@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from datetime import datetime
 
 class Odd(db.Model): 
     __tablename__ = 'odds'
@@ -16,8 +16,8 @@ class Odd(db.Model):
     type = db.Column(db.String, nullable=True)
     value = db.Column(db.Integer, nullable=False)
     status = db.Column(db.String, nullable=False)
-    created_at = db.Column(db.DateTime)
-    updated_at = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime, defualt=datetime.now())
+    updated_at = db.Column(db.DateTime, defualt=datetime.now())
 
 
     # one to many - user to odds
