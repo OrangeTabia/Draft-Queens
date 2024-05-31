@@ -8,8 +8,7 @@ from .AWS_helpers import (upload_file_to_s3, get_unique_filename)
 team_routes = Blueprint('teams', __name__)
 
 
-
-@team_routes.route("")
+@team_routes.route('')
 def all_teams(): 
     """
     Query for all teams
@@ -63,11 +62,11 @@ def create_team():
 
 
 
-@team_routes.route('/teams/<int:team_id>', methods=['GET', 'POST'])
+@team_routes.route('/<int:team_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_team(team_id): 
     """
-    Edit a specific team
+    Edit a team
     """
 
     form = TeamForm()
@@ -104,16 +103,16 @@ def update_team(team_id):
 
 
 
-@team_routes.route('teams/<int:team_id>/delete')
+@team_routes.route('/<int:team_id>/delete')
 @login_required
 def delete_team(team_id): 
     """
-    Delete a specific team
+    Delete a team
     """
 
     team_to_delete = Team.query.get(team_id)
 
-    db.sessions.delete(team_to_delete)
+    db.session.delete(team_to_delete)
     db.session.commit()
 
-    return {'message': 'Comment has been successfully deleted'}
+    return {'message': 'Team has been successfully deleted'}

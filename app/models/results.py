@@ -13,8 +13,8 @@ class Result(db.Model):
     home_team_score = db.Column(db.Integer, nullable=False)
     away_team_score = db.Column(db.Integer, nullable=False)
     notes = db.Column(db.String(1000), nullable=True)
-    created_at = db.Column(db.DateTime, defualt=datetime.now())
-    updated_at = db.Column(db.DateTime, defualt=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at = db.Column(db.DateTime, default=datetime.now())
 
 
     # one to many - user to game results

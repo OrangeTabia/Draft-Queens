@@ -16,8 +16,8 @@ class Odd(db.Model):
     type = db.Column(db.String, nullable=True)
     value = db.Column(db.Integer, nullable=False)
     status = db.Column(db.String, nullable=False)
-    created_at = db.Column(db.DateTime, defualt=datetime.now())
-    updated_at = db.Column(db.DateTime, defualt=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at = db.Column(db.DateTime, default=datetime.now())
 
 
     # one to many - user to odds
