@@ -8,7 +8,7 @@ class OddForm(FlaskForm):
     user_id = IntegerField('user_id', validators=[DataRequired()])
     game_id = IntegerField('game_id', validators=[DataRequired()])
     team_id = IntegerField('team_id', validators=[DataRequired()])
-    type = SelectField(choicees=[odds_type], validators=[DataRequired()])
+    type = SelectField(choices=[odds_type], validators=[DataRequired()])
     value = IntegerField('value', validators=[DataRequired()])
     status = StringField('status', validators=[DataRequired()])
     

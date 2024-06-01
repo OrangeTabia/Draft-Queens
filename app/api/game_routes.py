@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Game
+from app.models import db, Game, Team, Odd
 from app.forms import GameForm
 from flask_login import current_user, login_required
 
@@ -11,8 +11,28 @@ def all_games():
     """
     Query for all games
     """
-    games = Game.query.all()
-    return {'games': [game.to_dict() for game in games]}
+    # Find all of the gamees
+    games = Game.query.order_by(Game.start_time).all()
+
+    include_teams = request.args.get('include_teams')
+
+    # Add the specific teams serialized when the URL Param is included
+    if include_teams: 
+        serialized_games = []
+        for game in games: 
+            away_team = Team.query.filter_by(id = game.away_team_id).first()
+            home_team = Team.query.filter_by(id = game.home_team_id).first()
+
+            game_dict = game.to_dict()
+            game_dict['away_team'] = away_team.to_dict()
+            game_dict['home_team'] = home_team.to_dict()
+
+            serialized_games.append(game_dict)
+
+        return {'games': serialized_games}
+
+    else:
+        return {'games': [game.to_dict() for game in games]}
 
 
 
