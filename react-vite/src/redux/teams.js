@@ -58,8 +58,7 @@ export const thunkUpdateTeam = (team, teamId) => async (dispatch) => {
 export const thunkDeleteTeam = (teamId) => async (dispatch) => {
     const response = await fetch(`/api/teams/${teamId}/delete`);
     if (response.ok) {
-        const data = await response.json();
-        return dispatch(deleteTeam(data)); 
+        return dispatch(deleteTeam(teamId)); 
     } else {
         return { server: 'Something went wrong. Please try again'}
     }
@@ -73,7 +72,7 @@ function teamsReducer(state = initialState, action) {
         case LOAD_TEAMS: {
             const newState = { ...state };
             action.teams.forEach((team) => {
-                newState[team.id] = team
+                newState[team.id] = team;
             });
             return newState;
         }

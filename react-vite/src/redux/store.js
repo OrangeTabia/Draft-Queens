@@ -7,10 +7,14 @@ import {
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import teamsReducer from "./teams"
+import gamesReducer from "./games";
+import oddsReducer from "./odds";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   teams: teamsReducer,
+  games: gamesReducer,
+  odds: oddsReducer,
 });
 
 let enhancer;

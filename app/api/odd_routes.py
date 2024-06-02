@@ -26,40 +26,24 @@ def create_odd():
     """
     Create a new odd for a specific game
     """
-
-    print("POINT 1")
     form = OddForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    
-
-    existing_odds = Odd.query.filter_by(
-        game_id = form.data['game_id'],
-        team_id = form.data['team_id'],
-        type = form.data['type'],
-        status = 'open'
-    )
-    print("EXISTING ODDS ======>", existing_odds)
-
-    print("POINT 2")
 
     # Step 1: Validate
     if form.validate_on_submit(): 
-
-        print("POINT 3")
         # Step 2: Deprecate all existing "live" odds
-
+        existing_odds = Odd.query.filter_by(
+            game_id = form.data['game_id'],
+            team_id = form.data['team_id'],
+            type = form.data['type'],
+            status = 'open'
+        )
         
-        # Only add in these changes if need be
         if existing_odds: 
-            print("POINT 4")
-            odd_to_update = existing_odds.update_all(status = 'closed')
-            db.session.add(odd_to_update)
+            for ex_odd in existing_odds: 
+                ex_odd.status = 'closed'
             db.session.commit()
-            return odd_to_update.to_dict()
 
-        print("POINT 5")
-
-        # else:
         # Step 3: Create new odds
         new_odd = Odd(
             user_id=current_user.id,
