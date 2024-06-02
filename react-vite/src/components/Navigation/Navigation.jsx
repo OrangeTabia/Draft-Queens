@@ -9,8 +9,8 @@ function Navigation() {
         <NavLink to="/">Home</NavLink>
       </div>
       <div className="middle-nav">
-        <NavLink className="middle-nav-titles">Sports</NavLink>
-        <NavLink className="middle-nav-titles">Games</NavLink>
+        <NavLink to="/teams" className="middle-nav-titles">Sports</NavLink>
+        <NavLink to="/games" className="middle-nav-titles">Games</NavLink>
         <NavLink className="middle-nav-titles">Results</NavLink>
       </div>
       <div>
