@@ -56,7 +56,7 @@ function oddsReducer(state = initialState, action) {
         default: 
             return state;
      }
-};
+}
 
 
 export default oddsReducer;
