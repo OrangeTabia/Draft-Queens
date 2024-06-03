@@ -9,12 +9,14 @@ import sessionReducer from "./session";
 import teamsReducer from "./teams"
 import gamesReducer from "./games";
 import oddsReducer from "./odds";
+import resultsReducer from "./results";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   teams: teamsReducer,
   games: gamesReducer,
   odds: oddsReducer,
+  results: resultsReducer
 });
 
 let enhancer;
