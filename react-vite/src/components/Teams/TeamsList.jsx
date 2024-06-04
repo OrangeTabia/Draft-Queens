@@ -9,9 +9,14 @@ function Teams() {
     const dispatch = useDispatch(); 
     const allTeams = useSelector(state => state.teams.teams); 
     const currentUser = useSelector(state => state.session.user); 
-    // let teamOwner = currentUser.id == allTeams.team.userId
+    const teamOwner = allTeams?.map((team) => team.userId);
+    // let isOwner = teamOwner.find((ownerId) => currentUser.id == ownerId)
 
-    // console.log("SINGLE TEAM", singleTeam)
+
+    // console.log("TEAM USER ID", team.userId)
+    console.log("CURRENT USER", currentUser.id)
+    console.log("ALL TEAMS", allTeams)
+    console.log("TEAM OWNER", teamOwner)
 
     useEffect(() => {
         dispatch(thunkLoadTeams()); 
