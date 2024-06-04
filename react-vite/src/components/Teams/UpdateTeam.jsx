@@ -91,15 +91,33 @@ function UpdateTeam() {
                     </select>
                 </div>
                 <div className='form-errors'>{hasSubmitted && errors.sport}</div>
-                <div>
-                    <label>Select Image:</label>
-                    <input
-                        id='logo'
-                        type='file'
-                        // accept='image/*'
-                        onChange={(e) => setLogo(e.target.files[0])}
-                    >
-                    </input>
+                <div>{
+                        selectedTeam?.logo ? (
+                        <>
+                        <label>Update Image:</label>
+                        <img src={selectedTeam.logo}/>
+                        <input
+                            id='logo'
+                            type='file'
+                            // accept='image/*'
+                            onChange={(e) => setLogo(e.target.files[0])}
+                        >
+                        </input>
+                        </>
+                    ) :
+                        (
+                        <>
+                        <label>Select Image:</label>
+                        <input
+                            id='logo'
+                            type='file'
+                            // accept='image/*'
+                            onChange={(e) => setLogo(e.target.files[0])}
+                        >
+                        </input>
+                        </>
+                    )
+                    }
                 </div>
                 <button type='submit'>Update Team</button>
             </form>

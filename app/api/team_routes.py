@@ -74,22 +74,29 @@ def update_team(team_id):
 
     if form.validate_on_submit():
 
+        # If there is an image, upload to S3
         updated_image = form.data['logo']
-        updated_image.filename = get_unique_filename(updated_image.filename)
-        upload = upload_file_to_s3(updated_image)
-        print(upload)
+        if updated_image:
+            print('Uploading the the desired team image')
+            updated_image.filename = get_unique_filename(updated_image.filename) 
+            upload = upload_file_to_s3(updated_image)
+            updated_logo = upload['url']
 
-        if 'url' not in upload:
-            print(form.errors)
-            return form.errors, 401
+            # If there is not a URL returned from S3, there is an error, 401 response 
+            if 'url' not in upload:
+                print(form.errors)
+                return form.errors, 401
         
-        updated_logo = upload['url']
 
         updated_team = Team.query.get(team_id)
         updated_team.name = form.data['name']
         updated_team.sport_type = form.data['sport_type']
         updated_team.location = form.data['location']
-        updated_logo = updated_logo
+
+
+        # If there's the updated image, store the URL in the object
+        if updated_image: 
+            updated_team.logo = updated_logo
 
         db.session.commit()
 
