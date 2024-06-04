@@ -7,6 +7,7 @@ import UpdateTeam from '../components/Teams/UpdateTeam';
 import DeleteTeam from '../components/Teams/DeleteTeam'; 
 import Games from '../components/Games/GamesList';
 import CreateGame from '../components/Games/CreateGame'; 
+import UpdateGame from '../components/Games/UpdateGame';
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: '/games/new',
         element: <CreateGame />
+      }, 
+      {
+        path: '/games/:gameId/update',
+        element: <UpdateGame />
       }, 
       // {
       //   path: "login",

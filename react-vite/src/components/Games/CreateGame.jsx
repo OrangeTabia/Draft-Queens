@@ -27,9 +27,6 @@ function AddGame() {
         if (homeTeam == awayTeam) errors.homeTeam = 'Teams cannot play themselves';
         if (awayTeam == homeTeam) errors.awayTeam = 'Teams cannot play themselves'; 
         if (!startTime) errors.startTime = 'Game start time is required';
-        // if startTime is before the current date and time 
-        // AND startime is an hour before the current time 
-        // throw error
         setErrors(errors);
     }, [homeTeam, awayTeam, startTime]); 
 
@@ -43,14 +40,15 @@ function AddGame() {
             awayTeam,
             startTime
         }
-
         await dispatch(thunkAddGame(newGame)); 
     }
 
-    const currentDate = Date.now() //1717529357899
+    // Getting the current date and time in order to use it as a minimum datetime for form input
+    // Users will not be able to create a game before the current day/time
+    const today = (new Date(Date.now())).toISOString().split('.')[0]; // "2024-06-04T19:43:24.215Z"
+    // properly formatting the mininum date in order to properly work in the form
+    const formattedDate = today.split(':').slice(0, -1).join(':'); // "2024-06-04T19:43"
 
-    const newDate = new Date(Date.now()); // 
-    debugger;
 
     if (teamList) {
         return (
@@ -92,8 +90,8 @@ function AddGame() {
                         <input
                             id='game-start'
                             type='datetime-local'
-                            value={startTime}
-                            min={(new Date()).toISOString()}
+                            value={startTime} 
+                            min={formattedDate}
                             onChange={(e) => setStartTime(e.target.value)}
                         >
                         </input>

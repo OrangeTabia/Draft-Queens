@@ -40,7 +40,7 @@ function UpdateTeam() {
         setHasSubmitted(true);
 
         const updatedFormData = new FormData(); 
-        updatedFormData.set['user_id', currentUser.id]
+        updatedFormData.set('user_id', currentUser.id)
         updatedFormData.set('name', name)
         updatedFormData.set('location', location)
         updatedFormData.set('sport_type', sport)
