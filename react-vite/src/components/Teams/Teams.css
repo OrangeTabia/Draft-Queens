@@ -1,1 +1,6 @@
 /* lighter black: #121212 */
+
+.form-errors {
+    color: red;
+    font-size: 12px;
+}

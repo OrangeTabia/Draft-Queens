@@ -70,16 +70,15 @@ const initialState = {}
 function teamsReducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_TEAMS: {
-            const newState = { ...state };
-            action.teams.forEach((team) => {
-                newState[team.id] = team;
-            });
-            return newState;
+            return { ...state, ...action.teams }
+            // const newState = { ...state };
+            // action.teams.forEach((team) => {
+            //     newState[team.id] = team;
+            // });
+            // return newState;
         }
         case ADD_TEAM: {
-            const newState = { ...state }; 
-            newState[action.team.id] = action.team;
-            return newState;
+            return { ...state , ...action.team }; 
         }
         case DELETE_TEAM : {
             const newState = { ...state };

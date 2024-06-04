@@ -40,14 +40,14 @@ def create_team():
             print(form.errors)
             return form.errors, 401
 
-        url = upload['url']
+        logo = upload['url']
 
         new_team = Team(
             user_id=current_user.id,
             name=form.data['name'],
             sport_type=form.data['sport_type'],
             location=form.data['location'],
-            image=url,
+            logo=logo,
         )
 
         db.session.add(new_team)
@@ -79,17 +79,17 @@ def update_team(team_id):
         upload = upload_file_to_s3(updated_image)
         print(upload)
 
-        if "url" not in upload:
+        if 'url' not in upload:
             print(form.errors)
             return form.errors, 401
         
-        updated_url = upload['url']
+        updated_logo = upload['url']
 
         updated_team = Team.query.get(team_id)
         updated_team.name = form.data['name']
         updated_team.sport_type = form.data['sport_type']
         updated_team.location = form.data['location']
-        updated_image = updated_url
+        updated_logo = updated_logo
 
         db.session.commit()
 
