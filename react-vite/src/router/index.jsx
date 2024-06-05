@@ -46,6 +46,10 @@ export const router = createBrowserRouter([
         path: '/games/:gameId/update',
         element: <UpdateGame />
       }, 
+      {
+        path: '/results',
+        element: <h1>Results Feature Coming Soon!</h1>
+      }
       // {
       //   path: "login",
       //   element: <LoginFormPage />,

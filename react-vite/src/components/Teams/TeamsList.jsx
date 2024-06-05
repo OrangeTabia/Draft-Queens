@@ -5,54 +5,79 @@ import { Link } from "react-router-dom";
 import OpenModalButton from '../OpenModalButton';
 import DeleteTeam from './DeleteTeam';
 
+import { MdOutlineSportsBasketball } from "react-icons/md";
+import { MdSportsSoccer } from "react-icons/md";
+import { MdSportsRugby } from "react-icons/md";
+import { BiSolidEdit } from "react-icons/bi";
+import { BiSolidTrash } from "react-icons/bi";
+
 function Teams() {
     const dispatch = useDispatch(); 
     const allTeams = useSelector(state => state.teams.teams); 
     const currentUser = useSelector(state => state.session.user); 
 
-
     useEffect(() => {
         dispatch(thunkLoadTeams()); 
-    }, [dispatch])
-
+    }, [dispatch]);
 
     return (
-        <>
-            <h1>Teams List</h1>
-            <h2>Basketball Logo Here</h2>
-            <h2>Soccer Logo Here</h2>
-            <h2>Rugby Logo Here</h2>
-            <Link to='/teams/new'>
-                <button>Add New Teams</button>
-            </Link>
-            <div>
-                {allTeams?.map((team) => {
-                    let isOwner = team.userId == currentUser?.id
-
-                    return (<div key={team.id}>
-                        <p>{team.name}</p>
-                        <p>Location: {team.location}</p>
-                        <img src={team.logo}/>
-                        {
-                            isOwner ?
-                                <div>
-                                    <Link to={`/teams/${team.id}/update`}>
-                                        <button>Update Team</button>
-                                    </Link>
-                                    <OpenModalButton to={`/teams/${team.id}/delete`}
-                                    buttonText='Delete Team'
-                                    modalComponent={<DeleteTeam teamId={team.id}/>}
-                                    />
-                                </div>
-                            : 
-                            '' 
-                        }
-                    </div>)
-            })}
+        <div id='team-list-container'>
+            <div id='sports-buttons'>
+                <div className='sport-type'>
+                    <MdOutlineSportsBasketball className='icon' fontSize='40px'/>
+                    <p className='sport-name'>BASKETBALL</p>
+                </div>
+                <div className='sport-type'>
+                    <MdSportsSoccer className='icon' fontSize='40px'/>
+                    <p className='sport-name'>SOCCER</p>
+                </div>
+                <div className='sport-type'>
+                    <MdSportsRugby className='icon' fontSize='40px'/>
+                    <p className='sport-name'>RUGBY</p>
+                </div>
             </div>
-        </>
-    )
+            <div id='all-teams-container'>
+    
+                <table style={{width:'100%', textAlign:'left', backgroundColor: '#f76900'}}>
+                    <tr>
+                        <th style={{width: '20%'}}>Sport</th>
+                        <th style={{width: '30%'}}>Team</th>
+                        <th style={{width: '25%'}}>Location</th>
+                        <th style={{width: '10%'}}>Info</th>
+                    </tr>
+                </table>
+                <div id='team-table'>
+                {allTeams?.map((team) => {
+                    let isOwner = team.userId === currentUser?.id;
+                    
+                    return (
+                        <div id='team-card' key={team.id}>
+                            <table style={{width:'100%'}}>
+                                <tr>
+                                    <td style={{width: '20%'}}>{team.sportType}</td>
+                                    <td id='table-logo-team'style={{width: '30%'}}><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</td>
+                                    <td style={{width: '25%'}}>{team.location}</td>
+                                    {isOwner ? (
+                                        <td style={{width: '10%'}}>
+                                            <div id='teams-edit-delete-btns'>
+                                                <Link to={`/teams/${team.id}/update`} id='update-team-btn'><BiSolidEdit fontSize='24px'/></Link>
+                                                <OpenModalButton
+                                                    to={`/teams/${team.id}/delete`}
+                                                    buttonText={<BiSolidTrash fontSize='24px'/>}
+                                                    modalComponent={<DeleteTeam teamId={team.id} />}
+                                                />
+                                            </div>
+                                        </td>
+                                    ) : '' }
+                                </tr>
+                            </table>
+                        </div>
+                    );
+                })}
+                </div>
+            </div>
+        </div>
+    );
 }
-
 
 export default Teams;

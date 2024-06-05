@@ -22,9 +22,6 @@ function GamesList() {
     return (
         <>
             <h1>Games List</h1>
-            <Link to='/games/new'>
-                <button>Add A Game</button>
-            </Link>
             {allGames?.map((game) => {
                 let homeTeam = allTeams?.find((team) => team.id == game.homeTeamId);
                 let awayTeam = allTeams?.find((team) => team.id == game.awayTeamId);
