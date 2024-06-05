@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 import { IoMdArrowDropdown } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { thunkLogout } from "../../redux/session";
@@ -41,6 +42,11 @@ function ProfileButton() {
     closeMenu();
   };
 
+  const featureComingSoon = (e) => {
+    e.preventDefault();
+    window.alert('Feature coming soon!'); 
+  }
+
   return (
     <>
       <button id="menu-item" onClick={toggleMenu}>
@@ -54,6 +60,10 @@ function ProfileButton() {
             <div className="dropdown-items">
               <div className="dropdown-item">{user.username}</div>
               <div className="dropdown-item">{user.email}</div>
+              <Link to='/teams/new' className="dropdown-item">Create A New Team</Link>
+              <Link to='/games/new' className="dropdown-item">Add A New Game</Link>
+              <Link onClick={featureComingSoon} className="dropdown-item">Create Odds</Link>
+              <Link onClick={featureComingSoon} className="dropdown-item">Add Game Results</Link>
               <div className="dropdown-item" id="logout-button"onClick={logout}>Log Out</div>
             </div>
           ) : (

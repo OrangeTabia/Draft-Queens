@@ -36,9 +36,6 @@ function Teams() {
                     <p className='sport-name'>RUGBY</p>
                 </div>
             </div>
-            <Link to='/teams/new'>
-                <button>Add New Team</button>
-            </Link>
             <div id='all-teams-container'>
     
                 <table style={{width:'100%', textAlign:'left', backgroundColor: '#f76900'}}>
