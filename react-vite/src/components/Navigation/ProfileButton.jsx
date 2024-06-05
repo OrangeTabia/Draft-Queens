@@ -44,9 +44,9 @@ function ProfileButton() {
   return (
     <>
       <button id="menu-item" onClick={toggleMenu}>
-        <span><CgProfile fontSize="20px"/></span> 
+        <span><CgProfile fontSize="20px" color='#f76900'/></span> 
         {user && <span id="username">{user.username}</span>}
-        <span><IoMdArrowDropdown fontSize="20px"/></span>
+        <span><IoMdArrowDropdown fontSize="20px" color='#f76900'/></span>
       </button>
       {showMenu && (
         <div className={"profile-dropdown"} ref={ulRef}>

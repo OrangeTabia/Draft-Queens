@@ -8,6 +8,8 @@ import DeleteTeam from './DeleteTeam';
 import { MdOutlineSportsBasketball } from "react-icons/md";
 import { MdSportsSoccer } from "react-icons/md";
 import { MdSportsRugby } from "react-icons/md";
+import { BiSolidEdit } from "react-icons/bi";
+import { BiSolidTrash } from "react-icons/bi";
 
 function Teams() {
     const dispatch = useDispatch(); 
@@ -35,48 +37,47 @@ function Teams() {
                 </div>
             </div>
             <Link to='/teams/new'>
-                <button>Add New Teams</button>
+                <button>Add New Team</button>
             </Link>
             <div id='all-teams-container'>
+    
+                <table style={{width:'100%', textAlign:'left', backgroundColor: '#f76900'}}>
+                    <tr>
+                        <th style={{width: '20%'}}>Sport</th>
+                        <th style={{width: '30%'}}>Team</th>
+                        <th style={{width: '25%'}}>Location</th>
+                        <th style={{width: '10%'}}>Info</th>
+                    </tr>
+                </table>
+                <div id='team-table'>
                 {allTeams?.map((team) => {
                     let isOwner = team.userId === currentUser?.id;
-
+                    
                     return (
                         <div id='team-card' key={team.id}>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Logo</th>
-                                        <th>Team</th>
-                                        <th>Location</th>
-                                        <th>Info</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><img className='team-logo' src={team.logo} alt='team logo'/></td>
-                                        <td><p>{team.name}</p></td>
-                                        <td><p>{team.location}</p></td>
-                                        {isOwner && (
-                                            <>
-                                                <td>
-                                                    <Link to={`/teams/${team.id}/update`} buttontext='Update Team'>Update Team</Link>
-                                                </td>
-                                                <td>
-                                                    <OpenModalButton
-                                                        to={`/teams/${team.id}/delete`}
-                                                        buttonText='Delete Team'
-                                                        modalComponent={<DeleteTeam teamId={team.id} />}
-                                                    />
-                                                </td>
-                                            </>
-                                        )}
-                                    </tr>
-                                </tbody>
+                            <table style={{width:'100%'}}>
+                                <tr>
+                                    <td style={{width: '20%'}}>{team.sportType}</td>
+                                    <td id='table-logo-team'style={{width: '30%'}}><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</td>
+                                    <td style={{width: '25%'}}>{team.location}</td>
+                                    {isOwner ? (
+                                        <td style={{width: '10%'}}>
+                                            <div id='teams-edit-delete-btns'>
+                                                <Link to={`/teams/${team.id}/update`} id='update-team-btn'><BiSolidEdit fontSize='24px'/></Link>
+                                                <OpenModalButton
+                                                    to={`/teams/${team.id}/delete`}
+                                                    buttonText={<BiSolidTrash fontSize='24px'/>}
+                                                    modalComponent={<DeleteTeam teamId={team.id} />}
+                                                />
+                                            </div>
+                                        </td>
+                                    ) : '' }
+                                </tr>
                             </table>
                         </div>
                     );
                 })}
+                </div>
             </div>
         </div>
     );
