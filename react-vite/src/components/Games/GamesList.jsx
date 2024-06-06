@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 
 import { thunkLoadGames } from '../../redux/games'; 
 import { thunkLoadTeams } from '../../redux/teams'; 
+import { BiSolidEdit } from "react-icons/bi";
+import { BiSolidTrash } from "react-icons/bi";
 import OpenModalButton from '../OpenModalButton';
 import DeleteGame from './DeleteGame';
+import './GamesList.css';
 
 
 function GamesList() {
@@ -13,15 +16,18 @@ function GamesList() {
     const allGames = useSelector(state => state.games.games);
     const allTeams = useSelector(state => state.teams.teams);
     const currentUser = useSelector(state => state.session.user); 
+
+    // get only all games that have already happened - use their startTime
     
     useEffect(() => {
         dispatch(thunkLoadGames());
         dispatch(thunkLoadTeams()); 
     }, [dispatch])
 
+
     return (
-        <>
-            <h1>Games List</h1>
+        <div id='game-list-container'>
+            <div id='all-games'>
             {allGames?.map((game) => {
                 let homeTeam = allTeams?.find((team) => team.id == game.homeTeamId);
                 let awayTeam = allTeams?.find((team) => team.id == game.awayTeamId);
@@ -29,28 +35,38 @@ function GamesList() {
 
                 {if (homeTeam && awayTeam) {
                     return (
-                        <div key={game.id}>
-                            <span><img src={homeTeam.logo}/>{homeTeam.name} vs. <img src={awayTeam.logo}/>{awayTeam.name}</span>
-                            <p>Start Time: {game.startTime}</p>
-                            { 
-                                isOwner ?
-                                    <div>
-                                        <Link to={`/games/${game.id}/update`}>
-                                        <button>Edit Game</button>
-                                        </Link>
-                                        <OpenModalButton to={`/games/${game.id}/delete`}
-                                        buttonText='Delete Game'
-                                        modalComponent={<DeleteGame gameId={game.id}/>}
-                                        />
-                                    </div>
-                                :
-                                ''
-                            }
-                        </div>)
+                        <div id='game-and-odds-container'>
+                            <div id='game-card' key={game.id}>
+                                <div id='opponents-and-gametime'>
+                                    <div>{game.startTime}</div>
+                                    <div className='all-games-home-away'><img className='team-logo' src={homeTeam.logo}/>{homeTeam.name}</div>
+                                    <div className='all-games-home-away'><img className='team-logo' src={awayTeam.logo}/>{awayTeam.name}</div>
+                                </div>
+                                
+                                { 
+                                    isOwner ?
+                                        <div className='all-games-edit-delete-btns'>
+                                            <Link id='all-games-edit-btn'to={`/games/${game.id}/update`}>
+                                            <BiSolidEdit fontSize='24px'/>
+                                            </Link>
+                                            <OpenModalButton to={`/games/${game.id}/delete`}
+                                            buttonText={<BiSolidTrash fontSize='24px'/>}
+                                            modalComponent={<DeleteGame gameId={game.id}/>}
+                                            />
+                                        </div>
+                                    :
+                                    ''
+                                }
+                            </div>
+                            <div id='odds-card'>Odds Div</div>
+                        </div>
+                        )
+                            
                     }}
                 } 
             )}
-        </>
+            </div>
+        </div>
     )
 }
 

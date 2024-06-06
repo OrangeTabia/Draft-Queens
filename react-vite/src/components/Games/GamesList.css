@@ -1,0 +1,79 @@
+/* lighter black: #121212 */
+
+#game-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#view-all-games-link {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    margin-left: 880px;
+    color: white;
+}
+
+#view-all-games-link:hover {
+    color: #f76900
+}
+
+#all-games {
+    border: 5px solid red;
+    width: 50%;
+    padding: 15px;
+    background-color: #121212;
+}
+
+#game-and-odds-container {
+    border: 3px solid green;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+#game-card {
+    border: 1px solid blue;
+    width: 40%;
+    color: white;
+}
+
+#opponents-and-gametime {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.all-games-edit-delete-btns {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 15px;
+    /* border: 1px solid red; */
+}
+
+.open-modal-btn {
+    color: white;
+}
+
+#all-games-edit-btn {
+    color: white;
+}
+
+#all-games-edit-btn:hover {
+    color: #f76900;
+}
+
+.all-games-home-away {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#odds-card {
+    border: 1px solid blue;
+    width: 60%;
+    color: white;
+}
