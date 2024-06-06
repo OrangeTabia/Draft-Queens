@@ -1,104 +1,43 @@
-#all-games-list-container {
+#finished-games-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#view-all-games-link {
-    margin-top: 50px;
-    margin-bottom: 10px;
-    margin-left: 880px;
-    color: white;
-}
-
-#view-all-games-link:hover {
-    color: #f76900
-}
-
-#all-games {
-    /* border: 5px solid red; */
+#finished-games {
     width: 50%;
-    padding: 15px;
-    background-color: #121212;
     margin-top: 50px;
-}
-
-#game-and-odds-container {
-    border-top: 1px solid #ababab;
-    padding-top: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-}
-
-#game-card {
-    /* border: 1px solid blue; */
-    width: 40%;
-    color: white;
-}
-
-#all-games-time {
-    font-size: 13px;
-}
-
-#opponents-and-gametime {
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    color: #ababab;
+    background-color: #121212;
 }
 
-.all-games-edit-delete-btns {
-    margin-top: 15px;
+.finished-games-edit-delete-btns {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    gap: 15px;
+    gap: 10px;
+    text-decoration: underline;
 }
 
 .open-modal-btn {
     color: white;
+    text-decoration: underline;
 }
 
-#all-games-edit-btn {
+#finished-games-edit-btn, #finished-games-delete-btn {
     color: white;
 }
 
-#all-games-edit-btn:hover {
+#finished-games-edit-btn:hover, #finished-games-delete-btn:hover {
     color: #f76900;
 }
 
-.all-games-home-away {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
+#final-score {
+    background-color: none;
+    color: #f76900;
+    font-weight: bold;
 }
 
-#odds-card {
-    /* border: 1px solid white; */
-    width: 60%;
-    color: white;
-}
-
-#odds-table {
-    width: 100%;
-}
-
-.table-header {
-    font-size: 12px;
-    font-weight: 100;
-}
-
-#odds-table > tr > td {
-    background-color: #242424;
-    text-align: center;
-    font-size: 13px;
-    padding: 20px;
-    color: #ababab;
-}
-
-table {
-    border-spacing: 3px;
-}

@@ -33,27 +33,27 @@ function CurrentGames() {
                 <div id='today-games'>
                     <table className='game-table-header'>
                         <tr>
-                            <th className='table-header' style={{width:'30%', textAlign:'left'}}>TODAY</th>
-                            <th className='table-header' style={{width:'25%'}}>SPREAD</th>
-                            <th className='table-header' style={{width:'25%'}}>TOTAL</th>
-                            <th className='table-header' style={{width:'25%'}}>MONEYLINE</th>
+                            <th className='table-header' style={{width:'34%', textAlign:'left'}}>TODAY</th>
+                            <th className='table-header' style={{width:'22%'}}>SPREAD</th>
+                            <th className='table-header' style={{width:'22%'}}>TOTAL</th>
+                            <th className='table-header' style={{width:'22%'}}>MONEYLINE</th>
                         </tr>
                     </table>
                     <table className='game-table-body'>
                         <tr>
-                            <td style={{width:'30%', fontSize:'12px'}}>game time</td>
+                            <td style={{width:'34%', fontSize:'12px'}}>game time</td>
                         </tr>
                         <tr>
-                            <td style={{width:'30%'}}>home team</td>
-                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
-                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
-                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td style={{width:'34%'}}>home team</td>
+                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>data</td>
                         </tr>
                         <tr>
-                            <td style={{width:'30%'}}>away team</td>
-                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
-                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
-                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td style={{width:'34%'}}>away team</td>
+                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>data</td>
                         </tr>
                     </table>
                 </div>
