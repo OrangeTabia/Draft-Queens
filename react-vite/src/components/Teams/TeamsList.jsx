@@ -10,6 +10,7 @@ import { MdSportsSoccer } from "react-icons/md";
 import { MdSportsRugby } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
 import { BiSolidTrash } from "react-icons/bi";
+import { FiPlus } from "react-icons/fi";
 
 function Teams() {
     const dispatch = useDispatch(); 
@@ -36,6 +37,9 @@ function Teams() {
                     <p className='sport-name'>RUGBY</p>
                 </div>
             </div>
+            <div id='create-team-btn-container'>
+                <Link id='create-team-btn' to='/teams/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/> Create a Team</Link>
+            </div>
             <div id='all-teams-container'>
     
                 <table style={{width:'100%', textAlign:'left', backgroundColor: '#f76900'}}>
@@ -43,7 +47,7 @@ function Teams() {
                         <th style={{width: '20%'}}>Sport</th>
                         <th style={{width: '30%'}}>Team</th>
                         <th style={{width: '25%'}}>Location</th>
-                        <th style={{width: '10%'}}>Info</th>
+                        <th style={{width: '10%'}}></th>
                     </tr>
                 </table>
                 <div id='team-table'>

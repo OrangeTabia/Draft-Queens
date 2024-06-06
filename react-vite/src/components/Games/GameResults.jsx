@@ -23,6 +23,9 @@ function GamesList() {
     // 3. find the list of game dates and prse it into a comparable number
     // after mapping each game - Date.parse(game.startTime)
 
+    // possibly do this in the backend - query parameter to filter by passed games
+    // additional thunk 
+
     
     useEffect(() => {
         dispatch(thunkLoadGames());

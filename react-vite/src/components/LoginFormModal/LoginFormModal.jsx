@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
@@ -9,10 +9,22 @@ function LoginFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [validations, setValidations] = useState({}); 
+  const [hasSubmitted, setHasSubmitted] = useState(false); 
   const { closeModal } = useModal();
+
+
+  useEffect(() => {
+    const validations = {};
+    if (!email) validations.email = 'Email is required';
+    if (!password) validations.password = 'Please enter a password';
+    setValidations(validations);
+  }, [email, password])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setHasSubmitted(true); 
 
     const serverResponse = await dispatch(
       thunkLogin({
@@ -36,7 +48,11 @@ const handleDemoUser = () => {
   return (
     <>
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form id='login-form' onSubmit={handleSubmit}>
+        <div>
+          {hasSubmitted && errors.email && <p className='form-errors'>{errors.email}</p>}
+          {hasSubmitted && errors.password && <p className='form-errors'>{errors.password}</p>}
+        </div>
         <label>
           Email
           <input
@@ -46,7 +62,7 @@ const handleDemoUser = () => {
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        <div>{hasSubmitted && validations.email && <p className='form-errors'>{validations.email}</p>}</div>
         <label>
           Password
           <input
@@ -56,7 +72,7 @@ const handleDemoUser = () => {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        <div>{hasSubmitted && validations.password && <p className='form-errors'>{validations.password}</p>}</div>
         <button type="submit">Log In</button>
         <button
         onClick={handleDemoUser}
