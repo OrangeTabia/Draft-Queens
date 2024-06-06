@@ -8,7 +8,7 @@ import { BiSolidEdit } from "react-icons/bi";
 import { BiSolidTrash } from "react-icons/bi";
 import OpenModalButton from '../OpenModalButton';
 import DeleteGame from './DeleteGame';
-import './GamesList.css';
+import './GameResults.css';
 
 
 function GamesList() {
@@ -26,7 +26,7 @@ function GamesList() {
 
 
     return (
-        <div id='game-list-container'>
+        <div id='all-games-list-container'>
             <div id='all-games'>
             {allGames?.map((game) => {
                 let homeTeam = allTeams?.find((team) => team.id == game.homeTeamId);
@@ -38,7 +38,7 @@ function GamesList() {
                         <div id='game-and-odds-container'>
                             <div id='game-card' key={game.id}>
                                 <div id='opponents-and-gametime'>
-                                    <div>{game.startTime}</div>
+                                    <div id='all-games-time'>{game.startTime}</div>
                                     <div className='all-games-home-away'><img className='team-logo' src={homeTeam.logo}/>{homeTeam.name}</div>
                                     <div className='all-games-home-away'><img className='team-logo' src={awayTeam.logo}/>{awayTeam.name}</div>
                                 </div>
@@ -58,7 +58,27 @@ function GamesList() {
                                     ''
                                 }
                             </div>
-                            <div id='odds-card'>Odds Div</div>
+                            <div id='odds-card'>
+                                <div id='odds-table-container'>
+                                    <table id='odds-table'>
+                                        <tr>
+                                            <th className='table-header'>SPREAD</th>
+                                            <th className='table-header'>TOTAL</th>
+                                            <th className='table-header'>MONEYLINE</th>
+                                        </tr>
+                                        <tr>
+                                            <td>data</td>
+                                            <td>data</td>
+                                            <td>data</td>
+                                        </tr>
+                                        <tr>
+                                            <td>data</td>
+                                            <td>data</td>
+                                            <td>data</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         )
                             

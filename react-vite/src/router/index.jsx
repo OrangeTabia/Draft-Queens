@@ -5,7 +5,7 @@ import Teams from '../components/Teams/TeamsList';
 import CreateTeam from '../components/Teams/CreateTeam'; 
 import UpdateTeam from '../components/Teams/UpdateTeam';
 import DeleteTeam from '../components/Teams/DeleteTeam'; 
-import GamesList from '../components/Games/GamesList';
+import GameResults from '../components/Games/GameResults';
 import CurrentGames from '../components/Games/CurrentGames';
 import CreateGame from '../components/Games/CreateGame'; 
 import UpdateGame from '../components/Games/UpdateGame';
@@ -36,10 +36,6 @@ export const router = createBrowserRouter([
         element: <Teams />
       }, 
       {
-        path: '/games/all',
-        element: <GamesList />
-      }, 
-      {
         path: '/games',
         element: <CurrentGames />
       }, 
@@ -53,7 +49,7 @@ export const router = createBrowserRouter([
       }, 
       {
         path: '/results',
-        element: <h1>Results Feature Coming Soon!</h1>
+        element: <GameResults />
       }
       // {
       //   path: "login",

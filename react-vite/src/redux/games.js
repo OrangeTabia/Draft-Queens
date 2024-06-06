@@ -50,10 +50,15 @@ export const thunkAddGame = (game) => async (dispatch) => {
 }; 
 
 export const thunkUpdateGame = (game, gameId) => async (dispatch) => {
+    const gamePaylod = {
+        home_team_id: game.homeTeam,
+        away_team_id: game.awayTeam,
+        start_time: game.startTime.replace('T', ' ')
+    }
     const response = await fetch(`/api/games/${gameId}/update`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(game)
+        body: JSON.stringify(gamePaylod)
     }); 
     if (response.ok) {
         const updatedGame = await response.json();
@@ -77,8 +82,17 @@ const initialState = {};
 
 function gamesReducer(state = initialState, action) {
     switch (action.type) {
+    
         case LOAD_GAMES: {
-            return { ...state, ...action.games}; 
+            return { ...state, 
+                games: [...action.games.games.sort((game1, game2) => {
+                    if (Date.parse(game1.startTime) < Date.parse(game2.startTime)) {
+                        return 1
+                    } else {
+                        return -1
+                    }
+                })]
+            }; 
         }
         case ADD_GAME: {
             const newState = { ...state };

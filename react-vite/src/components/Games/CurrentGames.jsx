@@ -29,11 +29,88 @@ function CurrentGames() {
 
     return (
         <div id='current-games-container'>
-            <Link to='/games/all' id='view-all-games-link'>View All Games</Link>
-            <div id='all-games'>
-                <div>TODAY CONTAINER</div>
-                <div>TOMORROW CONTAINER</div>
-                <div>UPCOMING CONTAINER</div>
+            <div id='current-games'>
+                <div id='today-games'>
+                    <table className='game-table-header'>
+                        <tr>
+                            <th className='table-header' style={{width:'30%', textAlign:'left'}}>TODAY</th>
+                            <th className='table-header' style={{width:'25%'}}>SPREAD</th>
+                            <th className='table-header' style={{width:'25%'}}>TOTAL</th>
+                            <th className='table-header' style={{width:'25%'}}>MONEYLINE</th>
+                        </tr>
+                    </table>
+                    <table className='game-table-body'>
+                        <tr>
+                            <td style={{width:'30%', fontSize:'12px'}}>game time</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'30%'}}>home team</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'30%'}}>away team</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id='tomorrow-games'>
+                    <table className='game-table-header'>
+                        <tr>
+                            <th className='table-header' style={{width:'30%', textAlign:'left'}}>TOMORROW</th>
+                            <th className='table-header' style={{width:'25%'}}>SPREAD</th>
+                            <th className='table-header' style={{width:'25%'}}>TOTAL</th>
+                            <th className='table-header' style={{width:'25%'}}>MONEYLINE</th>
+                        </tr>
+                    </table>
+                    <table className='game-table-body'>
+                        <tr>
+                            <td style={{width:'30%', fontSize:'12px'}}>game time</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'30%'}}>home team</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'30%'}}>away team</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id='upcoming-games'>
+                    <table className='game-table-header'>
+                        <tr>
+                            <th className='table-header' style={{width:'30%', textAlign:'left'}}>UPCOMING</th>
+                            <th className='table-header' style={{width:'25%'}}>SPREAD</th>
+                            <th className='table-header' style={{width:'25%'}}>TOTAL</th>
+                            <th className='table-header' style={{width:'25%'}}>MONEYLINE</th>
+                        </tr>
+                    </table>
+                    <table className='game-table-body'>
+                        <tr>
+                            <td style={{width:'30%', fontSize:'12px'}}>game time</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'30%'}}>home team</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'30%'}}>away team</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                            <td className='data-field' style={{width:'25%', textAlign:'center'}}>data</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     )
