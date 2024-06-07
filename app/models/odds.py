@@ -22,11 +22,11 @@ class Odd(db.Model):
 
     # TODO: Add cascade relationships for ALL of these 
     # one to many - user to odds
-    user = db.relationship('User', cascade='all, delete', back_populates='odd')
+    user = db.relationship('User', back_populates='odd')
     # one to many - game to odds
-    game = db.relationship('Game', cascade='all, delete', back_populates='odd')
+    game = db.relationship('Game', back_populates='odd')
     # one to many - team to odds
-    team = db.relationship('Team', cascade='all, delete', back_populates='odd')
+    team = db.relationship('Team', back_populates='odd')
 
 
     def to_dict(self): 
