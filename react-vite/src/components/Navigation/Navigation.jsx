@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
-import DraftQueensHomeLogo from '../../../public/draftqueens-home-logo.png';
+import DraftQueensHomeLogo from '../../../images/draftqueens-home-logo.png';
 import "./Navigation.css";
 
 function Navigation() {

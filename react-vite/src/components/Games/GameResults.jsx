@@ -7,6 +7,7 @@ import { thunkLoadTeams } from '../../redux/teams';
 // import { BiSolidEdit } from "react-icons/bi";
 // import { BiSolidTrash } from "react-icons/bi";
 import OpenModalButton from '../OpenModalButton';
+import fanswapAd from '../../../images/fanswap-longer.png'; 
 import DeleteGame from './DeleteGame';
 import './GameResults.css';
 
@@ -93,6 +94,7 @@ function GamesList() {
                         }}
                     })}
                 </div>
+                <div id='fanswap-ad'><a href='https://fanswap.onrender.com/' target='_blank'><img src={fanswapAd} alt='fanswap-ad' /></a></div>
             </div>
         )
     }

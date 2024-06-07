@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import { thunkAddTeam } from '../../redux/teams';
+import fanswapAd from '../../../images/fanswap-longer.png';
+import draftQueensAd from '../../../images/draftqueens-longer.png'; 
 import './Teams.css'; 
 
 
@@ -45,57 +47,62 @@ function AddTeam() {
     }
 
     return (
-        <>
-            <h1>Add New Team Form</h1>
-            <form
-                onSubmit={handleSubmit}
-                encType='multipart/form-data'
-                >
-                <div>
-                    <label>Team Name:</label>
-                    <input
-                        id='team-name'
-                        type='text'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+        <div className='create-container'>
+            <h1>Create a New Team</h1>
+            <div className='create-form-container'>
+                <div><a href='https://draft-queens.onrender.com' target='_blank' rel='noreferrer'><img src={draftQueensAd} alt='draftqueens-ad'/></a></div>
+                <form
+                    onSubmit={handleSubmit}
+                    encType='multipart/form-data'
+                    className='create-form'
                     >
-                    </input>
-                </div>
-                <div className='form-errors'>{hasSubmitted && errors.name}</div>
-                <div>
-                    <label>Location:</label>
-                    <input
-                        id='location'
-                        type='text'
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                    >
-                    </input>
-                </div>
-                <div className='form-errors'>{hasSubmitted && errors.location}</div>
-                <div>
-                    <label value={sport}>Select Sport:</label>
-                    <select id='sport-type' onChange={(e) => setSport(e.target.value)}>
-                        <option value={''} selected disabled>Select a sport</option>
-                        <option value='basketball'>basketball</option>
-                        <option value='soccer'>soccer</option>
-                        <option value='rugby'>rugby</option>
-                    </select>
-                </div>
-                <div className='form-errors'>{hasSubmitted && errors.sport}</div>
-                <div>
-                    <label>Select Image:</label>
-                    <input
-                        id='logo'
-                        type='file'
-                        // accept='image/*'
-                        onChange={(e) => setLogo(e.target.files[0])}
-                    >
-                    </input>
-                </div>
-                <button type='submit'>Create Team</button>
-            </form>
-        </>
+                    <div className='form-input'>
+                        <label>Team Name</label>
+                        <input
+                            className='input'
+                            type='text'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        >
+                        </input>
+                    </div>
+                    <div className='form-errors'>{hasSubmitted && errors.name}</div>
+                    <div className='form-input'>
+                        <label>Team Location</label>
+                        <input
+                            className='input'
+                            type='text'
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                        >
+                        </input>
+                    </div>
+                    <div className='form-errors'>{hasSubmitted && errors.location}</div>
+                    <div className='form-input'>
+                        <label value={sport}>Sport</label>
+                        <select className='select' onChange={(e) => setSport(e.target.value)}>
+                            <option value={''} selected disabled>Select a sport</option>
+                            <option value='basketball'>basketball</option>
+                            <option value='soccer'>soccer</option>
+                            <option value='rugby'>rugby</option>
+                        </select>
+                    </div>
+                    <div className='form-errors'>{hasSubmitted && errors.sport}</div>
+                    <div className='form-input'>
+                        <label>Select Team Image or Logo</label>
+                        <input
+                            id='logo'
+                            type='file'
+                            // accept='image/*'
+                            onChange={(e) => setLogo(e.target.files[0])}
+                        >
+                        </input>
+                    </div>
+                    <button className='form-button' type='submit'>Create Team</button>
+                </form>
+                <div><a href='https://fanswap.onrender.com/' target='_blank' rel='noreferrer'><img src={fanswapAd} alt='fanswap-ad'/></a></div>
+            </div>
+        </div>
 
     )
 }

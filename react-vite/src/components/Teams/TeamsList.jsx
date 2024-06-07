@@ -37,8 +37,11 @@ function Teams() {
                     <p className='sport-name'>RUGBY</p>
                 </div>
             </div>
+            
             <div id='create-team-btn-container'>
+                {currentUser &&
                 <Link id='create-team-btn' to='/teams/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/> Create a Team</Link>
+                }
             </div>
             <div id='all-teams-container'>
     

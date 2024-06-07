@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { thunkAddGame } from '../../redux/games';
 import { thunkLoadTeams } from '../../redux/teams';
+import fanswapAd from '../../../images/fanswap-longer.png';
+import draftQueensAd from '../../../images/draftqueens-longer.png'; 
+import './CreateGame.css'; 
 
 
 function AddGame() {
@@ -52,54 +55,59 @@ function AddGame() {
 
     if (teamList) {
         return (
-            <>
-                <h1>Create A Game Form</h1>
-                <form
-                    onSubmit={handleSubmit}
-                    >
-                    <div>
-                        <label>Team 1:</label>
-                        <select
-                            id='home-team'
-                            value={homeTeam}
-                            onChange={(e) => setHomeTeam(e.target.value)}
+            <div className='create-container'>
+                <h1>Create a Game</h1>
+                <div className='create-form-container'>
+                    <div><a href='https://draft-queens.onrender.com' target='_blank' rel='noreferrer'><img src={draftQueensAd} alt='draftqueens-ad'/></a></div>
+                    <form
+                        className='create-form'
+                        onSubmit={handleSubmit}
                         >
-                            <option value={''} selected disabled>Select a team</option>
-                            {teamList.map((team) => (
-                                <option key={team.id} value={team.id}>{team.name}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.homeTeam}</div>
-                    <div>
-                        <label>Team 2:</label>
-                        <select
-                            id='away-team'
-                            value={awayTeam}
-                            onChange={(e) => setAwayTeam(e.target.value)}
-                        >
-                            <option value={''} selected disabled>Select a team</option>
-                            {teamList.map((team) => (
-                                <option key={team.id} value={team.id}>{team.name}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.awayTeam}</div>
-                    <div>
-                        <label>Game Start Time:</label>
-                        <input
-                            id='game-start'
-                            type='datetime-local'
-                            value={startTime} 
-                            min={formattedDate}
-                            onChange={(e) => setStartTime(e.target.value)}
-                        >
-                        </input>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.startTime}</div>
-                    <button type='submit'>Create Game</button>
-                </form>
-            </>
+                        <div className='form-input'>
+                            <label>Home Team</label>
+                            <select
+                                className='select'
+                                value={homeTeam}
+                                onChange={(e) => setHomeTeam(e.target.value)}
+                            >
+                                <option value={''} selected disabled>Select a team</option>
+                                {teamList.map((team) => (
+                                    <option key={team.id} value={team.id}>{team.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.homeTeam}</div>
+                        <div className='form-input'>
+                            <label>Away Team</label>
+                            <select
+                                className='select'
+                                value={awayTeam}
+                                onChange={(e) => setAwayTeam(e.target.value)}
+                            >
+                                <option value={''} selected disabled>Select a team</option>
+                                {teamList.map((team) => (
+                                    <option key={team.id} value={team.id}>{team.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.awayTeam}</div>
+                        <div className='form-input'>
+                            <label>Game Date and Time</label>
+                            <input
+                                className='select'
+                                type='datetime-local'
+                                value={startTime} 
+                                min={formattedDate}
+                                onChange={(e) => setStartTime(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.startTime}</div>
+                        <button className='form-button' type='submit'>Create Game</button>
+                    </form>
+                    <div><a href='https://fanswap.onrender.com/' target='_blank' rel='noreferrer'><img src={fanswapAd} alt='fanswap-ad'/></a></div>
+                </div>
+            </div>
         )
     }
 }
