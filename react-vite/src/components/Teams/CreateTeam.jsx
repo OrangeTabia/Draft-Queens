@@ -42,6 +42,7 @@ function AddTeam() {
         formData.append('logo', logo)
         
         await dispatch(thunkAddTeam(formData)); 
+        navigate('/teams'); 
         // if there are no errors, confirm that the team has been added 
         // navigate back to teams page or create a button on the form to navigate back to teams page
     }

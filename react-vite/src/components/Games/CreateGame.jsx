@@ -44,6 +44,7 @@ function AddGame() {
             startTime
         }
         await dispatch(thunkAddGame(newGame)); 
+        navigate('/games');
     }
 
     // Getting the current date and time in order to use it as a minimum datetime for form input
