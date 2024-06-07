@@ -35,7 +35,7 @@ function AddTeam() {
         setHasSubmitted(true);
 
         const formData = new FormData(); 
-        formData.append['user_id', currentUser.id]
+        formData.append('user_id', currentUser.id)
         formData.append('name', name)
         formData.append('location', location)
         formData.append('sport_type', sport)
