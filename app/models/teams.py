@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
+from .games import Game
 
 
 class Team(db.Model): 
@@ -22,21 +23,9 @@ class Team(db.Model):
     # one to many - team to odds
     odd = db.relationship('Odd', back_populates='team', cascade="all, delete-orphan")
 
-
-    # NEW NOTES TO FIGURE OUT CASCADING
-
-    # game = db.relationship(
-    #     'Game',
-    #     back_populates='Team',
-    #     cascade='all, delete',
-    #     passive_deletes=True,
-    # )
-
-    # one to many - team to Games
-    # game = db.relationship('Game',  cascade='all,delete', back_populates='team', foreign_keys=['Game.home_team_id', 'Game.away_team_id'])
-
-    # game = db.relationship('Game',  cascade='all,delete', back_populates='home_team')
-    # game = db.relationship('Game',  cascade='all,delete', back_populates='away_team')
+    # Home game and away game relationships (Delete games when the team is gone)
+    home_games = db.relationship('Game', foreign_keys=[Game.home_team_id], back_populates='home_team', cascade="all, delete-orphan")
+    away_games = db.relationship('Game', foreign_keys=[Game.away_team_id], back_populates='away_team', cascade="all, delete-orphan")
 
     
     def to_dict(self): 
