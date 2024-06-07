@@ -11,7 +11,7 @@ function Navigation() {
       </div>
       <div className="middle-nav">
         <NavLink to='/' className="middle-nav-titles">Home</NavLink>
-        <NavLink to="/teams" className="middle-nav-titles">Sports</NavLink>
+        <NavLink to="/teams" className="middle-nav-titles">Teams</NavLink>
         <NavLink to="/games" className="middle-nav-titles">Games</NavLink>
         <NavLink to="/results" className="middle-nav-titles">Results</NavLink>
       </div>

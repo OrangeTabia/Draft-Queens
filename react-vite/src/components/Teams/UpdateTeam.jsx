@@ -39,17 +39,21 @@ function UpdateTeam() {
 
         setHasSubmitted(true);
 
-        const updatedFormData = new FormData(); 
-        updatedFormData.set('user_id', currentUser.id)
-        updatedFormData.set('name', name)
-        updatedFormData.set('location', location)
-        updatedFormData.set('sport_type', sport)
-        updatedFormData.set('logo', logo)
-        
-        await dispatch(thunkUpdateTeam(updatedFormData, teamId)); 
-        navigate('/teams'); 
-        // if there are no errors, confirm that the team has been updated 
-        // navigate back to teams page or create a button on the form to navigate back to teams page
+        if (Object.values(errors).length > 0) {
+            return;
+        } else {
+            const updatedFormData = new FormData(); 
+            updatedFormData.set('user_id', currentUser.id)
+            updatedFormData.set('name', name)
+            updatedFormData.set('location', location)
+            updatedFormData.set('sport_type', sport)
+            updatedFormData.set('logo', logo)
+            
+            await dispatch(thunkUpdateTeam(updatedFormData, teamId)); 
+            navigate('/teams'); 
+            // if there are no errors, confirm that the team has been updated 
+            // navigate back to teams page or create a button on the form to navigate back to teams page
+        }
     }
 
     return (

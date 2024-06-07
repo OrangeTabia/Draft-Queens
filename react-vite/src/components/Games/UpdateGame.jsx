@@ -44,15 +44,19 @@ function UpdateGame() {
 
         setHasSubmitted(true);
 
-        const updatedGame = {
-            homeTeam,
-            awayTeam,
-            startTime
+        if (Object.values(errors).length > 0) {
+            return;
+        } else {
+            const updatedGame = {
+                homeTeam,
+                awayTeam,
+                startTime
+            }
+            await dispatch(thunkUpdateGame(updatedGame, gameId)); 
+            navigate('/games'); 
+            // navigate to new page with game confirmed
+            // link to go back home or link to go back to games
         }
-        await dispatch(thunkUpdateGame(updatedGame, gameId)); 
-        navigate('/games'); 
-        // navigate to new page with game confirmed
-        // link to go back home or link to go back to games
     }
 
     // Getting the current date and time in order to use it as a minimum datetime for form input
