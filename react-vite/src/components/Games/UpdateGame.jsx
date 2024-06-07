@@ -49,9 +49,9 @@ function UpdateGame() {
             startTime
         }
         await dispatch(thunkUpdateGame(updatedGame, gameId)); 
+        navigate('/games'); 
         // navigate to new page with game confirmed
         // link to go back home or link to go back to games
-        // TODO: update game currently does not work
     }
 
     // Getting the current date and time in order to use it as a minimum datetime for form input

@@ -47,9 +47,9 @@ function UpdateTeam() {
         updatedFormData.set('logo', logo)
         
         await dispatch(thunkUpdateTeam(updatedFormData, teamId)); 
+        navigate('/teams'); 
         // if there are no errors, confirm that the team has been updated 
         // navigate back to teams page or create a button on the form to navigate back to teams page
-        // navigate('/teams'); 
     }
 
     return (
