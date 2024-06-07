@@ -18,7 +18,7 @@ def all_teams():
 
 
 
-@team_routes.route('/new', methods=['GET', 'POST'])
+@team_routes.route('/new', methods=['POST'])
 @login_required
 def create_team(): 
     """
@@ -31,13 +31,13 @@ def create_team():
         image = form.data['logo']
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
-        print(upload)
+        print("Uploaded Image to S3: ", upload)
 
         if 'url' not in upload:
         # if the dictionary doesn't have a url key
         # it means that there was an error when you tried to upload
         # so you send back that error message (and you printed it above)
-            print(form.errors)
+            print("Error on the S3 Upload ", form.errors)
             return form.errors, 401
 
         logo = upload['url']
@@ -55,7 +55,7 @@ def create_team():
         return new_team.to_dict()
     
     if form.errors:
-        print(form.errors)
+        print("Error on form validation ", form.errors)
         return form.errors, 401
     
     return form.errors, 401
