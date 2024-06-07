@@ -59,65 +59,69 @@ function SignupFormModal() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
+    <div className='signup-modal'>
+      <h1 className='login-title'>Sign Up</h1>
       {hasSubmitted && errors.server && <p className='form-errors'>{errors.server}</p>}
       <form id='signup-form' onSubmit={handleSubmit}>
-        <label>
-          Email
+        <div className='login-input'>
+          <label>Email</label>
           <input
+            className='login-form-input'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
+        </div>
         <div>
           {hasSubmitted && errors.email && <p className='form-errors'>{errors.email}</p>}
           {hasSubmitted && validations.email && <p className='form-errors'>{validations.email}</p>}
         </div>
-        <label>
-          Username
+        <div className='login-input'>
+          <label>Username</label>
           <input
+            className='login-form-input'
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </label>
+        </div>
         <div>
           {hasSubmitted && errors.username && <p className='form-errors'>{errors.username}</p>}
           {hasSubmitted && validations.username && <p className='form-errors'>{validations.username}</p>}
         </div>
-        <label>
-          Password
+        <div className='login-input'>
+          <label>Password</label>
           <input
+            className='login-form-input'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
+        </div>
         <div>
           {hasSubmitted && errors.password && <p className='form-errors'>{errors.password}</p>}
           {hasSubmitted && validations.password && <p className='form-errors'>{validations.password}</p>}
         </div>
-        <label>
-          Confirm Password
+        <div className='login-input'>
+          <label>Confirm Password</label>
           <input
+            className='login-form-input'
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </label>
+        </div>
         <div>
           {hasSubmitted && errors.confirmPassword && <p className='form-errors'>{errors.confirmPassword}</p>}
           {hasSubmitted && validations.confirmPassword && <p className='form-errors'>{validations.confirmPassword}</p>}
         </div>
-        <button type="submit">Sign Up</button>
+        <button id='signup-btn' type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

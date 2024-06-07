@@ -40,6 +40,7 @@
     margin-top: 25px;
     margin-bottom: 10px;
     width: 50%;
+    /* border: 1px solid blue; */
 }
 
 #create-team-btn {
@@ -55,6 +56,7 @@
 #all-teams-container {
     width: 50%;
     background-color: #242424;
+    /* border: 1px solid red; */
 }
 
 #team-table {
@@ -153,10 +155,6 @@ table {
 }
 
 .submit-btn {
-    background-color: #f76900;
-    border: none;
-    color: white;
-    height: 35px;
     width: 25%;
 }
 

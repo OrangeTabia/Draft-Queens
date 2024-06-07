@@ -13,10 +13,14 @@ function LoginFormModal() {
   const [hasSubmitted, setHasSubmitted] = useState(false); 
   const { closeModal } = useModal();
 
+  const validateEmail = (email) => {
+    return /^\S+@\S+\.\S+$/.test(email);
+  }
 
   useEffect(() => {
     const validations = {};
     if (!email) validations.email = 'Email is required';
+    if (!validateEmail(email)) validations.email = 'Invalid email format'; 
     if (!password) validations.password = 'Please enter a password';
     setValidations(validations);
   }, [email, password])
@@ -46,42 +50,47 @@ const handleDemoUser = () => {
 }
 
   return (
-    <>
-      <h1>Log In</h1>
+    <div className='login-modal'>
+      <h1 className='login-title'>Log In</h1>
       <form id='login-form' onSubmit={handleSubmit}>
         <div>
           {hasSubmitted && errors.email && <p className='form-errors'>{errors.email}</p>}
           {hasSubmitted && errors.password && <p className='form-errors'>{errors.password}</p>}
         </div>
-        <label>
-          Email
+        <div className='login-input'>
+          <label>Email</label>
           <input
+            className='login-form-input'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
+        </div>
         <div>{hasSubmitted && validations.email && <p className='form-errors'>{validations.email}</p>}</div>
-        <label>
-          Password
+        <div className='login-input'>
+          <label>Password</label>
           <input
+            className='login-form-input'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
+        </div>
         <div>{hasSubmitted && validations.password && <p className='form-errors'>{validations.password}</p>}</div>
-        <button type="submit">Log In</button>
-        <button
-        onClick={handleDemoUser}
-        type="submit"
-        >
-          Demo User
-        </button>
+        <div className='login-buttons'>
+          <button id='login-btn' type="submit">Log In</button>
+            <button
+            onClick={handleDemoUser}
+            type="submit"
+            id='demo-btn'
+            >
+              Demo User
+            </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 
