@@ -1,52 +1,82 @@
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
+import { useNavigate } from "react-router-dom";
+
 import "./SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const { closeModal } = useModal();
+
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
   const [errors, setErrors] = useState({});
   const [validations, setValidations] = useState({});
-  const [hasSubmitted, setHasSubmitted] = useState(false); 
-  const { closeModal } = useModal();
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [submitClass, setSubmitClass] = useState("form-submit");
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+
+  const setSubmitDisabledStatus = (disabled) => {
+    (disabled)
+      ? setSubmitClass("form-submit disabled")
+      : setSubmitClass("form-submit");
+    setSubmitDisabled(disabled);
+  };
 
   const validateEmail = (email) => {
     return /^\S+@\S+\.\S+$/.test(email);
   }
 
+  const getValidations = useCallback(() => {
+    const newValidations = {};
+
+    if (!username) {
+      newValidations.username = "Username is required";
+    } else if (username.length < 3) {
+      newValidations.username = "Username must be more than 3 characters"
+    }
+    if (!email) {
+      newValidations.email = "Email is required";
+    } else if (!validateEmail(email)) {
+      newValidations.email = "Invalid Email Format";
+    }
+    if (password.length < 8) {
+      newValidations.password = "Password must be at least 8 characters"
+    }
+    if (password !== confirmPassword) {
+      newValidations.confirmPassword = "Confirm password must match password"
+    }
+
+    return newValidations;
+  }, [username, email, password, confirmPassword]);
+
+
   useEffect(() => {
-    const validations = {}; 
-    if (!email) validations.email = 'Email is required';
-    if (!validateEmail(email)) validations.email = 'Invalid email format'; 
-    if (!username) validations.username = 'Username is required';
-    if (username.length < 3) validations.username = 'Username must be at least 3 characters'; 
-    if (!password) validations.password = 'Password is required';
-    if (password.length < 8) validations.password = 'Password must be at least 8 characters'; 
-    if (confirmPassword.length < 8) validations.password = 'Password must be at least 8 characters';
-    setValidations(validations); 
-  }, [email, username, password, confirmPassword])
+    if (!hasSubmitted) return;
+    const newValidations = getValidations();
+    setSubmitDisabledStatus(Object.keys(newValidations).length > 0);
+    setValidations(newValidations);
+  }, [hasSubmitted, getValidations]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setHasSubmitted(true);
-
-    if (password !== confirmPassword) {
-      return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
-      });
+    if (!hasSubmitted) {
+      setHasSubmitted(true);
+      const newValidations = getValidations();
+      if (Object.keys(newValidations).length) return;
     }
 
     const serverResponse = await dispatch(
       thunkSignup({
-        email,
         username,
+        email,
         password,
       })
     );
@@ -55,32 +85,23 @@ function SignupFormModal() {
       setErrors(serverResponse);
     } else {
       closeModal();
+      navigate("/");
     }
   };
 
   return (
-    <div className='signup-modal'>
-      <h1 className='login-title'>Sign Up</h1>
-      {hasSubmitted && errors.server && <p className='form-errors'>{errors.server}</p>}
-      <form id='signup-form' onSubmit={handleSubmit}>
-        <div className='login-input'>
-          <label>Email</label>
+    <div id='signup-modal'>
+      <h1 id='signup-title'>Sign Up</h1>
+      {validations.server && <p>{validations.server}</p>}
+      <form
+        onSubmit={handleSubmit}
+        id="signup-form"
+      >
+        <div className='signup-input'>
+          <label htmlFor="username">Username</label>
           <input
-            className='login-form-input'
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          {hasSubmitted && errors.email && <p className='form-errors'>{errors.email}</p>}
-          {hasSubmitted && validations.email && <p className='form-errors'>{validations.email}</p>}
-        </div>
-        <div className='login-input'>
-          <label>Username</label>
-          <input
-            className='login-form-input'
+            // id="username"
+            className="signup-form-input"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -88,13 +109,37 @@ function SignupFormModal() {
           />
         </div>
         <div>
-          {hasSubmitted && errors.username && <p className='form-errors'>{errors.username}</p>}
-          {hasSubmitted && validations.username && <p className='form-errors'>{validations.username}</p>}
+          {validations.username && (
+            <p className="form-errors">{validations.username}</p>
+          ) || errors.username && (
+            <p className="form-errors">{errors.username}</p>
+          )}
         </div>
-        <div className='login-input'>
-          <label>Password</label>
+
+        <div className='signup-input'>
+          <label htmlFor="email">Email</label>
           <input
-            className='login-form-input'
+            id="email"
+            className="signup-form-input"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          {validations.email && (
+            <p className="form-errors">{validations.email}</p>
+          ) || errors.email && (
+            <p className="form-errors">{errors.email}</p>
+          )}
+        </div>
+
+        <div className='signup-input'>
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            className="signup-form-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -102,13 +147,18 @@ function SignupFormModal() {
           />
         </div>
         <div>
-          {hasSubmitted && errors.password && <p className='form-errors'>{errors.password}</p>}
-          {hasSubmitted && validations.password && <p className='form-errors'>{validations.password}</p>}
+          {errors.password && (
+            <p className="form-errors">{errors.password}</p>
+          ) || validations.password && (
+            <p className="form-errors">{validations.password}</p>
+          )}
         </div>
-        <div className='login-input'>
-          <label>Confirm Password</label>
+
+        <div className='signup-input'>
+          <label htmlFor="confirm-password">Confirm Password</label>
           <input
-            className='login-form-input'
+            id="confirm-password"
+            className="signup-form-input"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -116,10 +166,19 @@ function SignupFormModal() {
           />
         </div>
         <div>
-          {hasSubmitted && errors.confirmPassword && <p className='form-errors'>{errors.confirmPassword}</p>}
-          {hasSubmitted && validations.confirmPassword && <p className='form-errors'>{validations.confirmPassword}</p>}
+          {validations.confirmPassword && (
+            <p className="form-errors">{validations.confirmPassword}</p>
+          )}
         </div>
-        <button id='signup-btn' type="submit">Sign Up</button>
+
+        <button
+          className={submitClass}
+          id='signup-btn'
+          type="submit"
+          disabled={submitDisabled}
+        >
+          Sign Up
+        </button>
       </form>
     </div>
   );
