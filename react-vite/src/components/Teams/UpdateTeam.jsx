@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react'; 
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 
 import { thunkLoadTeams, thunkUpdateTeam } from '../../redux/teams';
 import './Teams.css'; 
@@ -56,73 +56,76 @@ function UpdateTeam() {
         <div className='create-container'>
             <h1>Edit Team Details</h1>
             <div className='update-form-container'>
-                <form
-                    onSubmit={handleSubmit}
-                    encType='multipart/form-data'
-                    className='create-form'
-                    >
-                    <div className='form-input'>
-                        <label>Team Name</label>
-                        <input
-                            className='input'
-                            type='text'
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                <div className='form-and-back-btn'>
+                    <div><Link className='back-btn' to='/teams'>Go back to Teams</Link></div>
+                    <form
+                        onSubmit={handleSubmit}
+                        encType='multipart/form-data'
+                        className='create-form'
                         >
-                        </input>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.name}</div>
-                    <div className='form-input'>
-                        <label>Team Location</label>
-                        <input
-                            className='input'
-                            type='text'
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
-                        >
-                        </input>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.location}</div>
-                    <div className='form-input'>
-                        <label value={sport}>Sport</label>
-                        <select className='select' onChange={(e) => setSport(e.target.value)}>
-                            <option value={''} disabled>Select a sport</option>
-                            <option value='basketball'>basketball</option>
-                            <option value='soccer'>soccer</option>
-                            <option value='rugby'>rugby</option>
-                        </select>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.sport}</div>
-                    <div className='form-input'>{
-                            selectedTeam?.logo ? (
-                            <>
-                            <label>Update Image:</label>
-                            <img src={selectedTeam.logo}/>
+                        <div className='form-input'>
+                            <label>Team Name</label>
                             <input
                                 className='input'
-                                type='file'
-                                // accept='image/*'
-                                onChange={(e) => setLogo(e.target.files[0])}
+                                type='text'
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                             >
                             </input>
-                            </>
-                        ) :
-                            (
-                            <>
-                            <label>Select Image:</label>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.name}</div>
+                        <div className='form-input'>
+                            <label>Team Location</label>
                             <input
                                 className='input'
-                                type='file'
-                                // accept='image/*'
-                                onChange={(e) => setLogo(e.target.files[0])}
+                                type='text'
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
                             >
                             </input>
-                            </>
-                        )
-                        }
-                    </div>
-                    <button className='form-button' type='submit'>Update Team</button>
-                </form>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.location}</div>
+                        <div className='form-input'>
+                            <label value={sport}>Sport</label>
+                            <select className='select' onChange={(e) => setSport(e.target.value)}>
+                                <option value={''} disabled>Select a sport</option>
+                                <option value='basketball'>basketball</option>
+                                <option value='soccer'>soccer</option>
+                                <option value='rugby'>rugby</option>
+                            </select>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.sport}</div>
+                        <div className='form-input'>{
+                                selectedTeam?.logo ? (
+                                <>
+                                    <label>Current Image:</label>
+                                    <img id='edit-image-populate' src={selectedTeam.logo}/>
+                                    <input
+                                        className='select'
+                                        type='file'
+                                        // accept='image/*'
+                                        onChange={(e) => setLogo(e.target.files[0])}
+                                    >
+                                    </input>
+                                </>
+                            ) :
+                                (
+                                <>
+                                    <label>Select Image:</label>
+                                    <input
+                                        className='select'
+                                        type='file'
+                                        // accept='image/*'
+                                        onChange={(e) => setLogo(e.target.files[0])}
+                                    >
+                                    </input>
+                                </>
+                            )
+                            }
+                        </div>
+                        <button className='form-button' type='submit'>Update Team</button>
+                    </form>
+                </div>
             </div>
         </div>
 
