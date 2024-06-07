@@ -15,13 +15,13 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # one to many - user to teams
-    team = db.relationship('Team', back_populates='user')
+    team = db.relationship('Team', back_populates='user', cascade="all, delete-orphan")
     # one to many - user to games
-    game = db.relationship('Game', back_populates='user')
+    game = db.relationship('Game', back_populates='user', cascade="all, delete-orphan")
     # one to many - user to odds
-    odd = db.relationship('Odd', back_populates='user')
+    odd = db.relationship('Odd', back_populates='user', cascade="all, delete-orphan")
     # one to many - user to results
-    result = db.relationship('Result', back_populates='user')
+    result = db.relationship('Result', back_populates='user', cascade="all, delete-orphan")
 
     
 

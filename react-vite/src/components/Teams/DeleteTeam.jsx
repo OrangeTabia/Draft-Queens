@@ -19,7 +19,7 @@ function DeleteTeam({ teamId }) {
             <h1 className='delete-title'>Delete Team</h1>
             <div className='delete-confirmation'>
                 <p>Are you sure you want to delete this team? </p>
-                <h5>Deleting the team will not remove previously posted information <br></br>such games/matches and their associated odds and results.</h5>
+                <h5>Deleting the team will remove games/matches <br></br>and their associated odds and results.</h5>
             </div>
             <div className='buttons-container'>
                 <div className='cancel-delete-btns'>

@@ -15,7 +15,7 @@ function AddTeam() {
     const [location, setLocation] = useState('');
     const [sport, setSport] = useState(''); 
     const [logo, setLogo] = useState(''); 
-    const [preview, setPreview] = useState()
+    const [preview, setPreview] = useState();
     const [errors, setErrors] = useState({}); 
     const currentUser = useSelector(state => state.session.user); 
     const [hasSubmitted, setHasSubmitted] = useState(false); 
