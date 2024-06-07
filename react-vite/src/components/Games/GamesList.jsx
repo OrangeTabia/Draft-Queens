@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react'; 
 import { Link } from 'react-router-dom'; 
-
 import { thunkLoadGames } from '../../redux/games'; 
 import { thunkLoadTeams } from '../../redux/teams'; 
 // import { BiSolidEdit } from "react-icons/bi";
