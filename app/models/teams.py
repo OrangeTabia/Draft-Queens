@@ -22,6 +22,12 @@ class Team(db.Model):
     # one to many - team to odds
     odd = db.relationship('Odd', back_populates='team')
 
+    # one to many - team to Games
+    # game = db.relationship('Game',  cascade='all,delete', back_populates='team', foreign_keys=['Game.home_team_id', 'Game.away_team_id'])
+
+    game = db.relationship('Game',  cascade='all,delete', back_populates='home_team')
+    game = db.relationship('Game',  cascade='all,delete', back_populates='away_team')
+
     
     def to_dict(self): 
         return {

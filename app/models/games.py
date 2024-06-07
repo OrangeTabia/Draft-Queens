@@ -17,10 +17,11 @@ class Game(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now())
 
     # one to many - user to games
-    user = db.relationship('User', cascade='all, delete', back_populates='game')
+    user = db.relationship('User', cascade='all,delete', back_populates='game')
+
     # two to many - two teams to games
-    home_team = db.relationship('Team', cascade='all, delete', foreign_keys='Game.home_team_id')
-    away_team = db.relationship('Team', cascade='all, delete', foreign_keys='Game.away_team_id')
+    home_team = db.relationship('Team', foreign_keys='Game.home_team_id')
+    away_team = db.relationship('Team', foreign_keys='Game.away_team_id')
 
     # one to many - game to odds
     odd = db.relationship('Odd', back_populates='game')
