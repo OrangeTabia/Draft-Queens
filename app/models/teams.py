@@ -20,7 +20,7 @@ class Team(db.Model):
     # one to many - user to teams
     user = db.relationship('User', back_populates='team')
     # one to many - team to odds
-    odd = db.relationship('Odd', back_populates='team')
+    odd = db.relationship('Odd', back_populates='team', cascade="all, delete-orphan")
 
 
     # NEW NOTES TO FIGURE OUT CASCADING

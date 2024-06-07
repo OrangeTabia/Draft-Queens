@@ -24,7 +24,7 @@ class Game(db.Model):
     # one to many - game to odds
     odd = db.relationship('Odd', back_populates='game')
     # one to one - one game to one game result
-    result = db.relationship('Result', uselist=False, back_populates='game')
+    result = db.relationship('Result', uselist=False, back_populates='game', cascade="all, delete-orphan")
 
 
     def to_dict(self): 
