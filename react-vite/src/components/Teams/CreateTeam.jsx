@@ -4,7 +4,7 @@ import { useNavigate, Link} from 'react-router-dom';
 import { thunkAddTeam } from '../../redux/teams';
 import fanswapAd from '../../../images/fanswap-longer.png';
 import draftQueensAd from '../../../images/draftqueens-longer.png'; 
-import './Teams.css'; 
+import './CreateTeam.css'; 
 
 
 

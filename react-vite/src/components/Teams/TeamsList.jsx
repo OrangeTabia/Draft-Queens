@@ -11,6 +11,7 @@ import { MdSportsRugby } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
 import { BiSolidTrash } from "react-icons/bi";
 import { FiPlus } from "react-icons/fi";
+import './Teams.css';
 
 function Teams() {
     const dispatch = useDispatch(); 

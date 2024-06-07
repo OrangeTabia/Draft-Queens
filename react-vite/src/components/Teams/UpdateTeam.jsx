@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
 import { thunkLoadTeams, thunkUpdateTeam } from '../../redux/teams';
-import './Teams.css'; 
+import './UpdateTeam.css'; 
 
 
 
@@ -53,7 +53,7 @@ function UpdateTeam() {
     }
 
     return (
-        <div className='create-container'>
+        <div className='update-container'>
             <h1>Edit Team Details</h1>
             <div className='update-form-container'>
                 <div className='form-and-back-btn'>

@@ -1,6 +1,7 @@
 import { useModal } from '../../context/Modal';
 import { useDispatch } from 'react-redux'; 
 import { thunkDeleteTeam, thunkLoadTeams } from '../../redux/teams';
+import './DeleteTeam.css';
 
 
 function DeleteTeam({ teamId }) {
@@ -23,7 +24,7 @@ function DeleteTeam({ teamId }) {
             <div className='buttons-container'>
                 <div className='cancel-delete-btns'>
                     <button className='cancel-btn' type='submit' onClick={() => closeModal()}>Cancel</button>
-                    <button className='submit-btn' type='submit' onClick={handleDelete}>Delete</button>
+                    <button className='delete-btn' type='submit' onClick={handleDelete}>Delete</button>
                 </div>
             </div>
         </div>
