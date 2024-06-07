@@ -20,8 +20,11 @@ class Game(db.Model):
     user = db.relationship('User', cascade='all,delete', back_populates='game')
 
     # two to many - two teams to games
-    home_team = db.relationship('Team', foreign_keys='Game.home_team_id')
-    away_team = db.relationship('Team', foreign_keys='Game.away_team_id')
+    # home_team = db.relationship('Team', foreign_keys='Game.home_team_id')
+    # away_team = db.relationship('Team', foreign_keys='Game.away_team_id')
+
+    home_team = db.relationship('Team', back_populates='game')
+    away_team = db.relationship('Team', back_populates='game')
 
     # one to many - game to odds
     odd = db.relationship('Odd', back_populates='game')
