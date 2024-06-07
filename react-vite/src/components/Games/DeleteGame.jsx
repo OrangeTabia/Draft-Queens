@@ -14,15 +14,19 @@ function DeleteGame({ gameId }) {
         await closeModal(); 
     }
     return (
-        <>
-            <h1>Delete a Game</h1>
-            <p>Are you sure you want to delete this game? </p>
-            <h6>Deleting the game will not remove previous information such teams and their associated odds and results.</h6>
-            <div>
-                <button type='submit' onClick={() => closeModal()}>Cancel</button>
-                <button type='submit' onClick={handleDelete}>Delete</button>
+        <div className='delete-modal'>
+            <h1 className='delete-title'>Delete Game</h1>
+            <div className='delete-confirmation'>
+                <p>Are you sure you want to delete this game? </p>
+                <h5>Deleting the game will not remove previously posted information <br></br>such teams and their associated odds and results.</h5>
             </div>
-        </>
+            <div className='buttons-container'>
+                <div className='cancel-delete-btns'>
+                    <button className='cancel-btn' type='submit' onClick={() => closeModal()}>Cancel</button>
+                    <button className='submit-btn' type='submit' onClick={handleDelete}>Delete</button>
+                </div>
+            </div>
+        </div>
     )
 }
 

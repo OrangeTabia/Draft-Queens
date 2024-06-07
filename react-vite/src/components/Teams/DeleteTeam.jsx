@@ -14,15 +14,20 @@ function DeleteTeam({ teamId }) {
         await closeModal(); 
     }
     return (
-        <>
-            <h1>Delete a Team</h1>
-            <p>Are you sure you want to delete this team? </p>
-            <h6>Deleting the team will not remove previous information such games/matches and their associated odds and results.</h6>
-            <div>
-                <button type='submit' onClick={() => closeModal()}>Cancel</button>
-                <button type='submit' onClick={handleDelete}>Delete</button>
+        <div className='delete-modal'>
+            <h1 className='delete-title'>Delete Team</h1>
+            <div className='delete-confirmation'>
+                <p>Are you sure you want to delete this team? </p>
+                <h5>Deleting the team will not remove previously posted information <br></br>such games/matches and their associated odds and results.</h5>
             </div>
-        </>
+            <div className='buttons-container'>
+                <div className='cancel-delete-btns'>
+                    <button className='cancel-btn' type='submit' onClick={() => closeModal()}>Cancel</button>
+                    <button className='submit-btn' type='submit' onClick={handleDelete}>Delete</button>
+                </div>
+            </div>
+        </div>
+    
     )
 }
 
