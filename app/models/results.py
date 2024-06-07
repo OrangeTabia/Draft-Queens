@@ -18,9 +18,9 @@ class Result(db.Model):
 
     # TODO: Add cascades for all of these 
     # one to many - user to game results
-    user = db.relationship('User', back_populates='result')
+    user = db.relationship('User', cascade='all, delete', back_populates='result')
     # one to one - one game to one game result
-    game = db.relationship('Game', back_populates='result')
+    game = db.relationship('Game', cascade='all, delete', back_populates='result')
 
 
     def to_dict(self): 
