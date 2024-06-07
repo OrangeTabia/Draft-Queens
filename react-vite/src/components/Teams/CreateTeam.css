@@ -83,3 +83,7 @@
     cursor: pointer;
     background-color: #f9852c; 
 }
+
+#image-preview {
+    width: 100px;
+}

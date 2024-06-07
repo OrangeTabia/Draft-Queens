@@ -54,11 +54,9 @@ function AddTeam() {
             setPreview(undefined)
             return
         }
-
         const objectUrl = URL.createObjectURL(logo)
         setPreview(objectUrl)
-
-        // free memory when ever this component is unmounted
+        // free memory whenever this component is unmounted
         return () => URL.revokeObjectURL(objectUrl)
     }, [logo])
 
@@ -114,7 +112,7 @@ function AddTeam() {
                                 onChange={(e) => setLogo(e.target.files[0])}
                             >      
                             </input>
-                            <img src={preview} />  
+                            <img id='image-preview'src={preview} />  
                         </div>
                         <button className='form-button' type='submit'>Create Team</button>
                     </form>
