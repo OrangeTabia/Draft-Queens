@@ -20,7 +20,7 @@ function GamesList() {
 
     // 1. filter all games to a list of games where their start date is less than today's date
     // 2. find today's date and parse it into a comparable number
-    let today = Date.parse(new Date(Date.now())); 
+    // let today = Date.parse(new Date(Date.now())); 
     // 3. find the list of game dates and prse it into a comparable number
     // after mapping each game - Date.parse(game.startTime)
 
@@ -102,7 +102,7 @@ function GamesList() {
                             })}
                         </div>
                     </div>
-                    <div id='fanswap-ad'><a href='https://fanswap.onrender.com/' target='_blank'><img src={fanswapAd} alt='fanswap-ad' /></a></div>
+                    <div id='fanswap-ad'><a href='https://fanswap.onrender.com/' target='_blank' rel='noreferrer'><img src={fanswapAd} alt='fanswap-ad' /></a></div>
                 </div>
             </div>
         )

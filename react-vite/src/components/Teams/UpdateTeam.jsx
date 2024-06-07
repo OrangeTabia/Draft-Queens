@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react'; 
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
-import { thunkLoadTeams, thunkUpdateTeam } from '../../redux/teams';
+import { thunkUpdateTeam } from '../../redux/teams';
 import './UpdateTeam.css'; 
 
 

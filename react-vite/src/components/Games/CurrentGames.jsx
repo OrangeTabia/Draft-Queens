@@ -1,19 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react'; 
-import { Link } from 'react-router-dom'; 
+// import { Link } from 'react-router-dom'; 
 
 import { thunkLoadGames } from '../../redux/games'; 
 import { thunkLoadTeams } from '../../redux/teams'; 
-import OpenModalButton from '../OpenModalButton';
-import DeleteGame from './DeleteGame';
+// import OpenModalButton from '../OpenModalButton';
+// import DeleteGame from './DeleteGame';
 import './CurrentGames.css';
 
 
 function CurrentGames() {
     const dispatch = useDispatch(); 
-    const allGames = useSelector(state => state.games.games);
-    const allTeams = useSelector(state => state.teams.teams);
-    const currentUser = useSelector(state => state.session.user); 
+    // const allGames = useSelector(state => state.games.games);
+    // const allTeams = useSelector(state => state.teams.teams);
+    // const currentUser = useSelector(state => state.session.user); 
 
     // get games for TODAY only 
     // get games for TOMORROW only
