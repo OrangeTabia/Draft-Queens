@@ -81,14 +81,14 @@ function GamesList() {
                                         {isOwner ? 
                                             <tr>
                                                 <td style={{width:'34%', fontSize:'12px'}}>
-                                                    <div className='finished-games-edit-delete-btns'>
-                                                        <Link id='finished-games-edit-btn'to={`/games/${game.id}/update`}>
+                                                    <div className='games-edit-delete-btns'>
+                                                        <Link id='games-edit-btn'to={`/games/${game.id}/update`}>
                                                         {/* <BiSolidEdit fontSize='20px'/> */}
                                                         Edit Game
                                                         </Link>
                                                         <OpenModalButton to={`/games/${game.id}/delete`}
                                                         // buttonText={<BiSolidTrash fontSize='20px'/>}
-                                                        id='finished-games-delete-btn'
+                                                        id='games-delete-btn'
                                                         buttonText='Delete Game'
                                                         modalComponent={<DeleteGame gameId={game.id}/>}
                                                         />
