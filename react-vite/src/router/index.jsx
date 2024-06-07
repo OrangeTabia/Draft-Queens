@@ -6,7 +6,6 @@ import CreateTeam from '../components/Teams/CreateTeam';
 import UpdateTeam from '../components/Teams/UpdateTeam';
 import DeleteTeam from '../components/Teams/DeleteTeam'; 
 import GamesList from '../components/Games/GamesList';
-import CurrentGames from '../components/Games/CurrentGames';
 import CreateGame from '../components/Games/CreateGame'; 
 import UpdateGame from '../components/Games/UpdateGame';
 import Layout from './Layout';
@@ -17,7 +16,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <CurrentGames />,
+        element: <h1>Landing Page</h1>,
       },
       {
         path: '/teams/:teamId/delete',
