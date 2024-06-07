@@ -22,6 +22,24 @@ function Teams() {
         dispatch(thunkLoadTeams()); 
     }, [dispatch]);
 
+    const smallBasketball = <MdOutlineSportsBasketball className='icon' fontSize='20px'/>
+    const smallSoccer = <MdSportsSoccer className='icon' fontSize='20px'/>
+    const smallRugby = <MdSportsRugby className='icon' fontSize='20px'/>
+
+    function getSportsIcon(sportType) {
+        switch(sportType) {
+            case 'basketball':
+              return smallBasketball;
+            case 'soccer':
+              return smallSoccer
+            case 'rugby': 
+              return smallRugby
+            default:
+              return null;
+          }
+    }
+
+
     return (
         <div id='team-list-container'>
             <div id='sports-buttons'>
@@ -64,7 +82,7 @@ function Teams() {
                         <div id='team-card' key={team.id}>
                             <table style={{width:'100%'}}>
                                 <tr>
-                                    <td style={{width: '20%'}}>{team.sportType}</td>
+                                    <td style={{width: '20%'}}>{getSportsIcon(team.sportType)}</td>
                                     <td style={{width: '30%'}}><div className='team-and-logo'><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</div></td>
                                     <td style={{width: '25%'}}>{team.location}</td>
                                     {isOwner ? (

@@ -15,6 +15,7 @@ function AddTeam() {
     const [location, setLocation] = useState('');
     const [sport, setSport] = useState(''); 
     const [logo, setLogo] = useState(''); 
+    const [preview, setPreview] = useState()
     const [errors, setErrors] = useState({}); 
     const currentUser = useSelector(state => state.session.user); 
     const [hasSubmitted, setHasSubmitted] = useState(false); 
@@ -46,6 +47,20 @@ function AddTeam() {
         // if there are no errors, confirm that the team has been added 
         // navigate back to teams page or create a button on the form to navigate back to teams page
     }
+
+    // create a preview as a side effect, whenever selected file is changed
+    useEffect(() => {
+        if (!logo) {
+            setPreview(undefined)
+            return
+        }
+
+        const objectUrl = URL.createObjectURL(logo)
+        setPreview(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [logo])
 
     return (
         <div className='create-container'>
@@ -85,9 +100,9 @@ function AddTeam() {
                             <label value={sport}>Sport</label>
                             <select className='select' onChange={(e) => setSport(e.target.value)}>
                                 <option value={''} selected disabled>Select a sport</option>
-                                <option value='basketball'>basketball</option>
-                                <option value='soccer'>soccer</option>
-                                <option value='rugby'>rugby</option>
+                                <option value='basketball'>Basketball</option>
+                                <option value='soccer'>Soccer</option>
+                                <option value='rugby'>Rugby</option>
                             </select>
                         </div>
                         <div className='form-errors'>{hasSubmitted && errors.sport}</div>
@@ -96,10 +111,10 @@ function AddTeam() {
                             <input
                                 className='select'
                                 type='file'
-                                // accept='image/*'
                                 onChange={(e) => setLogo(e.target.files[0])}
-                            >
+                            >      
                             </input>
+                            <img src={preview} />  
                         </div>
                         <button className='form-button' type='submit'>Create Team</button>
                     </form>

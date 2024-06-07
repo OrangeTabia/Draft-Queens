@@ -16,7 +16,7 @@ class Result(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now())
 
-
+    # TODO: Add cascades for all of these 
     # one to many - user to game results
     user = db.relationship('User', back_populates='result')
     # one to one - one game to one game result

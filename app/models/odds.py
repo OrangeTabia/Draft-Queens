@@ -20,6 +20,7 @@ class Odd(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now())
 
 
+    # TODO: Add cascade relationships for ALL of these 
     # one to many - user to odds
     user = db.relationship('User', back_populates='odd')
     # one to many - game to odds
