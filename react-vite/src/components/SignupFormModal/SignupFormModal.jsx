@@ -29,7 +29,7 @@ function SignupFormModal() {
     if (password.length < 8) validations.password = 'Password must be at least 8 characters'; 
     if (confirmPassword.length < 8) validations.password = 'Password must be at least 8 characters';
     setValidations(validations); 
-  }, [email, username, password])
+  }, [email, username, password, confirmPassword])
 
   const handleSubmit = async (e) => {
     e.preventDefault();

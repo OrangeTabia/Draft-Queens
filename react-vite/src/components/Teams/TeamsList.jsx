@@ -37,8 +37,11 @@ function Teams() {
                     <p className='sport-name'>RUGBY</p>
                 </div>
             </div>
+            
             <div id='create-team-btn-container'>
+                {currentUser &&
                 <Link id='create-team-btn' to='/teams/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/> Create a Team</Link>
+                }
             </div>
             <div id='all-teams-container'>
     
@@ -59,7 +62,7 @@ function Teams() {
                             <table style={{width:'100%'}}>
                                 <tr>
                                     <td style={{width: '20%'}}>{team.sportType}</td>
-                                    <td style={{width: '30%'}}><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</td>
+                                    <td style={{width: '30%'}}><div className='team-and-logo'><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</div></td>
                                     <td style={{width: '25%'}}>{team.location}</td>
                                     {isOwner ? (
                                         <td style={{width: '10%'}}>

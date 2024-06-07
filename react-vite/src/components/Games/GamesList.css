@@ -1,18 +1,44 @@
-#finished-games-container {
+#games-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    /* border: 1px solid red; */
 }
 
-#finished-games {
-    width: 50%;
+#games-and-ad-container {
+    /* border: 1px solid green; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
+
+#create-game-btn-container {
+    /* border: 1px solid red; */
+    width: 63.5%;
     margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+#create-game-btn {
+    color: white;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+#create-game-btn:hover {
+    color: #ababab;
+}
+
+#games {
+    width: 50%;
     padding: 15px;
     display: flex;
     flex-direction: column;
     color: #ababab;
     background-color: #121212;
+    /* border: 1px solid blue; */
 }
 
 .finished-games-edit-delete-btns {
@@ -39,5 +65,12 @@
     background-color: none;
     color: #f76900;
     font-weight: bold;
+}
+
+.team-and-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
 }
 

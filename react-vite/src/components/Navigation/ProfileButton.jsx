@@ -60,8 +60,8 @@ function ProfileButton() {
             <div className="dropdown-items">
               <div className="dropdown-item">{user.username}</div>
               <div className="dropdown-item">{user.email}</div>
-              <Link to='/teams/new' className="dropdown-item">Create A New Team</Link>
-              <Link to='/games/new' className="dropdown-item">Add A New Game</Link>
+              <Link to='/teams/new' className="dropdown-item">Create a Team</Link>
+              <Link to='/games/new' className="dropdown-item">Create a Game</Link>
               <Link onClick={featureComingSoon} className="dropdown-item">Create Odds</Link>
               <Link onClick={featureComingSoon} className="dropdown-item">Add Game Results</Link>
               <div className="dropdown-item" id="logout-button"onClick={logout}>Log Out</div>

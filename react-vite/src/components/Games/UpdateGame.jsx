@@ -63,54 +63,57 @@ function UpdateGame() {
 
     if (teamList) {
         return (
-            <>
-                <h1>Edit A Game Form</h1>
-                <form
-                    onSubmit={handleSubmit}
-                    >
-                    <div>
-                        <label>Team 1:</label>
-                        <select
-                            id='home-team'
-                            value={homeTeam}
-                            onChange={(e) => setHomeTeam(e.target.value)}
+            <div className='create-container'>
+                <h1>Edit Game Details</h1>
+                <div className='update-form-container'>
+                    <form
+                        onSubmit={handleSubmit}
+                        className='create-form'
                         >
-                            <option value={''} selected disabled>Select a team</option>
-                            {teamList.map((team) => (
-                                <option key={team.id} value={team.id}>{team.name}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.homeTeam}</div>
-                    <div>
-                        <label>Team 2:</label>
-                        <select
-                            id='away-team'
-                            value={awayTeam}
-                            onChange={(e) => setAwayTeam(e.target.value)}
-                        >
-                            <option value={''} selected disabled>Select a team</option>
-                            {teamList.map((team) => (
-                                <option key={team.id} value={team.id}>{team.name}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.awayTeam}</div>
-                    <div>
-                        <label>Game Start Time:</label>
-                        <input
-                            id='game-start'
-                            type='datetime-local'
-                            value={startTime} 
-                            min={formattedDate}
-                            onChange={(e) => setStartTime(e.target.value)}
-                        >
-                        </input>
-                    </div>
-                    <div className='form-errors'>{hasSubmitted && errors.startTime}</div>
-                    <button type='submit'>Update Game</button>
-                </form>
-            </>
+                        <div className='form-input'>
+                            <label>Home Team</label>
+                            <select
+                                className='select'
+                                value={homeTeam}
+                                onChange={(e) => setHomeTeam(e.target.value)}
+                            >
+                                <option value={''} selected disabled>Select a team</option>
+                                {teamList.map((team) => (
+                                    <option key={team.id} value={team.id}>{team.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.homeTeam}</div>
+                        <div className='form-input'>
+                            <label>Away Team</label>
+                            <select
+                                className='select'
+                                value={awayTeam}
+                                onChange={(e) => setAwayTeam(e.target.value)}
+                            >
+                                <option value={''} selected disabled>Select a team</option>
+                                {teamList.map((team) => (
+                                    <option key={team.id} value={team.id}>{team.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.awayTeam}</div>
+                        <div className='form-input'>
+                            <label>Game Date and Time</label>
+                            <input
+                                className='select'
+                                type='datetime-local'
+                                value={startTime} 
+                                min={formattedDate}
+                                onChange={(e) => setStartTime(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                        <div className='form-errors'>{hasSubmitted && errors.startTime}</div>
+                        <button className='form-button' type='submit'>Update Game</button>
+                    </form>
+                </div>
+            </div>
         )
     }
 }
