@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react'; 
 import { useNavigate, Link} from 'react-router-dom';
 import { thunkAddTeam } from '../../redux/teams';
+import { MdOutlineFileUpload } from "react-icons/md";
 import fanswapAd from '../../../images/fanswap-longer.png';
 import draftQueensAd from '../../../images/draftqueens-longer.png'; 
 import './CreateTeam.css'; 
@@ -108,15 +109,16 @@ function AddTeam() {
                             </select>
                         </div>
                         <div className='form-errors'>{hasSubmitted && errors.sport}</div>
-                        <div className='form-input'>
-                            <label>Select Team Image or Logo</label>
+                        <div className='form-input' id='image-upload'>
+                            <label htmlFor='post-image-input'>Select Team Image or Logo</label>
+                            <img id='image-preview'src={preview} /> 
                             <input
                                 className='select'
+                                id='post-image-input'
                                 type='file'
                                 onChange={(e) => setLogo(e.target.files[0])}
                             >      
-                            </input>
-                            <img id='image-preview'src={preview} />  
+                            </input> 
                         </div>
                         <button className='form-button' type='submit'>Create Team</button>
                     </form>
