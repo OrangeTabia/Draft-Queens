@@ -28,7 +28,9 @@ function UpdateTeam() {
     useEffect(() => {
         const errors = {}; 
         if (!name) errors.name = 'Name is required';
+        if (name.length > 100) errors.name = 'Name must be less than 100 characters'; 
         if (!location) errors.location = 'Location is required';
+        if (location.length > 100) errors.location = 'Location must be less than 100 characters'; 
         if (!sport) errors.sport = 'Type of sport is required'; 
         setErrors(errors); 
     }, [name, location, sport]); 

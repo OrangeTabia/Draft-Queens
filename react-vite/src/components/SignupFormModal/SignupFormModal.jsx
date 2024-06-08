@@ -38,19 +38,21 @@ function SignupFormModal() {
 
     if (!username) {
       newValidations.username = "Username is required";
-    } else if (username.length < 3) {
-      newValidations.username = "Username must be more than 3 characters"
+    } else if (username.length < 3 || username.length > 50) {
+      newValidations.username = "Username must be more than 3 characters and less than 50 characters";
     }
     if (!email) {
       newValidations.email = "Email is required";
     } else if (!validateEmail(email)) {
       newValidations.email = "Invalid Email Format";
+    } else if (email.length > 100) {
+      newValidations.email = "Email must be less than 100 characters"; 
     }
-    if (password.length < 8) {
-      newValidations.password = "Password must be at least 8 characters"
+    if (password.length < 8 || password.length > 255) {
+      newValidations.password = "Password must be at least 8 characters and less than 255 characters";
     }
     if (password !== confirmPassword) {
-      newValidations.confirmPassword = "Confirm password must match password"
+      newValidations.confirmPassword = "Confirm password must match password";
     }
 
     return newValidations;
