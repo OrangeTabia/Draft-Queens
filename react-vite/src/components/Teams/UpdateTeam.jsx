@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react'; 
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { thunkUpdateTeam } from '../../redux/teams';
 import './UpdateTeam.css'; 
@@ -13,13 +13,16 @@ function UpdateTeam() {
     const teams = useSelector(state => state.teams.teams); 
     const selectedTeam = teams?.find((team) => team.id == teamId);
 
+    console.log("SELECTED TEAM", selectedTeam); 
+
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [name, setName] = useState(selectedTeam?.name);
     const [location, setLocation] = useState(selectedTeam?.location);
     const [sport, setSport] = useState(selectedTeam?.sportType); 
-    const [logo, setLogo] = useState(selectedTeam?.logo); 
+    const [logo, setLogo] = useState(); 
+    const [preview, setPreview] = useState();
     const [errors, setErrors] = useState({}); 
     const [hasSubmitted, setHasSubmitted] = useState(false); 
     const currentUser = useSelector(state => state.session.user); 
@@ -36,12 +39,29 @@ function UpdateTeam() {
     }, [name, location, sport]); 
 
 
+    // create a preview as a side effect, whenever selected file is changed
+    useEffect(() => {
+        // If we have a logo on the object and not a new one, use the S3 Link
+        let objectUrl;
+        if (selectedTeam?.logo && !logo) { 
+            objectUrl = selectedTeam.logo
+        // Otherwise, create a new object URL
+        } else {
+            objectUrl = URL.createObjectURL(logo)
+           
+        }      
+        setPreview(objectUrl)
+        // free memory whenever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)  
+    }, [logo, selectedTeam?.logo])
+
+
     const handleSubmit = async (e) => {
         e.preventDefault(); 
 
         setHasSubmitted(true);
 
-        if (Object.values(errors).length > 0) {
+        if (Object.values(errors)?.length > 0) {
             return;
         } else {
             const updatedFormData = new FormData(); 
@@ -93,40 +113,31 @@ function UpdateTeam() {
                         <div className='form-errors'>{hasSubmitted && errors.location}</div>
                         <div className='form-input'>
                             <label value={sport}>Sport</label>
-                            <select className='select' onChange={(e) => setSport(e.target.value)}>
+                            {/* If there's no value set, we'll use the existing selection. Otherwise, use the current state */}
+                            <select 
+                                className='select' 
+                                value={sport || selectedTeam?.sportType} 
+                                onChange={(e) => setSport(e.target.value)}
+                            >
                                 <option value={''} disabled>Select a sport</option>
-                                <option value='basketball'>basketball</option>
-                                <option value='soccer'>soccer</option>
-                                <option value='rugby'>rugby</option>
+                                <option value='basketball'>Basketball</option>
+                                <option value='soccer'>Soccer</option>
+                                <option value='rugby'>Rugby</option>
                             </select>
                         </div>
                         <div className='form-errors'>{hasSubmitted && errors.sport}</div>
                         <div className='form-input'>{
-                                selectedTeam?.logo ? (
-                                <>
-                                    <label>Current Image:</label>
-                                    <img id='edit-image-populate' src={selectedTeam.logo}/>
-                                    <input
-                                        className='select'
-                                        type='file'
-                                        // accept='image/*'
-                                        onChange={(e) => setLogo(e.target.files[0])}
-                                    >
-                                    </input>
-                                </>
-                            ) :
-                                (
-                                <>
-                                    <label>Select Image:</label>
-                                    <input
-                                        className='select'
-                                        type='file'
-                                        // accept='image/*'
-                                        onChange={(e) => setLogo(e.target.files[0])}
-                                    >
-                                    </input>
-                                </>
-                            )
+                            <>
+                                <label>Current Image:</label>
+                                <img id='edit-image-populate' src={preview}/>
+                                <input
+                                    className='select'
+                                    type='file'
+                                    // accept='image/*'
+                                    onChange={(e) => setLogo(e.target.files[0])}
+                                >
+                                </input>
+                            </>
                             }
                         </div>
                         <button className='form-button' type='submit'>Update Team</button>

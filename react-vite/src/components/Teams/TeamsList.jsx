@@ -11,6 +11,8 @@ import { MdSportsRugby } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
 import { BiSolidTrash } from "react-icons/bi";
 import { FiPlus } from "react-icons/fi";
+import { PiBasketballLight } from "react-icons/pi";
+import { PiSoccerBallFill } from "react-icons/pi";
 import './Teams.css';
 
 function Teams() {
@@ -22,9 +24,9 @@ function Teams() {
         dispatch(thunkLoadTeams()); 
     }, [dispatch]);
 
-    const smallBasketball = <MdOutlineSportsBasketball className='icon' fontSize='20px'/>
-    const smallSoccer = <MdSportsSoccer className='icon' fontSize='20px'/>
-    const smallRugby = <MdSportsRugby className='icon' fontSize='20px'/>
+    const smallBasketball = <PiBasketballLight className='icon' fontSize='25px'/>
+    const smallSoccer = <PiSoccerBallFill className='icon' fontSize='25px'/>
+    const smallRugby = <MdSportsRugby className='icon' fontSize='25px'/>
 
     function getSportsIcon(sportType) {
         switch(sportType) {
