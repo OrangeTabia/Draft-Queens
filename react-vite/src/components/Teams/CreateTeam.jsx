@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react'; 
 import { useNavigate, Link} from 'react-router-dom';
 import { thunkAddTeam } from '../../redux/teams';
-import { MdOutlineFileUpload } from "react-icons/md";
 import fanswapAd from '../../../images/fanswap-longer.png';
 import draftQueensAd from '../../../images/draftqueens-longer.png'; 
 import './CreateTeam.css'; 

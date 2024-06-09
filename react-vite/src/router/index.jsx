@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
-import LoginFormPage from '../components/LoginFormPage';
-import SignupFormPage from '../components/SignupFormPage';
+// import LoginFormPage from '../components/LoginFormPage';
+// import SignupFormPage from '../components/SignupFormPage';
 import Teams from '../components/Teams/TeamsList'; 
 import CreateTeam from '../components/Teams/CreateTeam'; 
 import UpdateTeam from '../components/Teams/UpdateTeam';
@@ -8,6 +8,7 @@ import DeleteTeam from '../components/Teams/DeleteTeam';
 import GamesList from '../components/Games/GamesList';
 import CreateGame from '../components/Games/CreateGame'; 
 import UpdateGame from '../components/Games/UpdateGame';
+import LandingPage from '../components/LandingPage/LandingPage'; 
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -16,7 +17,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1>Landing Page</h1>,
+        element: <LandingPage/>,
       },
       {
         path: '/teams/:teamId/delete',
@@ -49,15 +50,15 @@ export const router = createBrowserRouter([
       {
         path: '/results',
         element: <h1>Results Feature Coming Soon!</h1>
-      }
-      // {
-      //   path: "login",
-      //   element: <LoginFormPage />,
-      // },
-      // {
-      //   path: "signup",
-      //   element: <SignupFormPage />,
-      // },
+      },
+      {
+        path: '/signup',
+        element: <h1>Sign Up Page Coming Soon!</h1>
+      },
+      {
+        path: '/login',
+        element: <h1>Log In Page Coming Soon!</h1>,
+      },
     ],
   },
 ]);

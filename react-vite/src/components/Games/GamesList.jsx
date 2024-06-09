@@ -102,7 +102,7 @@ function GamesList() {
                             })}
                         </div>
                     </div>
-                    <div id='fanswap-ad'><a href='https://fanswap.onrender.com/' target='_blank' rel='noreferrer'><img src={fanswapAd} alt='fanswap-ad' /></a></div>
+                    <div id='landing-fanswap-ad'><a href='https://fanswap.onrender.com/' target='_blank' rel='noreferrer'><img src={fanswapAd} alt='fanswap-ad' /></a></div>
                 </div>
             </div>
         )

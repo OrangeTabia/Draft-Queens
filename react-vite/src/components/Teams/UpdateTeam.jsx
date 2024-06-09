@@ -13,8 +13,6 @@ function UpdateTeam() {
     const teams = useSelector(state => state.teams.teams); 
     const selectedTeam = teams?.find((team) => team.id == teamId);
 
-    console.log("SELECTED TEAM", selectedTeam); 
-
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -61,7 +59,7 @@ function UpdateTeam() {
 
         setHasSubmitted(true);
 
-        if (Object.values(errors)?.length > 0) {
+        if (Object.values(errors).length > 0) {
             return;
         } else {
             const updatedFormData = new FormData(); 

@@ -4,18 +4,15 @@
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
-    /* border: 1px solid red; */
 }
 
 .create-form-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* border: 1px solid blue; */
 }
 
 .form-and-back-btn {
-    /* border: 1px solid red; */
     width: 50%;
 }
 
@@ -32,7 +29,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    /* border: 1px solid red; */
 }
 
 .create-form {
@@ -71,7 +67,6 @@
 }
 
 #edit-team-img-upload {
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     

@@ -1,0 +1,80 @@
+#landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../../../images/textured-background.png');;
+}
+
+#landing1-container {
+    width: 100%;
+    background-image: url('../../../images/draftqueens-landing1.png');
+    height: 740px;
+    width: 1400px;
+}
+
+#bet-button {
+    position: absolute;
+    margin-top: 652px;
+    margin-left: 160px;
+    height: 50px;
+    width: 200px;
+    border: none;
+    background-color: #f76900;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#bet-button:hover {
+    cursor: pointer;
+    background-color: #f9852c;
+}
+
+#landing2-container {
+    width: 100%;
+    height: 100px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000E54;
+}
+
+#landing2-sport-leagues {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.landing-icon-sport {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-icon-sport:hover {
+    cursor: pointer;
+    color: orange;
+}
+
+.landing-icon-sport > p {
+    margin: 0px;
+    color: black;
+    text-align: center;
+}
+
+.landing-icon-sport > p:hover {
+    color: #f76900;
+}
+
+#landing3-container {
+    width: 100%;
+    background-image: url('../../../images/draftqueens-landing3.png');
+    height: 500px;
+    width: 1360px;
+}
