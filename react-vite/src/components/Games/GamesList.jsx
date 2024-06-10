@@ -56,7 +56,9 @@ function GamesList() {
                             {allGames.map((game) => {
                                 let homeTeam = allTeams.find((team) => team.id == game.homeTeamId);
                                 let awayTeam = allTeams.find((team) => team.id == game.awayTeamId);
-                                let isOwner = allTeams.find((team) => team.userId == currentUser?.id);
+
+                                // See if one is the owner of this specific game
+                                let isOwner = game.userId == currentUser?.id;
 
                                 {if (homeTeam && awayTeam) {
                                     return (
