@@ -92,7 +92,7 @@ const handleDemoUser = () => {
         </div>
       </form>
       <div id='signup-link-container'>
-        <span>Don't have an account?</span>
+        <span>Don&apos;t have an account?</span>
         <span><Link to='/signup' id='signup-link' onClick={closeModal}> Sign Up</Link></span>
       </div>
     </div>
