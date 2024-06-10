@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
@@ -90,6 +91,10 @@ const handleDemoUser = () => {
             </button>
         </div>
       </form>
+      <div id='signup-link-container'>
+        <span>Don't have an account?</span>
+        <span><Link to='/signup' id='signup-link' onClick={closeModal}> Sign Up</Link></span>
+      </div>
     </div>
   );
 }

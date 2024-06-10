@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import "./SignupForm.css";
 
@@ -182,6 +182,10 @@ function SignupFormModal() {
           Sign Up
         </button>
       </form>
+      <div id='login-link-container'>
+        <span>Already have an account?</span>
+        <span><Link to='/login' id='login-link' onClick={closeModal}> Log In</Link></span>
+      </div>
     </div>
   );
 }

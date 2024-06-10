@@ -39,3 +39,21 @@
     cursor: pointer;
     background-color: #f9852c;
 } 
+
+#login-link-container {
+    border-top: 1px solid #ababab;
+    padding-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+#login-link {
+    color: #f76900;
+    text-decoration: none;
+}
+
+#login-link:hover {
+    text-decoration: underline;
+}
