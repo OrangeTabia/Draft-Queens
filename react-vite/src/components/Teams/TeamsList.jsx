@@ -71,9 +71,7 @@ function Teams() {
                         <th style={{width: '20%'}}>Sport</th>
                         <th style={{width: '30%'}}>Team</th>
                         <th style={{width: '25%'}}>Location</th>
-                        {currentUser && 
                         <th style={{width: '10%'}}></th>
-                        }
                     </tr>
                 </table>
                 <div id='team-table'>
@@ -98,7 +96,7 @@ function Teams() {
                                                 />
                                             </div>
                                         </td>
-                                    ) : '' }
+                                    ) : <td style={{width: '10%'}}></td> }
                                 </tr>
                             </table>
                         </div>
