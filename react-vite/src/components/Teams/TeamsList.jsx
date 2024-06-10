@@ -68,9 +68,9 @@ function Teams() {
     
                 <table style={{width:'100%', textAlign:'left', backgroundColor: '#f76900'}}>
                     <tr>
-                        <th style={{width: '20%'}}>Sport</th>
-                        <th style={{width: '30%'}}>Team</th>
-                        <th style={{width: '25%'}}>Location</th>
+                        <th style={{width: '25%'}}>Sport</th>
+                        <th style={{width: '35%'}}>Team</th>
+                        <th style={{width: '30%'}}>Location</th>
                         <th style={{width: '10%'}}></th>
                     </tr>
                 </table>
@@ -82,9 +82,9 @@ function Teams() {
                         <div id='team-card' key={team.id}>
                             <table style={{width:'100%'}}>
                                 <tr>
-                                    <td style={{width: '20%'}}>{getSportsIcon(team.sportType)}</td>
-                                    <td style={{width: '30%'}}><div className='team-and-logo'><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</div></td>
-                                    <td style={{width: '25%'}}>{team.location}</td>
+                                    <td style={{width: '25%'}}>{getSportsIcon(team.sportType)}</td>
+                                    <td style={{width: '35%'}}><div className='team-and-logo'><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</div></td>
+                                    <td style={{width: '30%'}}>{team.location}</td>
                                     {isOwner ? (
                                         <td style={{width: '10%'}}>
                                             <div id='teams-edit-delete-btns'>
