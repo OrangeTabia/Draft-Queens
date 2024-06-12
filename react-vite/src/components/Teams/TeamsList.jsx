@@ -48,14 +48,17 @@ function Teams() {
                 <div className='sport-type'>
                     <MdOutlineSportsBasketball className='icon' fontSize='40px'/>
                     <p className='sport-name'>BASKETBALL</p>
+                    <p className='sport-league'>WNBA</p>
                 </div>
                 <div className='sport-type'>
                     <MdSportsSoccer className='icon' fontSize='40px'/>
                     <p className='sport-name'>SOCCER</p>
+                    <p className='sport-league'>NWSL</p>
                 </div>
                 <div className='sport-type'>
                     <MdSportsRugby className='icon' fontSize='40px'/>
                     <p className='sport-name'>RUGBY</p>
+                    <p className='sport-league'>WPL</p>
                 </div>
             </div>
             
