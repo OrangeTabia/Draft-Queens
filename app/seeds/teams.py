@@ -114,7 +114,7 @@ def seed_teams():
         name='Bay FC',
         sport_type='soccer',
         location='San Francisco',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/bay-fc.svg'
     )
 
     team15 = Team(
@@ -122,7 +122,7 @@ def seed_teams():
         name='Chicago Red Stars',
         sport_type='soccer',
         location='Chicago',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/chicago-red-stars.svg'
     )
 
     team16 = Team(
@@ -130,7 +130,7 @@ def seed_teams():
         name='Houston Dash',
         sport_type='soccer',
         location='Houston',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/houston-dash.svg'
     )
 
     team17 = Team(
@@ -138,7 +138,7 @@ def seed_teams():
         name='Kansas City Current',
         sport_type='soccer',
         location='Kansas City',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/kansas-city-current.svg'
     )
 
     team18 = Team(
@@ -146,7 +146,7 @@ def seed_teams():
         name='Gotham FC',
         sport_type='soccer',
         location='New York',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/nj-ny-gotham-fc.svg'
     )
 
     team19 = Team(
@@ -154,7 +154,7 @@ def seed_teams():
         name='North Carolina Courage',
         sport_type='soccer',
         location='North Carolina',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/north-carolina-courage.svg'
     )
 
     team20 = Team(
@@ -162,7 +162,7 @@ def seed_teams():
         name='Orlando Pride',
         sport_type='soccer',
         location='Orlando',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/orlando-pride.svg'
     )
 
     team21 = Team(
@@ -170,7 +170,7 @@ def seed_teams():
         name='Portland Thorns FC',
         sport_type='soccer',
         location='Portland',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/portland-thorns-fc.svg'
     )
 
     team22 = Team(
@@ -178,7 +178,7 @@ def seed_teams():
         name='Racing Louisville FC',
         sport_type='soccer',
         location='Louisville',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/racing-louisville-fc.svg'
     )
 
     team23 = Team(
@@ -186,7 +186,7 @@ def seed_teams():
         name='San Diego Wave FC',
         sport_type='soccer',
         location='San Diego',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/san-diego-wave-fc.svg'
     )
 
     team24 = Team(
@@ -194,7 +194,7 @@ def seed_teams():
         name='Seattle Reign',
         sport_type='soccer',
         location='Seattle',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/seattle-reign.svg'
     )
 
     team25 = Team(
@@ -202,7 +202,7 @@ def seed_teams():
         name='Utah Royals RC',
         sport_type='soccer',
         location='Utah',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/utah-royals-fc.svg'
     )
 
     team26 = Team(
@@ -210,7 +210,7 @@ def seed_teams():
         name='Washington Spirit',
         sport_type='soccer',
         location='Washington D.C.',
-        logo=''
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/washington-spirit.svg'
     )
 
     db.session.add(team1)
