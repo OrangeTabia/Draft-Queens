@@ -77,71 +77,71 @@ def seed_games():
 
     game11 = Game(
         user_id=2,
-        home_team_id=1,
-        away_team_id=14,
+        home_team_id=13,
+        away_team_id=26,
         start_time=datetime(2024, 7, 2, 11, 0)
     )
 
     game12 = Game(
         user_id=2,
-        home_team_id=2,
-        away_team_id=13,
+        home_team_id=14,
+        away_team_id=25,
         start_time=datetime(2024, 7, 3, 12, 0)
     )
 
     game13 = Game(
         user_id=2,
-        home_team_id=3,
-        away_team_id=12,
+        home_team_id=15,
+        away_team_id=24,
         start_time=datetime(2024, 7, 5, 13, 0)
     )
 
     game14 = Game(
         user_id=2,
-        home_team_id=4,
-        away_team_id=11,
+        home_team_id=16,
+        away_team_id=23,
         start_time=datetime(2024, 7, 6, 14, 0)
     )
 
     game15 = Game(
         user_id=2,
-        home_team_id=5,
-        away_team_id=10,
+        home_team_id=17,
+        away_team_id=22,
         start_time=datetime(2024, 7, 7, 15, 0)
     )
 
     game16 = Game(
         user_id=2,
-        home_team_id=6,
-        away_team_id=9,
+        home_team_id=18,
+        away_team_id=21,
         start_time=datetime(2024, 7, 8, 16, 0)
     )
 
     game17 = Game(
         user_id=2,
-        home_team_id=7,
-        away_team_id=8,
+        home_team_id=19,
+        away_team_id=20,
         start_time=datetime(2024, 7, 9, 17, 0)
     )
 
     game18 = Game(
         user_id=2,
-        home_team_id=2,
-        away_team_id=14,
+        home_team_id=14,
+        away_team_id=26,
         start_time=datetime(2024, 7, 10, 18, 0)
     )
 
     game19 = Game(
         user_id=2,
-        home_team_id=3,
-        away_team_id=13,
+        home_team_id=15,
+        away_team_id=25,
         start_time=datetime(2024, 7, 11, 19, 0)
     )
 
     game20 = Game(
         user_id=2,
-        home_team_id=4,
-        away_team_id=12,
+        home_team_id=16,
+        away_team_id=24,
         start_time=datetime(2024, 7, 5, 20, 0)
     )
 
