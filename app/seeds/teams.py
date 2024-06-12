@@ -52,12 +52,193 @@ def seed_teams():
         logo='https://draft-queens-logo-images.s3.amazonaws.com/washington-mystics.png'
     )
 
+    team7 = Team(
+        user_id=1,
+        name='Dallas Wings',
+        sport_type='basketball',
+        location='Dallas',
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/dallas-wings.png'
+    )
+
+    team8 = Team(
+        user_id=1,
+        name='Las Vegas Aces',
+        sport_type='basketball',
+        location='Las Vegas',
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/vegas-aces.png'
+    )
+
+    team9 = Team(
+        user_id=1,
+        name='Los Angeles Sparks',
+        sport_type='basketball',
+        location='Los Angeles',
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/la-sparks.png'
+    )
+
+    team10 = Team(
+        user_id=1,
+        name='Minnesota Lynx',
+        sport_type='basketball',
+        location='Minnesota',
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/minnesota-lynx.png'
+    )
+
+    team11 = Team(
+        user_id=1,
+        name='Phoenix Mercury',
+        sport_type='basketball',
+        location='Phoenix',
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/phoenix-mercury.png'
+    )
+
+    team12 = Team(
+        user_id=1,
+        name='Seattle Storm',
+        sport_type='basketball',
+        location='Seattle',
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/seattle-storm.png'
+    )
+
+
+    team13 = Team(
+        user_id=2,
+        name='Angel City FC',
+        sport_type='soccer',
+        location='Los Angeles',
+        logo='https://draft-queens-logo-images.s3.amazonaws.com/angel-city-fc.svg'
+    )
+
+    team14 = Team(
+        user_id=2,
+        name='Bay FC',
+        sport_type='soccer',
+        location='San Francisco',
+        logo=''
+    )
+
+    team15 = Team(
+        user_id=2,
+        name='Chicago Red Stars',
+        sport_type='soccer',
+        location='Chicago',
+        logo=''
+    )
+
+    team16 = Team(
+        user_id=2,
+        name='Houston Dash',
+        sport_type='soccer',
+        location='Houston',
+        logo=''
+    )
+
+    team17 = Team(
+        user_id=2,
+        name='Kansas City Current',
+        sport_type='soccer',
+        location='Kansas City',
+        logo=''
+    )
+
+    team18 = Team(
+        user_id=2,
+        name='Gotham FC',
+        sport_type='soccer',
+        location='New York',
+        logo=''
+    )
+
+    team19 = Team(
+        user_id=2,
+        name='North Carolina Courage',
+        sport_type='soccer',
+        location='North Carolina',
+        logo=''
+    )
+
+    team20 = Team(
+        user_id=2,
+        name='Orlando Pride',
+        sport_type='soccer',
+        location='Orlando',
+        logo=''
+    )
+
+    team21 = Team(
+        user_id=2,
+        name='Portland Thorns FC',
+        sport_type='soccer',
+        location='Portland',
+        logo=''
+    )
+
+    team22 = Team(
+        user_id=2,
+        name='Racing Louisville FC',
+        sport_type='soccer',
+        location='Louisville',
+        logo=''
+    )
+
+    team23 = Team(
+        user_id=2,
+        name='San Diego Wave FC',
+        sport_type='soccer',
+        location='San Diego',
+        logo=''
+    )
+
+    team24 = Team(
+        user_id=2,
+        name='Seattle Reign',
+        sport_type='soccer',
+        location='Seattle',
+        logo=''
+    )
+
+    team25 = Team(
+        user_id=2,
+        name='Utah Royals RC',
+        sport_type='soccer',
+        location='Utah',
+        logo=''
+    )
+
+    team26 = Team(
+        user_id=2,
+        name='Washington Spirit',
+        sport_type='soccer',
+        location='Washington D.C.',
+        logo=''
+    )
+
     db.session.add(team1)
     db.session.add(team2)
     db.session.add(team3)
     db.session.add(team4)
     db.session.add(team5)
     db.session.add(team6)
+    db.session.add(team7)
+    db.session.add(team8)
+    db.session.add(team9)
+    db.session.add(team10)
+    db.session.add(team11)
+    db.session.add(team12)
+    db.session.add(team13)
+    db.session.add(team14)
+    db.session.add(team15)
+    db.session.add(team16)
+    db.session.add(team17)
+    db.session.add(team18)
+    db.session.add(team19)
+    db.session.add(team20)
+    db.session.add(team21)
+    db.session.add(team22)
+    db.session.add(team23)
+    db.session.add(team24)
+    db.session.add(team25)
+    db.session.add(team26)
     db.session.commit()
 
 
