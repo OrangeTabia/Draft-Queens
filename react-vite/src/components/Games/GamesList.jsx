@@ -56,6 +56,8 @@ function GamesList() {
                             {allGames.map((game) => {
                                 let homeTeam = allTeams.find((team) => team.id == game.homeTeamId);
                                 let awayTeam = allTeams.find((team) => team.id == game.awayTeamId);
+                                let formattedDate = game.startTime.split(' ').slice(0, -2).join(' ');
+                                let formattedTime = new Date(game.startTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}); // 3:07 PM
 
                                 // See if one is the owner of this specific game
                                 let isOwner = game.userId == currentUser?.id;
@@ -64,7 +66,7 @@ function GamesList() {
                                     return (
                                     <table className='game-table-body'>
                                         <tr>
-                                            <td style={{width:'34%', fontSize:'12px'}}>{game.startTime}</td>
+                                            <td style={{width:'34%', fontSize:'12px'}}>{formattedDate}&nbsp;&nbsp;&mdash;&nbsp;&nbsp;{formattedTime}</td>
                                         </tr>
                                         <tr>
                                             <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam.logo}/>{homeTeam.name}</div></td>
