@@ -142,7 +142,7 @@ def seed_games():
         user_id=2,
         home_team_id=16,
         away_team_id=24,
-        start_time=datetime(2024, 7, 5, 20, 0)
+        start_time=datetime(2024, 7, 12, 20, 0)
     )
 
     db.session.add(game1)
