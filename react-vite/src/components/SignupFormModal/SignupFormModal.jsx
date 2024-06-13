@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./SignupForm.css";
 

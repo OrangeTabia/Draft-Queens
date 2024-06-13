@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import OpenModalButton from '../OpenModalButton';
 import SignupFormModal from '../SignupFormModal';
 import { useModal } from "../../context/Modal"; 
@@ -9,13 +9,9 @@ import FanSwapAd from '../../../images/fanswap-skinny.png';
 import './LandingPage.css'; 
 
 function LandingPage() {
-    const navigate = useNavigate(); 
     const { closeModal } = useModal();
 
-    const handleSubmit = async(e) => {
-        e.preventDefault(); 
-        navigate('/signup'); 
-    }
+
     return (
         <div id='landing-container'>
             <div id='landing1-container'>
