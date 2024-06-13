@@ -26,11 +26,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
 }
 
-#dev-links > a > img {
-    max-width: 25px;
+#dev-links > a {
+    font-size: 25px;
+    color: white;
+}
+
+#dev-links > a:hover {
+    color: #f76900;
 }
 
 #bottom-footer {

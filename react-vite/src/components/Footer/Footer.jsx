@@ -1,6 +1,6 @@
 import './Footer.css'; 
-import GitHubLogo from '../../../images/github-logo.png';
-import LinkedInLogo from '../../../images/linkedin-logo.png'; 
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 function Footer() {
     return (
@@ -9,8 +9,8 @@ function Footer() {
                 <p id='developed-by'>Developed By</p>
                 <p id='developer'>Tabia Ye</p>
                 <div id='dev-links'>
-                    <a href='https://www.linkedin.com/in/tabiaye/' target='_blank' rel='noreferrer'><img className='devlink-logo' src={LinkedInLogo} alt='linkedin-logo' /></a>
-                    <a href='https://github.com/OrangeTabia' target='_blank' rel='noreferrer'><img className='devlink-logo' src={GitHubLogo} alt='github-logo' /></a>
+                    <a href='https://www.linkedin.com/in/tabiaye/' target='_blank' rel='noreferrer'><FaLinkedin /></a>
+                    <a href='https://github.com/OrangeTabia' target='_blank' rel='noreferrer'><FaGithub /></a>
                 </div>
             </div>
 
