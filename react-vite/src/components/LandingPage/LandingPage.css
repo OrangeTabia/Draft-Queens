@@ -77,5 +77,9 @@
     background-image: url('../../../images/draftqueens-landing3.png');
     height: 500px;
     width: 1360px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
+}
+
+#fanswap-ad {
+    padding-bottom: 50px;
 }
