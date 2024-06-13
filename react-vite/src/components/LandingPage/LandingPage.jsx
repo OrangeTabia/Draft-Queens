@@ -1,4 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import SignupFormModal from '../SignupFormModal';
+import { useModal } from "../../context/Modal"; 
 import { PiBasketballLight } from "react-icons/pi";
 import { PiSoccerBallFill } from "react-icons/pi";
 import { MdSportsRugby } from "react-icons/md";
@@ -7,6 +10,7 @@ import './LandingPage.css';
 
 function LandingPage() {
     const navigate = useNavigate(); 
+    const { closeModal } = useModal();
 
     const handleSubmit = async(e) => {
         e.preventDefault(); 
@@ -16,6 +20,12 @@ function LandingPage() {
         <div id='landing-container'>
             <div id='landing1-container'>
                 <div id='landing-card1'>
+                    {/* <OpenModalMenuItem
+                    id="signup-button"
+                    itemText="Sign Up"
+                    onItemClick={closeModal}
+                    modalComponent={<SignupFormModal />}
+                    /> */}
                     <button id='bet-button' onClick={handleSubmit}>BET NOW!</button>
                 </div>
             </div>
