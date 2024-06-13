@@ -12,7 +12,10 @@
     width: 1400px;
 }
 
-#bet-button {
+#big-signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     margin-top: 507px;
     margin-left: 160px;
@@ -21,11 +24,12 @@
     border: none;
     background-color: #f76900;
     color: white;
+    text-decoration: none;
     font-size: 20px;
     font-weight: bold;
 }
 
-#bet-button:hover {
+#big-signup:hover {
     cursor: pointer;
     background-color: #f9852c;
 }

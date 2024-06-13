@@ -57,11 +57,15 @@
     text-align: center;
 }
 
-#signup-link {
+#signup-link-container button {
+    border: none;
+    background-color: transparent;
     color: #f76900;
-    text-decoration: none;
+    font-size: 13px;
+    text-align: center;
 }
 
-#signup-link:hover {
+#signup-link-container button:hover {
     text-decoration: underline;
+    cursor: pointer;
 }

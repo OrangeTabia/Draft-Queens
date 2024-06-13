@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import SignupFormModal from "../SignupFormModal/SignupFormModal";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ function LoginFormModal() {
   const [validations, setValidations] = useState({}); 
   const [hasSubmitted, setHasSubmitted] = useState(false); 
   const { closeModal } = useModal();
+  const { setModalContent } = useModal(); 
 
   const validateEmail = (email) => {
     return /^\S+@\S+\.\S+$/.test(email);
@@ -48,6 +49,11 @@ function LoginFormModal() {
 const handleDemoUser = () => {
   setEmail('demo1@gmail.com')
   setPassword('password')
+}
+
+const handleModalSwap = () => {
+  const modalComponent = <SignupFormModal />
+  setModalContent(modalComponent); 
 }
 
   return (
@@ -93,7 +99,7 @@ const handleDemoUser = () => {
       </form>
       <div id='signup-link-container'>
         <span>Don&apos;t have an account?</span>
-        <span><Link to='/signup' id='signup-link' onClick={closeModal}> Sign Up</Link></span>
+        <button onClick={handleModalSwap}>Sign Up</button>
       </div>
     </div>
   );

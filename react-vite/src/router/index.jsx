@@ -50,15 +50,7 @@ export const router = createBrowserRouter([
       {
         path: '/results',
         element: <h1>Results Feature Coming Soon!</h1>
-      },
-      {
-        path: '/signup',
-        element: <h1>Sign Up Page Coming Soon!</h1>
-      },
-      {
-        path: '/login',
-        element: <h1>Log In Page Coming Soon!</h1>,
-      },
+      }
     ],
   },
 ]);

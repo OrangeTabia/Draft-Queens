@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import OpenModalButton from '../OpenModalButton';
 import SignupFormModal from '../SignupFormModal';
 import { useModal } from "../../context/Modal"; 
 import { PiBasketballLight } from "react-icons/pi";
@@ -19,14 +19,13 @@ function LandingPage() {
     return (
         <div id='landing-container'>
             <div id='landing1-container'>
-                <div id='landing-card1'>
-                    {/* <OpenModalMenuItem
-                    id="signup-button"
-                    itemText="Sign Up"
+                <div className='landing-card1'>
+                    <OpenModalButton
+                    buttonText="Sign Up"
                     onItemClick={closeModal}
                     modalComponent={<SignupFormModal />}
-                    /> */}
-                    <button id='bet-button' onClick={handleSubmit}>BET NOW!</button>
+                    />
+                    {/* <button id='bet-button' onClick={handleSubmit}>BET NOW!</button> */}
                 </div>
             </div>
             <div id='landing2-container'>

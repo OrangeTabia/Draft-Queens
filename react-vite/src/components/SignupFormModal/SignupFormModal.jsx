@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import OpenModalButton from '../OpenModalButton/OpenModalButton';
+import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
 import { useNavigate, Link } from "react-router-dom";
@@ -10,6 +12,7 @@ function SignupFormModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { closeModal } = useModal();
+  const { setModalContent } = useModal();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -90,6 +93,11 @@ function SignupFormModal() {
       navigate("/");
     }
   };
+
+  const handleModalSwap = () => {
+    const modalComponent = <LoginFormModal />
+    setModalContent(modalComponent); 
+  }
 
   return (
     <div id='signup-modal'>
@@ -184,7 +192,7 @@ function SignupFormModal() {
       </form>
       <div id='login-link-container'>
         <span>Already have an account?</span>
-        <span><Link to='/login' id='login-link' onClick={closeModal}> Log In</Link></span>
+        <button onClick={handleModalSwap}>Login</button>
       </div>
     </div>
   );
