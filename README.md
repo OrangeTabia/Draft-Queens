@@ -2,17 +2,20 @@
 DraftQueens is inspired by sports betting website 'DraftKings'. DraftQueens focuses on professional and amateur female sports such as the WNBA and the NWSL. At the moment, the site offers book keepers the ability to create teams, games, odds for each game, and results for each game. Eventually, there will be user roles for both betters and book keepers to bet on games and create games, respectively. 
 
 
-## Live Link
+# Live Link
 https://draft-queens.onrender.com/
 
 
-### Tech Stack
+## Tech Stack
 
-#### Frameworks and Libraries
+### Frameworks and Libraries
+Python, Flask, JavaScript, React, Redux, CSS3, HTML5
 
-#### Database: 
+### Database: 
+Postgres
 
-#### Hosting: 
+### Hosting: 
+Render
 
 
 ## Index
@@ -20,13 +23,13 @@ https://draft-queens.onrender.com/
 
 
 ## Landing Page
-
+- pic or video of landing page
 
 ## Teams
-
+- pic or video of teams page
 
 ## Games
-
+- pic or video of games page
 
 ## Endpoints
 ### Auth
@@ -43,5 +46,11 @@ https://draft-queens.onrender.com/
 4. Results
 
 ## Future Implementation Goals
-1. 
+1. User role for 'betters' 
+2. API for live games
+3. Betters can make single game bets or parlays
+4. Betters can join groups with friends and see each others' bets
+
+## Connect
+[LinkedIn](https://www.linkedin.com/in/tabiaye/)
 
