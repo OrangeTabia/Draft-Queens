@@ -31,7 +31,7 @@
   color: #ababab;
 }
 
-a::after {
+.middle-nav-titles::after {
 	content: '';
 	position: absolute;
 	bottom: 0;
@@ -43,8 +43,8 @@ a::after {
 	transition: opacity 400ms, transform 400ms;
 }
 
-a:hover::after,
-a:focus::after {
+.middle-nav-titles:hover::after,
+.middle-nav-titles:focus::after {
 	opacity: 1;
 	transform: translate3d(0, 0.2em, 0);
 }
@@ -92,6 +92,16 @@ a:focus::after {
   padding-top: 5px;
   padding-bottom: 5px;
   color: #242424;
+  text-decoration: none;
+  font-weight: 660;
+  border: 1px solid red;
+}
+
+#welcome-user, #welcome-email {
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: black;
 }
 
 #logout-button {

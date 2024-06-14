@@ -62,20 +62,28 @@
 .games-edit-delete-btns {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 10px;
     text-decoration: underline;
 }
 
-.open-modal-btn {
-    color: white;
+.games-edit-delete-btns > button {
+    border: none;
+    background-color: transparent;
     text-decoration: underline;
-}
-
-#games-edit-btn, #games-delete-btn {
     color: white;
 }
 
-#games-edit-btn:hover, #games-delete-btn:hover {
+.games-edit-delete-btns > button:hover {
+    cursor: pointer;
+    color: #f76900;
+}
+
+#games-edit-btn {
+    color: white;
+}
+
+#games-edit-btn:hover {
     color: #f76900;
 }
 
@@ -83,6 +91,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 

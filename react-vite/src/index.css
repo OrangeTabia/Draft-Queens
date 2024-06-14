@@ -1,8 +1,21 @@
+html, body, #root {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+   }
+
 body {
     margin: 0px;
     background-color: black;
     color: #ababab;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+footer { 
+    margin-top: auto 
 }
 
 .form-errors {

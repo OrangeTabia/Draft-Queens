@@ -58,13 +58,13 @@ function ProfileButton() {
         <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <div className="dropdown-items">
-              <div className="dropdown-item">{user.username}</div>
-              <div className="dropdown-item">{user.email}</div>
+              <div id='welcome-user'>Welcome, {user.username}!</div>
+              <div id='welcome-email'>{user.email}</div>
               <Link to='/teams/new' className="dropdown-item">Create a Team</Link>
               <Link to='/games/new' className="dropdown-item">Create a Game</Link>
               <Link onClick={featureComingSoon} className="dropdown-item">Create Odds</Link>
               <Link onClick={featureComingSoon} className="dropdown-item">Add Game Results</Link>
-              <div className="dropdown-item" id="logout-button"onClick={logout}>Log Out</div>
+              <div className="dropdown-item" id="logout-button" onClick={logout}>Log Out</div>
             </div>
           ) : (
             <div className="login-logout-buttons">

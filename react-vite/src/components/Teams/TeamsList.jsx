@@ -91,10 +91,10 @@ function Teams() {
                                     {isOwner ? (
                                         <td style={{width: '10%'}}>
                                             <div id='teams-edit-delete-btns'>
-                                                <Link to={`/teams/${team.id}/update`} id='update-team-btn'><BiSolidEdit fontSize='24px'/></Link>
+                                                <Link to={`/teams/${team.id}/update`} id='update-team-btn'><BiSolidEdit /></Link>
                                                 <OpenModalButton
                                                     to={`/teams/${team.id}/delete`}
-                                                    buttonText={<BiSolidTrash fontSize='24px'/>}
+                                                    buttonText={<BiSolidTrash />}
                                                     modalComponent={<DeleteTeam teamId={team.id} />}
                                                 />
                                             </div>

@@ -17,6 +17,7 @@ function LandingPage() {
             <div id='landing1-container'>
                 <div className='landing-card1'>
                     <OpenModalButton
+                    id='big-signup'
                     buttonText="Sign Up"
                     onItemClick={closeModal}
                     modalComponent={<SignupFormModal />}

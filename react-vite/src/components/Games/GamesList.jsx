@@ -91,7 +91,6 @@ function GamesList() {
                                                         Edit Game
                                                         </Link>
                                                         <OpenModalButton to={`/games/${game.id}/delete`}
-                                                        // buttonText={<BiSolidTrash fontSize='20px'/>}
                                                         id='games-delete-btn'
                                                         buttonText='Delete Game'
                                                         modalComponent={<DeleteGame gameId={game.id}/>}

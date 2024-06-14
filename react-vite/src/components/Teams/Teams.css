@@ -79,20 +79,30 @@
 #teams-edit-delete-btns {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#teams-edit-delete-btns > button {
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+    color: white;
+}
+
+#teams-edit-delete-btns > button:hover {
+    color: #f76900;
+    cursor: pointer;
 }
 
 #update-team-btn {
     color: white;
+    font-size: 24px;
 }
 
 #update-team-btn:hover {
     color: #f76900;
-}
-
-.open-modal-btn:hover {
-    color: #f76900;
-    cursor: pointer;
 }
 
 table {
