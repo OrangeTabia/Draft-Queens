@@ -55,7 +55,8 @@ Render
 ```
 
 ## Teams
-### Create A Team
+
+### Create a Team
 - Method: `POST`
 - URL: `/api/teams/new`
 - Body: 
@@ -70,18 +71,201 @@ Render
 - Successful Response: 
 ```
 {
-    ""
+    "id": 1, 
+    "user_id": 1, 
+    "name": "Golden State Valkyries",
+    "sportType": "basketball",
+    "location": "San Francisco",
+    "logo": "https://images.prismic.io/wnba/ZjVrS0MTzAJOCh36_gsv-logo-menu.png"
 }
 ```
-
 ### View All Teams
 - Method: `GET`
 - URL: `/api/teams`
+- Body: none
+- Successful Response: 
+```
+{
+    "teams": [
+        {
+            "id": 1, 
+            "user_id": 1, 
+            "name": "Golden State Valkyries",
+            "sportType": "basketball",
+            "location": "San Francisco",
+            "logo": "https://images.prismic.io/wnba/ZjVrS0MTzAJOCh36_gsv-logo-menu.png"
+        }
+    ]
+}
+```
+### Update a Team
+- Method: `POST`
+- URL: `/api/teams/:teamId/update`
 - Body: 
+```
+{
+    "name": "Golden State Valkyries",
+    "sport_type": "basketball",
+    "location": "San Francisco",
+    "logo": "https://images.prismic.io/wnba/ZjVrS0MTzAJOCh36_gsv-logo-menu.png"
+}
+```
+- Successful Response: 
+```
+{
+    "id": 1, 
+    "user_id": 1, 
+    "name": "Golden State Valkyries",
+    "sportType": "basketball",
+    "location": "San Francisco",
+    "logo": "https://images.prismic.io/wnba/ZjVrS0MTzAJOCh36_gsv-logo-menu.png"
+}
+```
+### Delete a Team
+- Method: `GET`
+- URL: `/api/teams/:teamId/delete`
+- Body: none
+- Successful Response: 
+```
+{
+    "message": "Team has been successfully deleted"
+}
+```
 
-## `Games`
-## `Odds`
-## `Results`
+## Games
+### Create a Game
+- Method: `POST`,
+- URL: `/api/games/new`,
+- Body: 
+```
+{
+    "home_team_id": 1,
+    "away_team_id": 2,
+    "start_time": "2024-07-04 12:00"
+}
+```
+- Successful Response: 
+```
+{
+    "id": 21,
+    "userId": 1
+    "homeTeamId": 1,
+    "awayTeamId": 2,
+    "startTime": "Thu, 04 Jul 2024 12:00:00 GMT"
+}
+```
+### View All Games
+- Method: `GET`
+- URL: `/api/games`
+- Body: none
+- Successful Response: 
+```
+{
+    "id": 3,
+    "userId": 1
+    "awayTeamId": 4,
+    "homeTeamId": 3,
+    "startTime": "Tue, 28 May 2024 03:00:00 GMT"
+}
+```
+### Update a Game
+- Method: `POST`
+- URL: `/api/games/:gameId/update`
+- Body: 
+```
+{
+    "home_team_id": 1,
+    "away_team_id": 2,
+    "start_time": "2024-07-04 12:00"
+}
+```
+- Successful Response: 
+```
+{
+    "games": [
+        {
+            "id": 3,
+            "userId": 1
+            "awayTeamId": 4,
+            "homeTeamId": 3,
+            "startTime": "Tue, 28 May 2024 03:00:00 GMT"
+        }
+    ]
+}
+```
+### Delete a Game
+- Method: `GET`
+- URL: `/api/games/:gameId/delete`
+- Body: none
+- Successful Response: 
+```
+{
+    "message": "Game has been successfully deleted"
+}
+```
+
+## Odds
+
+### Create an Odd
+- Method: `POST`
+- URL: `/api/odds/new`
+- Body: 
+```
+{
+    "game_id": 18,
+    "team_id": 14,
+    "type": "moneyline",
+    "value": -200,
+    "status": "open"
+}
+```
+- Successful Response:
+```
+{
+    "gameId": 18,
+    "id": 11,
+    "status": "open",
+    "teamId": 14,
+    "type": "moneyline",
+    "userId": 1,
+    "value": -200
+}
+```
+### View all Odds
+- Method: `POST`
+- URL: `/api/odds`
+- Body: none
+- Successful Response:
+```
+{
+    "odds": [
+        {
+            "gameId": 2,
+            "id": 3,
+            "status": "open",
+            "teamId": 2,
+            "type": "spread",
+            "userId": 1,
+            "value": -8
+        },
+        {
+            "gameId": 5,
+            "id": 7,
+            "status": "open",
+            "teamId": 4,
+            "type": "moneyline",
+            "userId": 1,
+            "value": -375
+        }
+    ]
+}
+```
+
+## Results
+
+## Create a Result
+
+## View all Results
 
 
 # Feature List
