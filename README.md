@@ -34,7 +34,7 @@ Render
 
 # Endpoints
 
-## `Auth`
+## Auth
 ### Log In User
 - Method: `POST`
 - URL: `/api/auth/login`
@@ -48,20 +48,36 @@ Render
 - Successful Response: 
 ```
 {
+    "id": 1,
     "username": "DemoUser1", 
     "email": "demo1@gmail.com"
 }
 ```
 
-## `Teams`
+## Teams
 ### Create A Team
 - Method: `POST`
 - URL: `/api/teams/new`
 - Body: 
 ```
 {
+    "name": "Golden State Valkyries",
+    "sport_type": "basketball",
+    "location": "San Francisco",
+    "logo": "https://images.prismic.io/wnba/ZjVrS0MTzAJOCh36_gsv-logo-menu.png"
 }
 ```
+- Successful Response: 
+```
+{
+    ""
+}
+```
+
+### View All Teams
+- Method: `GET`
+- URL: `/api/teams`
+- Body: 
 
 ## `Games`
 ## `Odds`
