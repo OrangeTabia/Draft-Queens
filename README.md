@@ -31,12 +31,41 @@ Render
 # Games
 - pic or video of games page
 
+
 # Endpoints
-## Auth
-## Teams
-## Games
-## Odds
-## Results
+
+## `Auth`
+### Log In User
+- Method: `POST`
+- URL: `/api/auth/login`
+- Body: 
+```
+{
+    "email": "demo1@gmail.com",
+    "password: "password"
+}
+```
+- Successful Response: 
+```
+{
+    "username": "DemoUser1", 
+    "email": "demo1@gmail.com"
+}
+```
+
+## `Teams`
+### Create A Team
+- Method: `POST`
+- URL: `/api/teams/new`
+- Body: 
+```
+{
+}
+```
+
+## `Games`
+## `Odds`
+## `Results`
 
 
 # Feature List
