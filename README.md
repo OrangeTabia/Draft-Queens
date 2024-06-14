@@ -6,7 +6,7 @@ DraftQueens is inspired by sports betting website 'DraftKings'. DraftQueens focu
 https://draft-queens.onrender.com/
 
 
-## Tech Stack
+# Tech Stack
 
 ### Frameworks and Libraries
 Python, Flask, JavaScript, React, Redux, CSS3, HTML5
@@ -18,39 +18,39 @@ Postgres
 Render
 
 
-## Index
+# Index
 [Features List](https://github.com/OrangeTabia/Draft-Queens/wiki/MVP-Features-List) | [Database Schema](https://github.com/OrangeTabia/Draft-Queens/wiki/Database-Schema) | [User Stories](https://github.com/OrangeTabia/Draft-Queens/wiki/User-Stories) | [Wireframes](https://github.com/OrangeTabia/Draft-Queens/wiki/Wireframes)
 
 
-## Landing Page
+# Landing Page
 - pic or video of landing page
 
-## Teams
+# Teams
 - pic or video of teams page
 
-## Games
+# Games
 - pic or video of games page
 
-## Endpoints
-### Auth
-### Teams
-### Games
-### Odds
-### Results
+# Endpoints
+## Auth
+## Teams
+## Games
+## Odds
+## Results
 
 
-## Feature List
+# Feature List
 1. Teams
 2. Games
 3. Odds
 4. Results
 
-## Future Implementation Goals
+# Future Implementation Goals
 1. User role for 'betters' 
 2. API for live games
 3. Betters can make single game bets or parlays
 4. Betters can join groups with friends and see each others' bets
 
-## Connect
+# Connect
 [LinkedIn](https://www.linkedin.com/in/tabiaye/)
 
