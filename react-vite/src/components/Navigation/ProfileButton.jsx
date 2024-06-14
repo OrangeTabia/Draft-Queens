@@ -64,7 +64,7 @@ function ProfileButton() {
               <Link to='/games/new' className="dropdown-item">Create a Game</Link>
               <Link onClick={featureComingSoon} className="dropdown-item">Create Odds</Link>
               <Link onClick={featureComingSoon} className="dropdown-item">Add Game Results</Link>
-              <div className="dropdown-item" id="logout-button" onClick={logout}>Log Out</div>
+              <div className="dropdown-item" onClick={logout}>Log Out</div>
             </div>
           ) : (
             <div className="login-logout-buttons">

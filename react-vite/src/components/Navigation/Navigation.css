@@ -88,15 +88,6 @@
   flex-direction: column;
 }
 
-.dropdown-item {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  color: #242424;
-  text-decoration: none;
-  font-weight: 660;
-  border: 1px solid red;
-}
-
 #welcome-user, #welcome-email {
   font-size: 14px;
   padding-top: 5px;
@@ -104,15 +95,18 @@
   color: black;
 }
 
-#logout-button {
-  border: none;
-  background-color: transparent;
-  font-size: 16px;
+.dropdown-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  color: #242424;
+  text-decoration: none;
   font-weight: 660;
 }
 
-#logout-button:hover {
+.dropdown-item:hover {
   cursor: pointer;
+  border-left: 5px solid #f76900;
 }
 
 .login-logout-buttons {
@@ -120,9 +114,21 @@
   color: #242424;
   font-size: 16px;
   font-weight: 660;
-  /* border: 1px solid blue; */
+  width: 80%;
+}
+
+.login-logout-buttons > div > p {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+.login-logout-buttons > div > p:hover {
+  border-left: 5px solid #f76900;
 }
 
 .login-logout-buttons:hover {
   cursor: pointer;
 }
+
+

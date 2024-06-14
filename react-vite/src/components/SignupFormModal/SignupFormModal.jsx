@@ -191,7 +191,7 @@ function SignupFormModal() {
       </form>
       <div id='login-link-container'>
         <span>Already have an account?</span>
-        <button onClick={handleModalSwap}>Login</button>
+        <button onClick={handleModalSwap}>Log In</button>
       </div>
     </div>
   );
