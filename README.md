@@ -263,10 +263,54 @@ Render
 
 ## Results
 
-## Create a Result
-
-## View all Results
-
+### Create a Result
+- Method: `POST`
+- URL: `/api/results/new`
+- Body: 
+```
+{
+    "user_id": 2,
+    "game_id": 18,
+    "home_team_score": 1,
+    "away_team_score": 5
+}
+```
+- Successful Response: 
+```
+{
+    "awayTeamScore": 5,
+    "gameId": 18,
+    "homeTeamScore": 1,
+    "id": 10,
+    "notes": null,
+    "userId": 1
+}
+```
+### View all Results
+- Method: `GET`
+- URL: `/api/results`
+- Body: none
+- Successful Response: 
+{
+     "results": [
+        {
+            "id": 2,
+            "userId": 1
+            "gameId": 2,
+            "homeTeamScore": 88,
+            "awayTeamScore": 82,
+            "notes": null
+        },
+        {
+            "id": 9,
+            "userId": 1
+            "gameId": 9,
+            "homeTeamScore": 86,
+            "awayTeamScore": 84,
+            "notes": "2OT"
+        }
+    ]
+}
 
 # Feature List
 1. Teams
