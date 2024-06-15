@@ -23,7 +23,7 @@ Render
 
 
 # Landing Page
-![landing-page](https://github.com/OrangeTabia/Draft-Queens/assets/131227932/2d5fecee-4df2-4029-ae25-ec7ea876f4cb)
+![landing-page](https://github.com/OrangeTabia/Draft-Queens/assets/131227932/2f748469-1c3f-445e-b36d-242de6af1f1a)
 
 # Teams
 
