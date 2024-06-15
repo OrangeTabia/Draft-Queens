@@ -23,10 +23,9 @@ Render
 
 
 # Landing Page
-- pic or video of landing page
+
 
 # Teams
-- pic or video of teams page
 
 # Games
 - pic or video of games page
