@@ -39,14 +39,14 @@ Render
 - Method: `POST`
 - URL: `/api/auth/login`
 - Body: 
-```
+```json
 {
     "email": "demo1@gmail.com",
-    "password: "password"
+    "password": "password"
 }
 ```
 - Successful Response: 
-```
+```json
 {
     "id": 1,
     "username": "DemoUser1", 
@@ -60,7 +60,7 @@ Render
 - Method: `POST`
 - URL: `/api/teams/new`
 - Body: 
-```
+```json
 {
     "name": "Golden State Valkyries",
     "sport_type": "basketball",
@@ -69,7 +69,7 @@ Render
 }
 ```
 - Successful Response: 
-```
+```json
 {
     "id": 1, 
     "user_id": 1, 
@@ -84,7 +84,7 @@ Render
 - URL: `/api/teams`
 - Body: none
 - Successful Response: 
-```
+```json
 {
     "teams": [
         {
@@ -102,7 +102,7 @@ Render
 - Method: `POST`
 - URL: `/api/teams/:teamId/update`
 - Body: 
-```
+```json
 {
     "name": "Golden State Valkyries",
     "sport_type": "basketball",
@@ -111,7 +111,7 @@ Render
 }
 ```
 - Successful Response: 
-```
+```json
 {
     "id": 1, 
     "user_id": 1, 
@@ -126,7 +126,7 @@ Render
 - URL: `/api/teams/:teamId/delete`
 - Body: none
 - Successful Response: 
-```
+```json
 {
     "message": "Team has been successfully deleted"
 }
@@ -137,7 +137,7 @@ Render
 - Method: `POST`,
 - URL: `/api/games/new`,
 - Body: 
-```
+```json
 {
     "home_team_id": 1,
     "away_team_id": 2,
@@ -145,10 +145,10 @@ Render
 }
 ```
 - Successful Response: 
-```
+```json
 {
     "id": 21,
-    "userId": 1
+    "userId": 1,
     "homeTeamId": 1,
     "awayTeamId": 2,
     "startTime": "Thu, 04 Jul 2024 12:00:00 GMT"
@@ -159,10 +159,10 @@ Render
 - URL: `/api/games`
 - Body: none
 - Successful Response: 
-```
+```json
 {
     "id": 3,
-    "userId": 1
+    "userId": 1,
     "awayTeamId": 4,
     "homeTeamId": 3,
     "startTime": "Tue, 28 May 2024 03:00:00 GMT"
@@ -172,7 +172,7 @@ Render
 - Method: `POST`
 - URL: `/api/games/:gameId/update`
 - Body: 
-```
+```json
 {
     "home_team_id": 1,
     "away_team_id": 2,
@@ -180,12 +180,12 @@ Render
 }
 ```
 - Successful Response: 
-```
+```json
 {
     "games": [
         {
             "id": 3,
-            "userId": 1
+            "userId": 1,
             "awayTeamId": 4,
             "homeTeamId": 3,
             "startTime": "Tue, 28 May 2024 03:00:00 GMT"
@@ -198,7 +198,7 @@ Render
 - URL: `/api/games/:gameId/delete`
 - Body: none
 - Successful Response: 
-```
+```json
 {
     "message": "Game has been successfully deleted"
 }
@@ -210,7 +210,7 @@ Render
 - Method: `POST`
 - URL: `/api/odds/new`
 - Body: 
-```
+```json
 {
     "game_id": 18,
     "team_id": 14,
@@ -220,7 +220,7 @@ Render
 }
 ```
 - Successful Response:
-```
+```json
 {
     "gameId": 18,
     "id": 11,
@@ -236,7 +236,7 @@ Render
 - URL: `/api/odds`
 - Body: none
 - Successful Response:
-```
+```json
 {
     "odds": [
         {
@@ -267,7 +267,7 @@ Render
 - Method: `POST`
 - URL: `/api/results/new`
 - Body: 
-```
+```json
 {
     "user_id": 2,
     "game_id": 18,
@@ -276,7 +276,7 @@ Render
 }
 ```
 - Successful Response: 
-```
+```json
 {
     "awayTeamScore": 5,
     "gameId": 18,
@@ -291,11 +291,12 @@ Render
 - URL: `/api/results`
 - Body: none
 - Successful Response: 
+```json
 {
      "results": [
         {
             "id": 2,
-            "userId": 1
+            "userId": 1,
             "gameId": 2,
             "homeTeamScore": 88,
             "awayTeamScore": 82,
@@ -303,7 +304,7 @@ Render
         },
         {
             "id": 9,
-            "userId": 1
+            "userId": 1,
             "gameId": 9,
             "homeTeamScore": 86,
             "awayTeamScore": 84,
@@ -311,6 +312,7 @@ Render
         }
     ]
 }
+```
 
 # Feature List
 1. Teams
