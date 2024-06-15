@@ -26,9 +26,9 @@ Render
 ![landing-page](https://github.com/OrangeTabia/Draft-Queens/assets/131227932/2f748469-1c3f-445e-b36d-242de6af1f1a)
 
 # Teams
+![teams-page](https://github.com/OrangeTabia/Draft-Queens/assets/131227932/31ce3e5c-1a6f-4f69-9ad9-1ed70648530f)
 
 # Games
-- pic or video of games page
 
 
 # Endpoints
