@@ -29,7 +29,7 @@ Render
 ![teams-page](https://github.com/OrangeTabia/Draft-Queens/assets/131227932/31ce3e5c-1a6f-4f69-9ad9-1ed70648530f)
 
 # Games
-
+![games-page](https://github.com/OrangeTabia/Draft-Queens/assets/131227932/f2f88284-b162-4f6c-abe1-7d4c80e0f514)
 
 # Endpoints
 
