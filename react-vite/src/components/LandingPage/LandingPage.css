@@ -62,7 +62,6 @@
 }
 
 .landing-icon-sport:hover {
-    cursor: pointer;
     color: #f76900;
 }
 
@@ -74,6 +73,7 @@
 
 .landing-icon-sport > p:hover {
     color: #f76900;
+    cursor: default;
 }
 
 #landing3-container {

@@ -28,6 +28,11 @@
     cursor: pointer;
 }
 
+.sport-type:active {
+    color: #000E54;
+    transform: translateY(4px);
+}
+
 .sport-type > p {
     font-size: 12px;
     margin-bottom: 0px;
@@ -69,7 +74,7 @@
     text-decoration: none;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     width: fit-content;
 }
 
@@ -79,12 +84,17 @@
 
 #team-search-bar > input {
     width: 17em;
-    height: 2.5em;
-    border-radius: 5px;
+    height: 2.7em;
+    border-radius: 8px;
     background-color: #242424;
     border: none;
     color: white;
+    font-size: 15px;
     padding: 0px 15px 0px 15px;
+}
+
+#team-search-bar > input:focus {
+    outline-color: #f76900;
 }
 
 #all-teams-container {
