@@ -17,7 +17,6 @@ def all_teams():
     return {'teams': [team.to_dict() for team in teams]}
 
 
-
 @team_routes.route('/new', methods=['POST'])
 @login_required
 def create_team(): 

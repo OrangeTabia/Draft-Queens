@@ -5,6 +5,9 @@
     align-items: center;
     gap: 100px;
     margin-top: 25px;
+    width: 100%;
+    height: 75px;
+    background-color: whitesmoke;
 }
 
 .sport-type {
@@ -12,6 +15,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: #000E54;
+}
+
+.selected-sport { 
+    color: #f76900;
+    cursor: pointer;
+}
+
+.sport-type:hover {
+    color: #f76900;
+    cursor: pointer;
+}
+
+.sport-type > p {
+    font-size: 12px;
+    margin-bottom: 0px;
 }
 
 .sport-name {
@@ -27,11 +46,6 @@
     margin-top: 2px;
 }
 
-.sport-type:hover {
-    color: white;
-    cursor: pointer;
-}
-
 #team-list-container {
     display: flex;
     flex-direction: column;
@@ -43,16 +57,34 @@
     margin-top: 25px;
     margin-bottom: 10px;
     width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px solid red; */
 }
 
 #create-team-btn {
     color: white;
     font-size: 13px;
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
 }
 
 #create-team-btn:hover {
     color: #ababab;
+}
+
+#team-search-bar > input {
+    width: 17em;
+    height: 2.5em;
+    border-radius: 5px;
+    background-color: #242424;
+    border: none;
+    color: white;
+    padding: 0px 15px 0px 15px;
 }
 
 #all-teams-container {
