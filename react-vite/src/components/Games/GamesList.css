@@ -9,9 +9,13 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
     margin-top: 50px;
     margin-bottom: 100px;
+}
+
+#games-fanswap-ad {
+    margin-top: 26px;
 }
 
 #create-game-btn-container {
@@ -31,11 +35,14 @@
     background-color: #121212;
 }
 
-
 #create-game-btn {
     color: white;
     font-size: 13px;
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
 }
 
 #create-game-btn:hover {
@@ -94,3 +101,22 @@
     gap: 8px;
 }
 
+#game-pagination {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    border: 1px solid red;
+}
+
+.page:hover {
+    cursor: pointer;
+}
+
+.selected-page {
+    cursor: pointer;
+    font-weight: bold;
+    color: #f76900;
+}

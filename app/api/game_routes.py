@@ -11,8 +11,15 @@ def all_games():
     """
     Query for all games
     """
+
+    page = request.args.get('page')
+    size = request.args.get('size')
+
     # Find all of the gamees
-    games = Game.query.order_by(Game.start_time).all()
+    if page and size: 
+        games = Game.query.order_by(Game.start_time).limit(int(size)).offset(int(size) * (int(page)-1)).all()
+    else: 
+        games = Game.query.order_by(Game.start_time).all()
 
     include_teams = request.args.get('include_teams')
 
@@ -32,7 +39,10 @@ def all_games():
         return {'games': serialized_games}
 
     else:
-        return {'games': [game.to_dict() for game in games]}
+        return {
+            'games': [game.to_dict() for game in games], 
+            'total_games': db.session.query(Game).count()
+        }
 
 
 
