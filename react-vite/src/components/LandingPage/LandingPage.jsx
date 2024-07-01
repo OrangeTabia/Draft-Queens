@@ -22,7 +22,6 @@ function LandingPage() {
                     onItemClick={closeModal}
                     modalComponent={<SignupFormModal />}
                     />
-                    {/* <button id='bet-button' onClick={handleSubmit}>BET NOW!</button> */}
                 </div>
             </div>
             <div id='landing2-container'>

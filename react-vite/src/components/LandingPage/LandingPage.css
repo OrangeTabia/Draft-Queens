@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('../../../images/textured-background.png');;
+    background-image: url('../../../images/textured-background.png');
 }
 
 #landing1-container {
@@ -86,4 +86,85 @@
 
 #fanswap-ad {
     padding-bottom: 50px;
+}
+
+
+@media (min-width: 1001px) and (max-width: 1200px) {
+    #landing1-container {
+        background-image: url('../../../images/landing1-large.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 90%;
+    }
+    #landing3-container {
+        background-image: url('../../../images/landing2-large.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 90%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1000px) {
+    #landing1-container {
+        background-image: url('../../../images/landing1-med.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 90%;
+    }
+
+    #landing2-container {
+        overflow-y: hidden;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 600px) {
+    #landing1-container {
+        background-image: url('../../../images/landing1-small.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+    }
+
+    #landing2-container {
+        overflow-y: hidden;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+    }
+
+    #landing3-container {
+        background-image: url('../../../images/landing2-small.png');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #fanswap-ad {
+        display: none;
+    }
+}
+
+@media (max-width: 374px) {
+    #landing1-container {
+        background-image: url('../../../images/landing1-small.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+    }
+
+    #landing2-container {
+        overflow-y: hidden;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+    }
+
+    #landing3-container {
+        background-image: url('../../../images/landing2-small.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+    }
+    #fanswap-ad {
+        display: none;
+    }
 }
