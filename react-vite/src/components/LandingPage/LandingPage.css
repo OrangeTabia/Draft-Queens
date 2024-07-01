@@ -94,13 +94,11 @@
         background-image: url('../../../images/landing1-large.png');
         background-repeat: no-repeat;
         background-position: center;
-        width: 90%;
     }
     #landing3-container {
         background-image: url('../../../images/landing2-large.png');
         background-repeat: no-repeat;
         background-position: center;
-        width: 90%;
     }
 }
 
@@ -109,13 +107,22 @@
         background-image: url('../../../images/landing1-med.png');
         background-repeat: no-repeat;
         background-position: center;
-        width: 90%;
     }
 
     #landing2-container {
         overflow-y: hidden;
         overflow-x: scroll;
         scrollbar-width: thin;
+    }
+
+    #landing3-container {
+        background-image: url('../../../images/landing2-med.png');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #fanswap-ad > a > img{
+        width: 100%;
     }
 }
 
