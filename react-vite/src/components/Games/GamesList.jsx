@@ -23,10 +23,16 @@ function GamesList() {
     const [selectedGame, setSelectedGame] = useState();
     const [currentPage, setCurrentPage] = useState(1); 
     const [gamesPerPage, setGamesPerPage] = useState(10); 
+    const [searchTerm, setSearchTerm] = useState('');
 
     let selectedGames = allGames;
     if (selectedGame != null) { 
         selectedGames = selectedGames.filter((game) => game.sportType == selectedGame);
+    }
+
+    let selectedTeams = allTeams;
+    if (searchTerm != '') { 
+        selectedTeams = selectedTeams.filter((team) => team.name.toLowerCase().includes(searchTerm.toLowerCase()));
     }
     
     useEffect(() => {
@@ -71,13 +77,21 @@ function GamesList() {
                         <PiSoccerBallFill className='icon' fontSize='30px'/>
                         <p className='sport-league'>NWSL</p>
                     </div>
-                    </div>
+                </div>
                 <div id='games-and-ad-container'> 
                     <div id='games-and-btn-container'>
-                        <div id='create-game-btn-container'>
+                        <div id={currentUser ? 'create-game-btn-container' : 'create-game-btn-container-logged-out'}>
                         {currentUser &&
                         <Link id='create-game-btn' to='/games/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/>&nbsp;Create a Game</Link>
                         }
+                        <div className='search-bar'>
+                            <input
+                                type='search'
+                                placeholder='Search Games By Team'
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                value={searchTerm}
+                            />
+                        </div>
                         </div>
                         <div id='games-container'>
                             <table className='game-table-header'>
@@ -93,7 +107,7 @@ function GamesList() {
                                 let homeTeam = allTeams.find((team) => team.id == game.homeTeamId);
                                 let awayTeam = allTeams.find((team) => team.id == game.awayTeamId);
                                 let formattedDate = game.startTime.split(' ').slice(0, -2).join(' ');
-                                let formattedTime = new Date(game.startTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}); // 3:07 PM
+                                let formattedTime = new Date(game.startTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}); // 3:30 PM
 
                                 // See if one is the owner of this specific game
                                 let isOwner = game.userId == currentUser?.id;

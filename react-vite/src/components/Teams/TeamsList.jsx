@@ -83,13 +83,13 @@ function Teams() {
                 </div> */}
             </div>
             
-            <div id='create-team-btn-container'>
+            <div id={currentUser ? 'create-team-btn-container' : 'create-team-btn-container-logged-out'}>
                 {currentUser &&
                 <Link id='create-team-btn' to='/teams/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/><span>&nbsp;Create a Team</span></Link>
                 }
-                <div id='team-search-bar'>
+                <div className='search-bar'>
                     <input
-                        type='text'
+                        type='search'
                         placeholder='Search Teams'
                         onChange={(e) => setSearchTerm(e.target.value)}
                         value={searchTerm}

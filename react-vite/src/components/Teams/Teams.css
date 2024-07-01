@@ -65,7 +65,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* border: 1px solid red; */
+}
+
+#create-team-btn-container-logged-out {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 #create-team-btn {
@@ -82,7 +90,7 @@
     color: #ababab;
 }
 
-#team-search-bar > input {
+.search-bar > input {
     width: 17em;
     height: 2.7em;
     border-radius: 8px;
@@ -93,7 +101,7 @@
     padding: 0px 15px 0px 15px;
 }
 
-#team-search-bar > input:focus {
+.search-bar > input:focus {
     outline-color: #f76900;
 }
 
