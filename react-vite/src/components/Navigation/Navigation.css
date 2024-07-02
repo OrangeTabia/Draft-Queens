@@ -39,9 +39,9 @@
   color: #ababab;
 }
 
-#home-nav::after , 
-#teams-nav::after , 
-#games-nav::after , 
+#home-nav::after, 
+#teams-nav::after, 
+#games-nav::after, 
 #results-nav::after {
 	content: '';
 	position: absolute;
