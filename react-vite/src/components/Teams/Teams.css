@@ -160,7 +160,7 @@ table {
     color: white;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 700px) {
     #create-team-btn-container {
         display: flex;
         flex-direction: column;
@@ -176,18 +176,37 @@ table {
         flex-direction: row;
         justify-content: center;
     }
+
     .location-header,
-    .sport-header {
+    .sport-header,
+    .location-title,
+    .sport-title {
         display: none;
     }
+
     .team-and-logo {
         font-size: 12px;
     }
+
     #update-team-btn {
         font-size: 20px;
     }
+
     #teams-edit-delete-btns > button {
         font-size: 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .team-and-logo,
+    .location-title {
+        font-size: 14px;
+    }
+    #update-team-btn {
+        font-size: 22px;
+    }
+    #teams-edit-delete-btns > button {
+        font-size: 22px;
     }
 }
 
