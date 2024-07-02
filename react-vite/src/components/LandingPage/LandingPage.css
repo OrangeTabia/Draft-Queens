@@ -153,7 +153,7 @@
 
 @media (max-width: 374px) {
     #landing1-container {
-        background-image: url('../../../images/landing1-small.png');
+        background-image: url('../../../images/landing1-small2.png');
         background-repeat: no-repeat;
         background-position: center;
         width: 100%;
@@ -166,7 +166,7 @@
     }
 
     #landing3-container {
-        background-image: url('../../../images/landing2-small.png');
+        background-image: url('../../../images/landing2-small2.png');
         background-repeat: no-repeat;
         background-position: center;
         width: 100%;
