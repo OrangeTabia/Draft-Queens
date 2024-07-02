@@ -93,7 +93,7 @@
 }
 
 
-@media (min-width: 1001px) and (max-width: 1300px) {
+@media (max-width: 1300px) {
     #landing1-container {
         background-image: url('../../../images/landing1-large.png');
         background-repeat: no-repeat;
@@ -102,6 +102,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: flex-end;
+        width: 100%;
     }
 
     #landing1-container > button {
