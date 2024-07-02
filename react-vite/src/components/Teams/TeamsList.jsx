@@ -100,10 +100,10 @@ function Teams() {
     
                 <table style={{width:'100%', textAlign:'left', backgroundColor: '#f76900'}}>
                     <tr>
-                        <th style={{width: '25%'}}>Sport</th>
-                        <th style={{width: '35%'}}>Team</th>
-                        <th style={{width: '30%'}}>Location</th>
-                        <th style={{width: '10%'}}></th>
+                        <th style={{width: '25%'}} className='sport-header'>Sport</th>
+                        <th style={{width: '35%'}} className='team-header'>Team</th>
+                        <th style={{width: '30%'}} className='location-header'>Location</th>
+                        <th style={{width: '10%'}} className='edit-header'></th>
                     </tr>
                 </table>
                 <div id='team-table'>
@@ -114,11 +114,11 @@ function Teams() {
                         <div id='team-card' key={team.id}>
                             <table style={{width:'100%'}}>
                                 <tr>
-                                    <td style={{width: '25%'}}>{getSportsIcon(team.sportType)}</td>
-                                    <td style={{width: '35%'}}><div className='team-and-logo'><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</div></td>
-                                    <td style={{width: '30%'}}>{team.location}</td>
+                                    <td style={{width: '25%'}} className='sport-header'>{getSportsIcon(team.sportType)}</td>
+                                    <td style={{width: '35%'}} className='team-header'><div className='team-and-logo'><img className='team-logo' src={team.logo} alt='team-logo'/> {team.name}</div></td>
+                                    <td style={{width: '30%'}} className='location-header'>{team.location}</td>
                                     {isOwner ? (
-                                        <td style={{width: '10%'}}>
+                                        <td style={{width: '10%'}} className='edit-header'>
                                             <div id='teams-edit-delete-btns'>
                                                 <Link to={`/teams/${team.id}/update`} id='update-team-btn'><BiSolidEdit /></Link>
                                                 <OpenModalButton

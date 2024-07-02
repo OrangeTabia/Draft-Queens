@@ -160,4 +160,35 @@ table {
     color: white;
 }
 
+@media (max-width: 375px) {
+    #create-team-btn-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar > input {
+        width: 100%;
+    }
+    
+    #create-team-btn-container-logged-out {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .location-header,
+    .sport-header {
+        display: none;
+    }
+    .team-and-logo {
+        font-size: 12px;
+    }
+    #update-team-btn {
+        font-size: 20px;
+    }
+    #teams-edit-delete-btns > button {
+        font-size: 20px;
+    }
+}
+
 
