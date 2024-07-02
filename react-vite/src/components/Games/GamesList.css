@@ -90,6 +90,7 @@
     background-color: transparent;
     text-decoration: underline;
     color: white;
+    font-size: 12px;
 }
 
 .games-edit-delete-btns > button:hover {
@@ -129,4 +130,29 @@
     cursor: pointer;
     font-weight: bold;
     color: #f76900;
+}
+
+@media (max-width: 800px) {
+    #create-game-btn-container {
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    #games-fanswap-ad {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    #games-fanswap-ad {
+        display: none;
+    }
 }

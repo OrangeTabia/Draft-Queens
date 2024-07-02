@@ -166,15 +166,15 @@ table {
         flex-direction: column;
         gap: 10px;
     }
-
-    .search-bar > input {
-        width: 100%;
-    }
     
     #create-team-btn-container-logged-out {
         display: flex;
         flex-direction: row;
         justify-content: center;
+    }
+    
+    .search-bar > input {
+        width: 100%;
     }
 
     .location-header,
