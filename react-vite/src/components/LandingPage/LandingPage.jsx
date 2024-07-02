@@ -15,43 +15,41 @@ function LandingPage() {
     return (
         <div id='landing-container'>
             <div id='landing1-container'>
-                <div className='landing-card1'>
-                    <OpenModalButton
-                    id='big-signup'
-                    buttonText="Sign Up"
-                    onItemClick={closeModal}
-                    modalComponent={<SignupFormModal />}
-                    />
-                </div>
+                <OpenModalButton
+                id='big-signup'
+                buttonText="Sign Up"
+                onItemClick={closeModal}
+                modalComponent={<SignupFormModal />}
+                />
             </div>
             <div id='landing2-container'>
                 <div id='landing2-sport-leagues'>
                     <div className='landing-icon-sport'>
-                        <PiBasketballLight fontSize='30px'/>
+                        <PiBasketballLight className='landing-balls'/>
                         <p>WNBA</p>
                     </div>
                     <div className='landing-icon-sport'>
-                        <PiSoccerBallFill fontSize='30px'/>
+                        <PiSoccerBallFill className='landing-balls'/>
                         <p>NWSL</p>
                     </div>
                     <div className='landing-icon-sport'>
-                        <MdSportsRugby fontSize='30px'/>
+                        <MdSportsRugby className='landing-balls'/>
                         <p>WPL</p>
                     </div>
                     <div className='landing-icon-sport'>
-                        <PiBasketballLight fontSize='30px'/>
+                        <PiBasketballLight className='landing-balls'/>
                         <p>CWBB</p>
                     </div>
                     <div className='landing-icon-sport'>
-                        <PiSoccerBallFill fontSize='30px'/>
+                        <PiSoccerBallFill className='landing-balls'/>
                         <p>Soccer<br></br>Olympics</p>
                     </div>
                     <div className='landing-icon-sport'>
-                        <PiBasketballLight fontSize='30px'/>
+                        <PiBasketballLight className='landing-balls'/>
                         <p>Basketball<br></br>Olympics</p>
                     </div>
                     <div className='landing-icon-sport'>
-                        <MdSportsRugby fontSize='30px'/>
+                        <MdSportsRugby className='landing-balls'/>
                         <p>Rugby<br></br>Olympics</p>
                     </div>
                 </div>

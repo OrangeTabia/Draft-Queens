@@ -12,7 +12,7 @@
     width: 1400px;
 }
 
-.landing-card1 > button {
+#landing1-container > button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@
     font-weight: bold;
 }
 
-.landing-card1 > button:hover {
+#landing1-container > button:hover {
     cursor: pointer;
     background-color: #f9852c;
 }
@@ -51,6 +51,10 @@
     justify-content: center;
     align-items: center;
     gap: 60px;
+}
+
+.landing-balls {
+    font-size: 30px;
 }
 
 .landing-icon-sport {
@@ -89,88 +93,174 @@
 }
 
 
-@media (min-width: 1001px) and (max-width: 1200px) {
+@media (min-width: 1001px) and (max-width: 1300px) {
     #landing1-container {
         background-image: url('../../../images/landing1-large.png');
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
     }
+
+    #landing1-container > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        margin-bottom: 95px;
+        margin-right: 570px;
+        border: none;
+        background-color: #f76900;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
     #landing3-container {
         background-image: url('../../../images/landing2-large.png');
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center center;
+        width: 100%;
+        height: 600px;
+        margin: 0px;
     }
 }
 
-@media (min-width: 601px) and (max-width: 1000px) {
+
+@media (max-width: 1000px) {
     #landing1-container {
         background-image: url('../../../images/landing1-med.png');
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center center;
+        width: 100%;
+        height: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    #landing1-container > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        margin-bottom: 71px;
+        margin-right: 330px;
+        height: 32px;
+        width: 120px;
+        border: none;
+        background-color: #f76900;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
     }
 
     #landing2-container {
-        overflow-y: hidden;
-        overflow-x: scroll;
-        scrollbar-width: thin;
+        padding: 10px 0px 10px 0px;
+    }
+
+    .landing-balls {
+        font-size: 26px;
+    }
+
+    .landing-icon-sport {
+        font-size: 12px;
     }
 
     #landing3-container {
         background-image: url('../../../images/landing2-med.png');
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center center;
+        width: 100%;
+        height: 600px;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
-    #fanswap-ad > a > img{
-        width: 100%;
+    #fanswap-ad > a {
+        display: flex;
+        justify-content: center;
+    }
+
+    #fanswap-ad > a > img {
+        width: 80%;
     }
 }
 
-@media (min-width: 375px) and (max-width: 600px) {
+
+@media (max-width: 700px) {
     #landing1-container {
         background-image: url('../../../images/landing1-small.png');
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center center;
         width: 100%;
+        height: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    #landing1-container > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        margin-bottom: 36px;
+        height: 30px;
+        width: 90px;
+        border: none;
+        background-color: #f76900;
+        color: white;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    #landing1-container > button:hover {
+        cursor: pointer;
+        background-color: #f9852c;
     }
 
     #landing2-container {
         overflow-y: hidden;
         overflow-x: scroll;
         scrollbar-width: thin;
+        height: 25%;
+        width: 100%;
+    }
+
+    #landing2-sport-leagues {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        width: 80%;
+    }
+
+    .landing-balls {
+        font-size: 22px;
+    }
+
+    .landing-icon-sport {
+        font-size: 11px;
     }
 
     #landing3-container {
         background-image: url('../../../images/landing2-small.png');
         background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    #fanswap-ad {
-        display: none;
-    }
-}
-
-@media (max-width: 374px) {
-    #landing1-container {
-        background-image: url('../../../images/landing1-small2.png');
-        background-repeat: no-repeat;
-        background-position: center;
+        background-position: center center;
         width: 100%;
+        height: 600px;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
-    #landing2-container {
-        overflow-y: hidden;
-        overflow-x: scroll;
-        scrollbar-width: thin;
-    }
-
-    #landing3-container {
-        background-image: url('../../../images/landing2-small2.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        width: 100%;
-    }
     #fanswap-ad {
         display: none;
     }

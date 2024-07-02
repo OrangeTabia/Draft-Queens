@@ -21,8 +21,16 @@
   gap: 40px;
 }
 
-.middle-nav-titles {
-  display: block;
+.dropdown-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+#home-nav, #teams-nav, #games-nav, #results-nav {
+  /* display: block; */
   position: relative;
   padding: 0.2em 0;
   text-decoration: none;
@@ -31,7 +39,10 @@
   color: #ababab;
 }
 
-.middle-nav-titles::after {
+#home-nav::after , 
+#teams-nav::after , 
+#games-nav::after , 
+#results-nav::after {
 	content: '';
 	position: absolute;
 	bottom: 0;
@@ -43,8 +54,14 @@
 	transition: opacity 400ms, transform 400ms;
 }
 
-.middle-nav-titles:hover::after,
-.middle-nav-titles:focus::after {
+#home-nav:hover::after, 
+#teams-nav:hover::after, 
+#games-nav:hover::after, 
+#results-nav:hover::after,
+#home-nav:focus::after, 
+#teams-nav:focus::after, 
+#games-nav:focus::after, 
+#results-nav:focus::after {
 	opacity: 1;
 	transform: translate3d(0, 0.2em, 0);
 }
@@ -132,7 +149,16 @@
 }
 
 
-@media (max-width: 374px) {
+@media (max-width: 1000px) {
+  #home-nav,
+  #teams-nav, 
+  #games-nav, 
+  #results-nav {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
   #teams-nav, 
   #games-nav, 
   #results-nav {
