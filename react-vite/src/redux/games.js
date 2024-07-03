@@ -19,9 +19,9 @@ const deleteGame = (gameId) => ({
 });
 
 
-export const thunkLoadGames = (page, size) => async (dispatch) => {
+export const thunkLoadGames = (page, size, sportType) => async (dispatch) => {
     // Add these page + size in as a URL parameter
-    const response = await fetch('/api/games?' + new URLSearchParams({page, size})); 
+    const response = await fetch('/api/games?' + new URLSearchParams({sportType, page, size})); 
     if (response.ok) {
         const data = await response.json(); 
         return dispatch(loadGames(data));
@@ -94,6 +94,7 @@ function gamesReducer(state = initialState, action) {
                     }
                 })],
                 totalGames: action.games.total_games,
+                sportType: action.games.sportType
             }; 
         }
         case ADD_GAME: {

@@ -14,15 +14,22 @@ def all_games():
 
     page = request.args.get('page')
     size = request.args.get('size')
+    sportType = request.args.get('sportType')
+
 
     # Find all of the gamees
     if page and size: 
-        games = Game.query.order_by(Game.start_time).limit(int(size)).offset(int(size) * (int(page)-1)).all()
+        # Filter down on sport types when they exist
+        if sportType and sportType != 'undefined': 
+            games = Game.query.filter(Game.home_team.has(sport_type=sportType)).order_by(Game.start_time).limit(int(size)).offset(int(size) * (int(page)-1)).all()
+        else: 
+            games = Game.query.order_by(Game.start_time).limit(int(size)).offset(int(size) * (int(page)-1)).all()
     else: 
         games = Game.query.order_by(Game.start_time).all()
 
     include_teams = request.args.get('include_teams')
 
+    # TODO: Consider using this URL PARAM!
     # Add the specific teams serialized when the URL Param is included
     if include_teams: 
         serialized_games = []
@@ -37,11 +44,17 @@ def all_games():
             serialized_games.append(game_dict)
 
         return {'games': serialized_games}
-
     else:
+    
+        # Take into account the sport Type when we have an extra game
+        if sportType and sportType != 'undefined':
+            total_games = Game.query.filter(Game.home_team.has(sport_type=sportType)).count()
+        else: 
+            total_games = Game.query.count()
+
         return {
             'games': [game.to_dict() for game in games], 
-            'total_games': db.session.query(Game).count()
+            'total_games': total_games
         }
 
 

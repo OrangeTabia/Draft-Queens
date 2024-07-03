@@ -37,7 +37,7 @@ function GamesList() {
     }
     
     useEffect(() => {
-        dispatch(thunkLoadGames(currentPage, gamesPerPage));
+        dispatch(thunkLoadGames(currentPage, gamesPerPage, selectedLeague));
         dispatch(thunkLoadTeams()); 
     }, [dispatch])
 
@@ -52,7 +52,7 @@ function GamesList() {
                         className={currentPage == idx+1 ? 'selected-page' : 'page'}
                         onClick={() => {
                             setCurrentPage(idx+1);
-                            dispatch(thunkLoadGames(idx+1, gamesPerPage));
+                            dispatch(thunkLoadGames(idx+1, gamesPerPage, selectedLeague));
                         }
                     }
                     >{idx+1}</span>
@@ -66,14 +66,20 @@ function GamesList() {
                 <div id='sports-buttons'>
                     <div 
                         className={`sport-type ${selectedLeague == 'basketball' ? 'selected-sport' : ''}`}
-                        onClick={() => setSelectedLeague(selectedLeague == 'basketball' ? undefined : 'basketball')}
+                        onClick={() => {
+                            setSelectedLeague(selectedLeague == 'basketball' ? undefined : 'basketball');
+                            dispatch(thunkLoadGames(currentPage, gamesPerPage, selectedLeague == 'basketball' ? undefined : 'basketball'));
+                        }}
                     >
                         <PiBasketballLight className='icon' fontSize='30px'/>
                         <p className='sport-league'>WNBA</p>
                     </div>
                     <div 
                         className={`sport-type ${selectedLeague == 'soccer' ? 'selected-sport' : ''}`}
-                        onClick={() => selectedLeague == 'soccer' ? setSelectedLeague(undefined) : setSelectedLeague('soccer')}
+                        onClick={() => {
+                            selectedLeague == 'soccer' ? setSelectedLeague(undefined) : setSelectedLeague('soccer');
+                            dispatch(thunkLoadGames(currentPage, gamesPerPage, selectedLeague == 'soccer' ? undefined : 'soccer'));
+                        }}
                     >
                         <PiSoccerBallFill className='icon' fontSize='30px'/>
                         <p className='sport-league'>NWSL</p>
