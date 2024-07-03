@@ -70,12 +70,15 @@ const initialState = {}
 function teamsReducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_TEAMS: {
-            return { ...state, ...action.teams }
-            // const newState = { ...state };
-            // action.teams.forEach((team) => {
-            //     newState[team.id] = team;
-            // });
-            // return newState;
+            return { ...state, 
+                teams: [...action.teams.teams.sort((team1, team2) => {
+                    if (team1.name > team2.name) {
+                        return 1
+                    } else {
+                        return -1
+                    }
+                })]
+            };
         }
         case ADD_TEAM: {
             return { ...state , ...action.team }; 
