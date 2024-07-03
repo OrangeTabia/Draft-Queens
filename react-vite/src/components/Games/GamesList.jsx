@@ -20,19 +20,20 @@ function GamesList() {
     const numGames = useSelector(state => state.games.totalGames); // 18 
     const allTeams = useSelector(state => state.teams.teams);
     const currentUser = useSelector(state => state.session.user); 
-    const [selectedGame, setSelectedGame] = useState();
+    const [selectedLeague, setSelectedLeague] = useState();
     const [currentPage, setCurrentPage] = useState(1); 
     const [gamesPerPage, setGamesPerPage] = useState(10); 
     const [searchTerm, setSearchTerm] = useState('');
 
-    let selectedGames = allGames;
-    if (selectedGame != null) { 
-        selectedGames = selectedGames.filter((game) => game.sportType == selectedGame);
-    }
-
+    // Logic for filtering the teams in search bar
     let selectedTeams = allTeams;
     if (searchTerm != '') { 
         selectedTeams = selectedTeams.filter((team) => team.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+
+    // Logic for filtering the leagues
+    if (selectedLeague != null) { 
+        selectedTeams = selectedTeams.filter((team) => team.sportType == selectedLeague);
     }
     
     useEffect(() => {
@@ -64,15 +65,15 @@ function GamesList() {
             <div id='games-outisde-container'>
                 <div id='sports-buttons'>
                     <div 
-                        className={`sport-type ${selectedGame == 'basketball' ? 'selected-sport' : ''}`}
-                        onClick={() => setSelectedGame(selectedGame == 'basketball' ? undefined : 'basketball')}
+                        className={`sport-type ${selectedLeague == 'basketball' ? 'selected-sport' : ''}`}
+                        onClick={() => setSelectedLeague(selectedLeague == 'basketball' ? undefined : 'basketball')}
                     >
                         <PiBasketballLight className='icon' fontSize='30px'/>
                         <p className='sport-league'>WNBA</p>
                     </div>
                     <div 
-                        className={`sport-type ${selectedGame == 'soccer' ? 'selected-sport' : ''}`}
-                        onClick={() => selectedGame == 'soccer' ? setSelectedGame(undefined) : setSelectedGame('soccer')}
+                        className={`sport-type ${selectedLeague == 'soccer' ? 'selected-sport' : ''}`}
+                        onClick={() => selectedLeague == 'soccer' ? setSelectedLeague(undefined) : setSelectedLeague('soccer')}
                     >
                         <PiSoccerBallFill className='icon' fontSize='30px'/>
                         <p className='sport-league'>NWSL</p>
@@ -112,7 +113,11 @@ function GamesList() {
                                 // See if one is the owner of this specific game
                                 let isOwner = game.userId == currentUser?.id;
 
-                                {if (homeTeam && awayTeam) {
+                                // Both teams need to exist
+                                // and EITHER home OR away team match the query
+                                {if (homeTeam && awayTeam && (
+                                    selectedTeams.includes(homeTeam) || selectedTeams.includes(awayTeam)
+                                )) {
                                     return (
                                     <table className='game-table-body'>
                                         <tr>
