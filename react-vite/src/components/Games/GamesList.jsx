@@ -8,6 +8,8 @@ import { thunkLoadTeams } from '../../redux/teams';
 import { FiPlus } from "react-icons/fi";
 import { PiBasketballLight } from "react-icons/pi";
 import { PiSoccerBallFill } from "react-icons/pi";
+import { RiArrowRightSLine } from "react-icons/ri";
+import { RiArrowLeftSLine } from "react-icons/ri";
 import OpenModalButton from '../OpenModalButton';
 import fanswapAd from '../../../images/fanswap-longer.png'; 
 import DeleteGame from './DeleteGame';
@@ -24,6 +26,7 @@ function GamesList() {
     const [currentPage, setCurrentPage] = useState(1); 
     const [gamesPerPage, setGamesPerPage] = useState(10); 
     const [searchTerm, setSearchTerm] = useState('');
+    const numPages = Math.ceil(numGames / gamesPerPage)
 
     // Logic for filtering the teams in search bar
     let selectedTeams = allTeams;
@@ -170,7 +173,36 @@ function GamesList() {
                 </div>
 
                 <div id='game-pagination'>
+                    {currentPage != 1 ? 
+                    <span
+                        className='pag-arrows'
+                        onClick={() => {
+                                setCurrentPage(currentPage - 1);
+                                dispatch(thunkLoadGames(currentPage - 1, gamesPerPage, selectedLeague));
+                            }
+                        }
+                    >
+                        <RiArrowLeftSLine style={{fontSize: '30px'}}/>
+                    </span>
+                    :
+                    ''
+                    }
                     {pageButtons}
+
+                    {currentPage != numPages ? 
+                    <span
+                        className='pag-arrows'
+                        onClick={() => {
+                                setCurrentPage(currentPage + 1);
+                                dispatch(thunkLoadGames(currentPage + 1, gamesPerPage, selectedLeague));
+                            }
+                        }
+                    >
+                        <RiArrowRightSLine style={{fontSize: '30px'}}/>
+                    </span>
+                    :
+                    ''
+                    }
                 </div>
             </div>
         )
