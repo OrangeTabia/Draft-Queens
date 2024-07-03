@@ -185,7 +185,9 @@ function GamesList() {
                         <RiArrowLeftSLine style={{fontSize: '30px'}}/>
                     </span>
                     :
-                    ''
+                    <span>
+                        <RiArrowLeftSLine style={{fontSize: '30px'}}/>
+                    </span>
                     }
                     {pageButtons}
 
@@ -201,7 +203,9 @@ function GamesList() {
                         <RiArrowRightSLine style={{fontSize: '30px'}}/>
                     </span>
                     :
-                    ''
+                    <span>
+                        <RiArrowRightSLine style={{fontSize: '30px'}}/>
+                    </span>
                     }
                 </div>
             </div>
