@@ -103,7 +103,7 @@ function GamesList() {
                             />
                         </div>
                         </div>
-                        <div id='games-container'>
+                        <div className='games-container'>
                             <table className='game-table-header'>
                                 <tr>
                                     <th className='table-header' style={{width:'34%', textAlign:'left', color:'#f76900'}}>GAMES</th>
@@ -159,6 +159,9 @@ function GamesList() {
                                                         buttonText='Delete Game'
                                                         modalComponent={<DeleteGame gameId={game.id}/>}
                                                         />
+                                                        <Link id='add-odds-btn' to='/odds/new'>
+                                                        Add Odds
+                                                        </Link>
                                                     </div>
                                                 </td>
                                             </tr>

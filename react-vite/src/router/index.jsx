@@ -9,6 +9,7 @@ import GamesList from '../components/Games/GamesList';
 import CreateGame from '../components/Games/CreateGame'; 
 import UpdateGame from '../components/Games/UpdateGame';
 import LandingPage from '../components/LandingPage/LandingPage'; 
+import CreateOdd from '../components/Odds/CreateOdd'; 
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
         path: '/games/:gameId/update',
         element: <UpdateGame />
       }, 
+      {
+        path: '/odds/new',
+        element: <CreateOdd />
+      },
       {
         path: '/results',
         element: <h1>Results Feature Coming Soon!</h1>

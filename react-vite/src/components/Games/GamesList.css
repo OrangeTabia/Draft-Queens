@@ -38,7 +38,7 @@
     width: 50%;
 }
 
-#games-container {
+.games-container {
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -98,11 +98,13 @@
     color: #f76900;
 }
 
-#games-edit-btn {
+#games-edit-btn,
+#add-odds-btn {
     color: white;
 }
 
-#games-edit-btn:hover {
+#games-edit-btn:hover, 
+#add-odds-btn:hover {
     color: #f76900;
 }
 
