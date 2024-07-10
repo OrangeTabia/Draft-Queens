@@ -1,8 +1,14 @@
+#create-odds-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
 #odds-game-container {
     padding: 15px;
     display: flex;
     flex-direction: column;
     color: #ababab;
     background-color: #121212;
-    border: 1px solid red;
+    width: 60%;
 }
