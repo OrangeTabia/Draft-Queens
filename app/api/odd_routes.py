@@ -13,14 +13,16 @@ def all_odds():
     """
     # gameId = request.args.get('game_id')
     gameIds = request.args.get('gameIds')
+    array_game_ids = gameIds.split(',')
+    int_game_id = [int(id) for id in array_game_ids]
 
-    print("HERES WHAT YOUVE BEEN WAITING FOR ", gameIds)
 
-    if gameIds: 
-        odds = Odd.query.filter_by(gameIds = int(gameIds)).all()
+    if int_game_id and int_game_id != 'undefined': 
+        odds = Odd.query.filter(Odd.game_id.in_(int_game_id)).all()
     else: 
         odds = Odd.query.all()
     return {'odds': [odd.to_dict() for odd in odds]}
+
 
 
 @odd_routes.route('/new', methods=['GET', 'POST'])

@@ -30,7 +30,10 @@ function GamesList() {
     const [gamesPerPage, setGamesPerPage] = useState(10); 
     const [searchTerm, setSearchTerm] = useState('');
     const numPages = Math.ceil(numGames / gamesPerPage);
-    const gameIds = allGames?.map((game) => game.id); // [22, 21, 12, 11, 10, ...]
+    const gameIds = allGames?.map((game) => game.id); // [22, 21, 12, 11, 10, ... ]
+    // const oddGameIds = allOdds?.map((odd) => odd.gameId); // [2, 2, 5, 5, 5, 5]
+    // const currentGame = gameIds.find((id) => id = oddGameIds.gameId);
+    // console.log("CURRENT GAME ID", currentGame)
 
 
     // Logic for filtering the teams in search bar
@@ -126,6 +129,17 @@ function GamesList() {
                             {allGames.map((game) => {
                                 let homeTeam = allTeams.find((team) => team.id == game.homeTeamId);
                                 let awayTeam = allTeams.find((team) => team.id == game.awayTeamId);
+                                // gets an array of the game's home team odds (could be spread, totals, or moneyline type)
+                                let homeTeamOdds = allOdds?.filter((odd) => odd.gameId == game.id && odd.teamId == game.homeTeamId && odd.status == 'open');
+                                // finds one odd object that is the spread type
+                                let homeSpread = homeTeamOdds?.find((odd) => odd.type == 'spread'); 
+                                let homeTotals = homeTeamOdds?.find((odd) => odd.type == 'totals');
+                                let homeMoneyline = homeTeamOdds?.find((odd) => odd.type == 'moneyline');
+                                // gets an array of the game's away team odds (could be spread, totals, or moneyline type)
+                                let awayTeamOdds = allOdds?.filter((odd) => odd.gameId == game.id && odd.teamId == game.awayTeamId && odd.status == 'open');
+                                let awaySpread = awayTeamOdds?.find((odd) => odd.type == 'spread');
+                                let awayTotals = awayTeamOdds?.find((odd) => odd.type == 'totals');
+                                let awayMoneyline = awayTeamOdds?.find((odd) => odd.type == 'moneyline');
                                 let formattedDate = game.startTime.split(' ').slice(0, -2).join(' ');
                                 let formattedTime = new Date(game.startTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}); // 3:30 PM
 
@@ -145,16 +159,16 @@ function GamesList() {
                                         <tr>
                                             <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam.logo}/>{homeTeam.name}</div></td>
                                             {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
-                                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
-                                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
-                                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
+                                            <td className='data-field' style={{width:'22%'}}>{homeSpread ? homeSpread.value : ''}</td>
+                                            <td className='data-field' style={{width:'22%'}}>{homeTotals ? homeTotals.value : ''}</td>
+                                            <td className='data-field' style={{width:'22%'}}>{homeMoneyline ? homeMoneyline.value : ''}</td>
                                         </tr>
                                         <tr>
                                             <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam.logo}/>{awayTeam.name}</div></td>
                                             {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
-                                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
-                                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
-                                            <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
+                                            <td className='data-field' style={{width:'22%'}}>{awaySpread ? awaySpread.value : ''}</td>
+                                            <td className='data-field' style={{width:'22%'}}>{awayTotals ? awayTotals.value : ''}</td>
+                                            <td className='data-field' style={{width:'22%'}}>{awayMoneyline ? awayMoneyline.value : ''}</td>
                                         </tr>
                                         {isOwner ? 
                                             <tr>
