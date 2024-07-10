@@ -15,7 +15,7 @@
 }
 
 #games-fanswap-ad {
-    margin-top: 50px;
+    margin-top: 51px;
 }
 
 #create-game-btn-container {
@@ -73,9 +73,11 @@
 
 .data-field {
     background-color: #242424;
-    font-size: 13px;
+    font-size: 16px;
     padding: 20px;
     text-align: center;
+    width: 22%;
+    height: 18px;
 }
 
 .games-edit-delete-btns {

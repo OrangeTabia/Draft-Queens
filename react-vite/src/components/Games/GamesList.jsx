@@ -31,10 +31,6 @@ function GamesList() {
     const [searchTerm, setSearchTerm] = useState('');
     const numPages = Math.ceil(numGames / gamesPerPage);
     const gameIds = allGames?.map((game) => game.id); // [22, 21, 12, 11, 10, ... ]
-    // const oddGameIds = allOdds?.map((odd) => odd.gameId); // [2, 2, 5, 5, 5, 5]
-    // const currentGame = gameIds.find((id) => id = oddGameIds.gameId);
-    // console.log("CURRENT GAME ID", currentGame)
-
 
     // Logic for filtering the teams in search bar
     let selectedTeams = allTeams;
@@ -159,23 +155,22 @@ function GamesList() {
                                         <tr>
                                             <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam.logo}/>{homeTeam.name}</div></td>
                                             {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
-                                            <td className='data-field' style={{width:'22%'}}>{homeSpread ? homeSpread.value : ''}</td>
-                                            <td className='data-field' style={{width:'22%'}}>{homeTotals ? homeTotals.value : ''}</td>
-                                            <td className='data-field' style={{width:'22%'}}>{homeMoneyline ? homeMoneyline.value : ''}</td>
+                                            <td className='data-field'>{homeSpread ? homeSpread.value : ''}</td>
+                                            <td className='data-field'>{homeTotals ? homeTotals.value : ''}</td>
+                                            <td className='data-field'>{homeMoneyline ? homeMoneyline.value : ''}</td>
                                         </tr>
                                         <tr>
                                             <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam.logo}/>{awayTeam.name}</div></td>
                                             {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
-                                            <td className='data-field' style={{width:'22%'}}>{awaySpread ? awaySpread.value : ''}</td>
-                                            <td className='data-field' style={{width:'22%'}}>{awayTotals ? awayTotals.value : ''}</td>
-                                            <td className='data-field' style={{width:'22%'}}>{awayMoneyline ? awayMoneyline.value : ''}</td>
+                                            <td className='data-field'>{awaySpread ? awaySpread.value : ''}</td>
+                                            <td className='data-field'>{awayTotals ? awayTotals.value : ''}</td>
+                                            <td className='data-field'>{awayMoneyline ? awayMoneyline.value : ''}</td>
                                         </tr>
                                         {isOwner ? 
                                             <tr>
                                                 <td style={{width:'34%', fontSize:'12px'}}>
                                                     <div className='games-edit-delete-btns'>
                                                         <Link id='games-edit-btn'to={`/games/${game.id}/update`}>
-                                                        {/* <BiSolidEdit fontSize='20px'/> */}
                                                         Edit Game
                                                         </Link>
                                                         <OpenModalButton to={`/games/${game.id}/delete`}
