@@ -14,6 +14,7 @@ import OpenModalButton from '../OpenModalButton';
 import fanswapAd from '../../../images/fanswap-longer.png'; 
 import DeleteGame from './DeleteGame';
 import './GamesList.css';
+import { thunkLoadOdds } from '../../redux/odds';
 
 
 function GamesList() {
@@ -22,11 +23,15 @@ function GamesList() {
     const numGames = useSelector(state => state.games.totalGames); // 18 
     const allTeams = useSelector(state => state.teams.teams);
     const currentUser = useSelector(state => state.session.user); 
+    const allOdds = useSelector(state => state.odds.odds);
+    console.log("ODDS", allOdds)
     const [selectedLeague, setSelectedLeague] = useState();
     const [currentPage, setCurrentPage] = useState(1); 
     const [gamesPerPage, setGamesPerPage] = useState(10); 
     const [searchTerm, setSearchTerm] = useState('');
-    const numPages = Math.ceil(numGames / gamesPerPage)
+    const numPages = Math.ceil(numGames / gamesPerPage);
+    const gameIds = allGames?.map((game) => game.id); // [22, 21, 12, 11, 10, ...]
+
 
     // Logic for filtering the teams in search bar
     let selectedTeams = allTeams;
@@ -43,6 +48,11 @@ function GamesList() {
         dispatch(thunkLoadGames(currentPage, gamesPerPage, selectedLeague));
         dispatch(thunkLoadTeams()); 
     }, [dispatch])
+
+    // Once we've loaded the games, we then load the odds
+    useEffect(() => {
+        dispatch(thunkLoadOdds(gameIds));
+    }, [allGames])
 
     if (allTeams && allGames) {
 

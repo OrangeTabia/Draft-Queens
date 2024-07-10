@@ -12,8 +12,8 @@ const addOdd = (odd) => ({
 });
 
 
-export const thunkLoadOdds = () => async (dispatch) => {
-    const response = await fetch('/api/odds'); 
+export const thunkLoadOdds = (gameIds) => async (dispatch) => {
+    const response = await fetch('/api/odds?' + new URLSearchParams({gameIds})); 
     if (response.ok) {
         const data = await response.json(); 
         return dispatch(loadOdds(data)); 
@@ -42,10 +42,9 @@ const initialState = {};
 function oddsReducer(state = initialState, action) {
      switch (action.type) {
         case LOAD_ODDS: {
-            const newState = { ...state };
-            action.odds.forEach((odd) => {
-                newState[odd.id] = odd;
-            });
+            const newState = { ...state, 
+                odds: [...action.odds.odds]
+            };
             return newState;
         }
         case ADD_ODD: {

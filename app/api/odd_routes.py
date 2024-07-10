@@ -11,10 +11,13 @@ def all_odds():
     """
     Query for all odds on all available games
     """
-    gameId = request.args.get('game_id')
+    # gameId = request.args.get('game_id')
+    gameIds = request.args.get('gameIds')
 
-    if gameId: 
-        odds = Odd.query.filter_by(game_id = int(gameId)).all()
+    print("HERES WHAT YOUVE BEEN WAITING FOR ", gameIds)
+
+    if gameIds: 
+        odds = Odd.query.filter_by(gameIds = int(gameIds)).all()
     else: 
         odds = Odd.query.all()
     return {'odds': [odd.to_dict() for odd in odds]}
