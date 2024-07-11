@@ -4,11 +4,15 @@
     margin-top: 50px;
 }
 
+#odds-back-btn-games-container {
+    width: 60%;
+}
+
 #odds-game-container {
+    margin-top: 5px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     color: #ababab;
     background-color: #121212;
-    width: 60%;
 }
