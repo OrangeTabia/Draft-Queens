@@ -78,14 +78,17 @@
     text-align: center;
     width: 22%;
     height: 18px;
+    color: #f76900;
 }
 
 .games-edit-delete-btns {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
     gap: 10px;
     text-decoration: underline;
+    /* border: 1px solid red; */
 }
 
 .games-edit-delete-btns > button {
@@ -94,6 +97,9 @@
     text-decoration: underline;
     color: white;
     font-size: 12px;
+    text-align: left;
+    padding: 0px;
+    /* border: 1px solid blue; */
 }
 
 .games-edit-delete-btns > button:hover {
@@ -104,6 +110,7 @@
 #games-edit-btn,
 #add-odds-btn {
     color: white;
+    /* border: 1px solid green; */
 }
 
 #games-edit-btn:hover, 

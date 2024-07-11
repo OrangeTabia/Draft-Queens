@@ -24,7 +24,6 @@ function GamesList() {
     const allTeams = useSelector(state => state.teams.teams);
     const currentUser = useSelector(state => state.session.user); 
     const allOdds = useSelector(state => state.odds.odds);
-    console.log("ODDS", allOdds)
     const [selectedLeague, setSelectedLeague] = useState();
     const [currentPage, setCurrentPage] = useState(1); 
     const [gamesPerPage, setGamesPerPage] = useState(10); 
@@ -178,7 +177,7 @@ function GamesList() {
                                                         buttonText='Delete Game'
                                                         modalComponent={<DeleteGame gameId={game.id}/>}
                                                         />
-                                                        <Link id='add-odds-btn' to='/odds/new'>
+                                                        <Link id='add-odds-btn' to={`/games/${game.id}/odds`}>
                                                         Add Odds
                                                         </Link>
                                                     </div>

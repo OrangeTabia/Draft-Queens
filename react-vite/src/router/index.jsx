@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         element: <UpdateGame />
       }, 
       {
-        path: '/odds/new',
+        path: '/games/:gameId/odds',
         element: <CreateOdd />
       },
       {
