@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models import db, Game, Team, Odd
 from app.forms import GameForm
+from app.forms import OddForm
 from flask_login import current_user, login_required
 
 game_routes = Blueprint('games', __name__)
@@ -123,5 +124,50 @@ def delete_game(game_id):
     db.session.commit()
 
     return {'message': 'Game has been successfully deleted'}
+
+
+@game_routes.route('/<int:game_id>/odds', methods=['GET', 'POST'])
+@login_required
+def add_odd(game_id): 
+    """
+    Creates a new odds on a game
+    """
+
+    form = OddForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    # Step 1: Validate
+    if form.validate_on_submit(): 
+        # Step 2: Deprecate all existing "live" odds
+        existing_odds = Odd.query.filter_by(
+            game_id = form.data['game_id'],
+            team_id = form.data['team_id'],
+            type = form.data['type'],
+            status = 'open'
+        )
+        
+        if existing_odds: 
+            for ex_odd in existing_odds: 
+                ex_odd.status = 'closed'
+            db.session.commit()
+
+        # Step 3: Create new odds
+        new_odd = Odd(
+            user_id=current_user.id,
+            game_id=form.data['game_id'],
+            team_id=form.data['team_id'],
+            type=form.data['type'],
+            value=form.data['value'],
+            status="open"
+        )
+
+        db.session.add(new_odd)
+        db.session.commit()
+
+        # Step 4: Serialize to user
+        return new_odd.to_dict()
+    
+    return form.errors, 401
+
 
 

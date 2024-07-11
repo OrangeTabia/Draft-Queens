@@ -1,6 +1,7 @@
 const LOAD_GAMES = 'games/loadGames';
 const ADD_GAME = 'games/addGame';
 const DELETE_GAME = 'games/deleteGame'; 
+const ADD_ODD = 'games/addOdd';
 
 
 const loadGames = (games) => ({
@@ -17,6 +18,11 @@ const deleteGame = (gameId) => ({
     type: DELETE_GAME, 
     gameId
 });
+
+const addOdd = (odd) => ({
+    type: ADD_ODD,
+    odd
+})
 
 
 export const thunkLoadGames = (page, size, sportType) => async (dispatch) => {
@@ -78,6 +84,20 @@ export const thunkDeleteGame = (gameId) => async (dispatch) => {
     }
 }; 
 
+export  const thunkAddOdd = (odd) => async (dispatch) => {
+    const response = await fetch(`/api/games/${odd.gameId}/odds`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'appliction/json' },
+        body: JSON.stringify(odd)
+    }); 
+    if (response.ok) {
+        const newOdd = await response.json(); 
+        return dispatch(addOdd(newOdd)); 
+    } else {
+        return { server: 'Something went wrong. Please try again' }
+    }
+};
+
 
 const initialState = {};
 
@@ -105,6 +125,11 @@ function gamesReducer(state = initialState, action) {
         case DELETE_GAME: {
             const newState = { ...state }; 
             delete newState[action.gameId];
+            return newState;
+        }
+        case ADD_ODD: {
+            const newState = { ...state };
+            newState[action.odd.id] = action.odd;
             return newState;
         }
         default: 

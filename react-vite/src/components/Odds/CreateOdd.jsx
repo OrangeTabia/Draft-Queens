@@ -16,7 +16,6 @@ function AddOdd() {
                 <table className='game-table-header'>
                     <tr>
                         <th className='table-header' style={{width:'34%', textAlign:'left', color:'#f76900'}}>GAME</th>
-                        {/* <th className='table-header' style={{width:'4%'}}></th> */}
                         <th className='table-header' style={{width:'22%'}}>SPREAD</th>
                         <th className='table-header' style={{width:'22%'}}>TOTAL</th>
                         <th className='table-header' style={{width:'22%'}}>MONEYLINE</th>
@@ -29,17 +28,15 @@ function AddOdd() {
                     </tr>
                     <tr>
                         <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo'/>Home Team Name</div></td>
-                        {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
-                        <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
-                        <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
-                        <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
+                        <td className='data-field'>coming soon!</td>
+                        <td className='data-field'>coming soon!</td>
+                        <td className='data-field'>coming soon!</td>
                     </tr>
                     <tr>
                         <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo'/>Away Team Name</div></td>
-                        {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
-                        <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
-                        <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
-                        <td className='data-field' style={{width:'22%', textAlign:'center'}}>coming soon!</td>
+                        <td className='data-field'>coming soon!</td>
+                        <td className='data-field'>coming soon!</td>
+                        <td className='data-field'>coming soon!</td>
                     </tr>
                 </table>
             </div>
