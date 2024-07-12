@@ -35,29 +35,33 @@ function AddOdd() {
                 </div>
                 <div id='odds-game-container'>
                     <table className='game-table-header'>
-                        <tr>
-                            <th className='table-header' style={{width:'34%', textAlign:'left', color:'#f76900'}}>GAME</th>
-                            <th className='table-header' style={{width:'22%'}}>SPREAD</th>
-                            <th className='table-header' style={{width:'22%'}}>TOTAL</th>
-                            <th className='table-header' style={{width:'22%'}}>MONEYLINE</th>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th className='table-header' style={{width:'34%', textAlign:'left', color:'#f76900'}}>GAME</th>
+                                <th className='table-header' style={{width:'22%'}}>SPREAD</th>
+                                <th className='table-header' style={{width:'22%'}}>TOTAL</th>
+                                <th className='table-header' style={{width:'22%'}}>MONEYLINE</th>
+                            </tr>
+                        </thead>
                     </table>
                     <table className='game-table-body'>
-                        <tr>
-                            <td style={{width:'34%', fontSize:'12px'}}>{formattedDate}&nbsp;&nbsp;&mdash;&nbsp;&nbsp;{formattedTime}</td>
-                        </tr>
-                        <tr>
-                            <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam?.logo}/>{homeTeam?.name}</div></td>
-                            <td className='data-field'>{homeSpread ? homeSpread.value : ''}</td>
-                            <td className='data-field'>{homeTotals ? homeTotals.value : ''}</td>
-                            <td className='data-field'>{homeMoneyline ? homeMoneyline.value : ''}</td>
-                        </tr>
-                        <tr>
-                            <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam?.logo}/>{awayTeam?.name}</div></td>
-                            <td className='data-field'>{awaySpread ? awaySpread.value : ''}</td>
-                            <td className='data-field'>{awayTotals ? awayTotals.value : ''}</td>
-                            <td className='data-field'>{awayMoneyline ? awayMoneyline.value : ''}</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td style={{width:'34%', fontSize:'12px'}}>{formattedDate}&nbsp;&nbsp;&mdash;&nbsp;&nbsp;{formattedTime}</td>
+                            </tr>
+                            <tr>
+                                <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam?.logo}/>{homeTeam?.name}</div></td>
+                                <td className='data-field'>{homeSpread ? homeSpread.value : ''}</td>
+                                <td className='data-field'>{homeTotals ? homeTotals.value : ''}</td>
+                                <td className='data-field'>{homeMoneyline ? homeMoneyline.value : ''}</td>
+                            </tr>
+                            <tr>
+                                <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam?.logo}/>{awayTeam?.name}</div></td>
+                                <td className='data-field'>{awaySpread ? awaySpread.value : ''}</td>
+                                <td className='data-field'>{awayTotals ? awayTotals.value : ''}</td>
+                                <td className='data-field'>{awayMoneyline ? awayMoneyline.value : ''}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

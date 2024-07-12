@@ -113,13 +113,15 @@ function GamesList() {
                         </div>
                         <div className='games-container'>
                             <table className='game-table-header'>
-                                <tr>
-                                    <th className='table-header' style={{width:'34%', textAlign:'left', color:'#f76900'}}>GAMES</th>
-                                    {/* <th className='table-header' style={{width:'4%'}}></th> */}
-                                    <th className='table-header' style={{width:'22%'}}>SPREAD</th>
-                                    <th className='table-header' style={{width:'22%'}}>TOTAL</th>
-                                    <th className='table-header' style={{width:'22%'}}>MONEYLINE</th>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th className='table-header' style={{width:'34%', textAlign:'left', color:'#f76900'}}>GAMES</th>
+                                        {/* <th className='table-header' style={{width:'4%'}}></th> */}
+                                        <th className='table-header' style={{width:'22%'}}>SPREAD</th>
+                                        <th className='table-header' style={{width:'22%'}}>TOTAL</th>
+                                        <th className='table-header' style={{width:'22%'}}>MONEYLINE</th>
+                                    </tr>
+                                </thead>
                             </table>
                             {allGames.map((game) => {
                                 let homeTeam = allTeams.find((team) => team.id == game.homeTeamId);
