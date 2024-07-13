@@ -58,8 +58,25 @@ def all_games():
             'total_games': total_games
         }
 
+@game_routes.route('/<int:game_id>')
+def find_game(game_id):
+    """
+    Query for single game, and return the teams associated with the game
+    """
 
-
+    # Get the game and then 
+    game = Game.query.get(game_id)
+    if not game: 
+        return { 
+            "Error": "Game not found"
+        }
+    
+    teams = Team.query.filter(Team.id.in_([game.home_team_id, game.away_team_id])).all()
+    return {
+        'games':[ game.to_dict()],
+        'teams': [team.to_dict() for team in teams]
+    }
+    
 @game_routes.route('/new', methods=['GET', 'POST'])
 @login_required
 def create_game(): 

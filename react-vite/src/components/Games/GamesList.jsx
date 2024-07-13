@@ -150,24 +150,25 @@ function GamesList() {
                                 )) {
                                     return (
                                     <table className='game-table-body'>
-                                        <tr>
-                                            <td style={{width:'34%', fontSize:'12px'}}>{formattedDate}&nbsp;&nbsp;&mdash;&nbsp;&nbsp;{formattedTime}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam.logo}/>{homeTeam.name}</div></td>
-                                            {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
-                                            <td className='data-field'>{homeSpread ? homeSpread.value : ''}</td>
-                                            <td className='data-field'>{homeTotals ? homeTotals.value : ''}</td>
-                                            <td className='data-field'>{homeMoneyline ? homeMoneyline.value : ''}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam.logo}/>{awayTeam.name}</div></td>
-                                            {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
-                                            <td className='data-field'>{awaySpread ? awaySpread.value : ''}</td>
-                                            <td className='data-field'>{awayTotals ? awayTotals.value : ''}</td>
-                                            <td className='data-field'>{awayMoneyline ? awayMoneyline.value : ''}</td>
-                                        </tr>
-                                        {isOwner ? 
+                                        <tbody>
+                                            <tr>
+                                                <td style={{width:'34%', fontSize:'12px'}}>{formattedDate}&nbsp;&nbsp;&mdash;&nbsp;&nbsp;{formattedTime}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam.logo}/>{homeTeam.name}</div></td>
+                                                {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
+                                                <td className='data-field'>{homeSpread ? homeSpread.value : ''}</td>
+                                                <td className='data-field'>{homeTotals ? homeTotals.value : ''}</td>
+                                                <td className='data-field'>{homeMoneyline ? homeMoneyline.value : ''}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam.logo}/>{awayTeam.name}</div></td>
+                                                {/* <td id='final-score' style={{width:'4%'}}>000</td> */}
+                                                <td className='data-field'>{awaySpread ? awaySpread.value : ''}</td>
+                                                <td className='data-field'>{awayTotals ? awayTotals.value : ''}</td>
+                                                <td className='data-field'>{awayMoneyline ? awayMoneyline.value : ''}</td>
+                                            </tr>
+                                            {isOwner ? 
                                             <tr>
                                                 <td style={{width:'34%', fontSize:'12px'}}>
                                                     <div className='games-edit-delete-btns'>
@@ -179,13 +180,14 @@ function GamesList() {
                                                         buttonText='Delete Game'
                                                         modalComponent={<DeleteGame gameId={game.id}/>}
                                                         />
-                                                        <Link id='add-odds-btn' to={`/games/${game.id}/odds`}>
+                                                        <Link id='add-odds-btn' to={`/games/${game.id}`}>
                                                         Add Odds
                                                         </Link>
                                                     </div>
                                                 </td>
                                             </tr>
-                                        : ''}
+                                            : ''}
+                                        </tbody>
                                     </table>
                                     )
                                 }}

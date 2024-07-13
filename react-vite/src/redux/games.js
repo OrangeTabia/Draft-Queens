@@ -1,4 +1,5 @@
 const LOAD_GAMES = 'games/loadGames';
+const LOAD_GAME = 'games/loadGame';
 const ADD_GAME = 'games/addGame';
 const DELETE_GAME = 'games/deleteGame'; 
 const ADD_ODD = 'games/addOdd';
@@ -7,7 +8,12 @@ const ADD_ODD = 'games/addOdd';
 const loadGames = (games) => ({
     type: LOAD_GAMES, 
     games
-}); 
+});
+
+const loadGame = (game) => ({
+    type: LOAD_GAME,
+    game
+});
 
 const addGame = (game) => ({
     type: ADD_GAME,
@@ -35,6 +41,16 @@ export const thunkLoadGames = (page, size, sportType) => async (dispatch) => {
         return { server: 'Something went wrong. Please try again' }
     }
 }; 
+
+export const thunkLoadGame = (gameId) => async (dispatch) => {
+    const response = await fetch(`/api/games/${gameId}`); 
+    if (response.ok) {
+        const data = await response.json();
+        return dispatch(loadGame(data));
+    } else {
+        return { server: 'Something went wrong. Please try again' }
+    }
+}
 
 export const thunkAddGame = (game) => async (dispatch) => {
     const gamePaylod = {
@@ -115,6 +131,14 @@ function gamesReducer(state = initialState, action) {
                 })],
                 totalGames: action.games.total_games,
                 sportType: action.games.sportType
+            }; 
+        }
+        case LOAD_GAME: {
+            // Set both the games and teams within the games so that we may use this 
+            // for the purposes of understanding and editing an individual odd
+            return { ...state, 
+                games: [...action.game.games],
+                teams: [...action.game.teams]
             }; 
         }
         case ADD_GAME: {
