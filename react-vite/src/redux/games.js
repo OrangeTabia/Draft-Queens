@@ -138,7 +138,8 @@ function gamesReducer(state = initialState, action) {
             // for the purposes of understanding and editing an individual odd
             return { ...state, 
                 games: [...action.game.games],
-                teams: [...action.game.teams]
+                teams: [...action.game.teams],
+                odds: [...action.game.odds],
             }; 
         }
         case ADD_GAME: {

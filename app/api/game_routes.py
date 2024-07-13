@@ -72,9 +72,11 @@ def find_game(game_id):
         }
     
     teams = Team.query.filter(Team.id.in_([game.home_team_id, game.away_team_id])).all()
+    odds = Odd.query.filter(Odd.game_id == game_id, Odd.status =='open').all()
     return {
         'games':[ game.to_dict()],
-        'teams': [team.to_dict() for team in teams]
+        'teams': [team.to_dict() for team in teams],
+        'odds': [odd.to_dict() for odd in odds]
     }
     
 @game_routes.route('/new', methods=['GET', 'POST'])

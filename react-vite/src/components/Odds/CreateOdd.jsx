@@ -14,18 +14,18 @@ function AddOdd() {
     // Pull the info from the games since we reload a smaller portion of information
     const allGames = useSelector(state => state.games.games); 
     const allTeams = useSelector(state => state.games.teams); 
-    const allOdds = useSelector(state => state.odds.odds);
+    const allOdds = useSelector(state => state.games.odds);
     const currentUser = useSelector(state => state.session.user); 
     const currentGame = allGames?.find((game) => game.id == gameId); 
     const homeTeam = allTeams?.find((team) => team.id == currentGame?.homeTeamId); 
     const awayTeam = allTeams?.find((team) => team.id == currentGame?.awayTeamId); 
     const formattedDate = currentGame?.startTime.split(' ').slice(0, -2).join(' ');
     const formattedTime = new Date(currentGame?.startTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}); 
-    const homeTeamOdds = allOdds?.filter((odd) => odd.gameId == currentGame.id && odd.teamId == currentGame.homeTeamId && odd.status == 'open'); 
+    const homeTeamOdds = allOdds?.filter((odd) => odd.gameId == currentGame.id && odd.teamId == currentGame.homeTeamId); 
     const homeSpread = homeTeamOdds?.find((odd) => odd.type == 'spread'); 
     const homeTotals = homeTeamOdds?.find((odd) => odd.type == 'totals');
     const homeMoneyline = homeTeamOdds?.find((odd) => odd.type == 'moneyline');
-    const awayTeamOdds = allOdds?.filter((odd) => odd.gameId == currentGame.id && odd.teamId == currentGame.awayTeamId && odd.status == 'open'); 
+    const awayTeamOdds = allOdds?.filter((odd) => odd.gameId == currentGame.id && odd.teamId == currentGame.awayTeamId); 
     const awaySpread = awayTeamOdds?.find((odd) => odd.type == 'spread');
     const awayTotals = awayTeamOdds?.find((odd) => odd.type == 'totals');
     const awayMoneyline = awayTeamOdds?.find((odd) => odd.type == 'moneyline');
@@ -34,8 +34,6 @@ function AddOdd() {
         dispatch(thunkLoadGame(gameId));
         // dispatch(thunkLoadTeams()); 
     }, [dispatch]);
-
-    debugger;
 
 
     return (
@@ -74,7 +72,12 @@ function AddOdd() {
                                 <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam?.logo}/>{awayTeam?.name}</div></td>
                                 <td className='data-field'>{awaySpread ? awaySpread.value : ''}</td>
                                 <td className='data-field'>{awayTotals ? awayTotals.value : ''}</td>
-                                <td className='data-field'>{awayMoneyline ? awayMoneyline.value : ''}</td>
+                                <td className='data-field'>
+                                {
+                                    // <input value={awayMoneyline?.value}/>
+                                }
+                                    {awayMoneyline ? awayMoneyline.value : ''}
+                                    </td>
                             </tr>
                         </tbody>
                     </table>
