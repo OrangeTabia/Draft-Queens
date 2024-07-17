@@ -36,6 +36,9 @@ function AddOdd() {
     }, [dispatch]);
 
 
+
+
+
     return (
         <div id='create-odds-container'>
             <h1>Add Odds</h1>
@@ -54,42 +57,62 @@ function AddOdd() {
                             </tr>
                         </thead>
                     </table>
-                    <table className='game-table-body'>
-                        <tbody>
-                            <tr>
-                                <td style={{width:'34%', fontSize:'12px'}}>{formattedDate}&nbsp;&nbsp;&mdash;&nbsp;&nbsp;{formattedTime}</td>
-                            </tr>
-                            <tr>
-                                <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam?.logo}/>{homeTeam?.name}</div></td>
-                                <td className='data-field-odds'>
-                                    <input value={homeSpread?.value}>
-                                    </input>
-                                </td>
-                                <td className='data-field-odds'>
-                                    <input value={homeTotals?.value}>
-                                    </input>
-                                </td>
-                                <td className='data-field-odds'>
-                                    <input value={homeMoneyline?.value}>
-                                    </input>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam?.logo}/>{awayTeam?.name}</div></td>
-                                <td className='data-field-odds'>
-                                    <input value={awaySpread?.value}>
-                                    </input>
-                                </td>
-                                <td className='data-field-odds'>
-                                    <input value={awayTotals?.value}>
-                                    </input>
-                                </td>
-                                <td className='data-field-odds'>
-                                    <input value={awayMoneyline?.value}/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <form>
+                        <table className='game-table-body'>
+                            <tbody>
+                                <tr>
+                                    <td style={{width:'34%', fontSize:'12px'}}>{formattedDate}&nbsp;&nbsp;&mdash;&nbsp;&nbsp;{formattedTime}</td>
+                                </tr>
+                                <tr>
+                                    <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam?.logo}/>{homeTeam?.name}</div></td>
+                                    <td className='data-field-odds'>
+                                        <input 
+                                            value={homeSpread?.value}
+                                            placeholder='enter spread here'
+                                        >
+                                        </input>
+                                    </td>
+                                    <td className='data-field-odds'>
+                                        <input 
+                                            value={homeTotals?.value}
+                                            placeholder='enter totals here'
+                                        >
+                                        </input>
+                                    </td>
+                                    <td className='data-field-odds'>
+                                        <input 
+                                            value={homeMoneyline?.value}
+                                            placeholder='enter moneyline here'
+                                        >
+                                        </input>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam?.logo}/>{awayTeam?.name}</div></td>
+                                    <td className='data-field-odds'>
+                                        <input 
+                                            value={awaySpread?.value}
+                                            placeholder='add spread'
+                                        >
+                                        </input>
+                                    </td>
+                                    <td className='data-field-odds'>
+                                        <input 
+                                            value={awayTotals?.value}
+                                            placeholder='add totals'
+                                        >
+                                        </input>
+                                    </td>
+                                    <td className='data-field-odds'>
+                                        <input 
+                                            value={awayMoneyline?.value}
+                                            placeholder='add moneyline'
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
                 <div id='odds-submit-btn-container'>
                     <button id='submit-odds-btn'>
