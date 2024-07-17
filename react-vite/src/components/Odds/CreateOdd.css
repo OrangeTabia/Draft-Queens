@@ -1,7 +1,7 @@
 #create-odds-container {
     display: flex;
-    justify-content: center;
-    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;
 }
 
 #odds-back-btn-games-container {
@@ -15,4 +15,43 @@
     flex-direction: column;
     color: #ababab;
     background-color: #121212;
+}
+
+#odds-submit-btn-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.data-field-odds {
+    background-color: #242424;
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    width: 22%;
+    height: 18px;
+    color: #f76900;
+}
+
+.data-field-odds > input {
+    background-color: transparent;
+    border: none;
+    color: #f76900;
+    text-align: center;
+    font-size: 16px;
+    height: 30px;
+    /* border: 1px solid yellow; */
+}
+
+#submit-odds-btn {
+    height: 35px;
+    width: 15%;
+    background-color: #f76900;
+    border: none;
+    color: white;
+}
+
+#submit-odds-btn:hover {
+    cursor: pointer;
+    background-color: #f9852c;
 }

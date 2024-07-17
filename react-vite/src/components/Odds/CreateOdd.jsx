@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'; 
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, json } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { thunkLoadGame } from '../../redux/games';
 import { thunkLoadTeams } from '../../redux/teams';
@@ -38,6 +38,7 @@ function AddOdd() {
 
     return (
         <div id='create-odds-container'>
+            <h1>Add Odds</h1>
             <div id='odds-back-btn-games-container'>
                 <div id='odds-back-to-games'>
                     <Link className='back-btn' to='/games'>Go back to Games</Link>
@@ -60,27 +61,40 @@ function AddOdd() {
                             </tr>
                             <tr>
                                 <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam?.logo}/>{homeTeam?.name}</div></td>
-                                <td className='data-field'>
-                                {
-                                // <ReactSlider/>
-                                }
-                                    {homeSpread ? homeSpread.value : ''}</td>
-                                <td className='data-field'>{homeTotals ? homeTotals.value : ''}</td>
-                                <td className='data-field'>{homeMoneyline ? homeMoneyline.value : ''}</td>
+                                <td className='data-field-odds'>
+                                    <input value={homeSpread?.value}>
+                                    </input>
+                                </td>
+                                <td className='data-field-odds'>
+                                    <input value={homeTotals?.value}>
+                                    </input>
+                                </td>
+                                <td className='data-field-odds'>
+                                    <input value={homeMoneyline?.value}>
+                                    </input>
+                                </td>
                             </tr>
                             <tr>
                                 <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam?.logo}/>{awayTeam?.name}</div></td>
-                                <td className='data-field'>{awaySpread ? awaySpread.value : ''}</td>
-                                <td className='data-field'>{awayTotals ? awayTotals.value : ''}</td>
-                                <td className='data-field'>
-                                {
-                                    // <input value={awayMoneyline?.value}/>
-                                }
-                                    {awayMoneyline ? awayMoneyline.value : ''}
-                                    </td>
+                                <td className='data-field-odds'>
+                                    <input value={awaySpread?.value}>
+                                    </input>
+                                </td>
+                                <td className='data-field-odds'>
+                                    <input value={awayTotals?.value}>
+                                    </input>
+                                </td>
+                                <td className='data-field-odds'>
+                                    <input value={awayMoneyline?.value}/>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div id='odds-submit-btn-container'>
+                    <button id='submit-odds-btn'>
+                        Submit
+                    </button>
                 </div>
             </div>
         </div>
