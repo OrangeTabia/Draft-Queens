@@ -159,6 +159,8 @@ def add_odd(game_id):
     form = OddForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print("HERES the form: ", form)
+
     # Step 1: Validate
     if form.validate_on_submit(): 
         # Step 2: Deprecate all existing "live" odds

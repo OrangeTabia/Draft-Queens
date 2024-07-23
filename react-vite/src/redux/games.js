@@ -28,7 +28,7 @@ const deleteGame = (gameId) => ({
 const addOdd = (odd) => ({
     type: ADD_ODD,
     odd
-})
+});
 
 
 export const thunkLoadGames = (page, size, sportType) => async (dispatch) => {
@@ -100,7 +100,7 @@ export const thunkDeleteGame = (gameId) => async (dispatch) => {
     }
 }; 
 
-export  const thunkAddOdd = (odd) => async (dispatch) => {
+export const thunkAddOdd = (odd) => async (dispatch) => {
     const response = await fetch(`/api/games/${odd.gameId}/odds`, {
         method: 'POST',
         headers: { 'Content-Type': 'appliction/json' },

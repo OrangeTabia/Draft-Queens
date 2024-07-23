@@ -1,16 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux'; 
-import { useParams, Link, json } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { thunkLoadGame } from '../../redux/games';
-import { thunkLoadTeams } from '../../redux/teams';
-import { thunkLoadOdds } from '../../redux/odds';
-// import ReactSlider from 'react-slider'
+import { thunkAddOdd } from '../../redux/games';
 
 import './CreateOdd.css'; 
 
 function AddOdd() {
     const { gameId } = useParams(); 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     // Pull the info from the games since we reload a smaller portion of information
     const allGames = useSelector(state => state.games.games); 
     const allTeams = useSelector(state => state.games.teams); 
@@ -29,13 +28,40 @@ function AddOdd() {
     const awaySpread = awayTeamOdds?.find((odd) => odd.type == 'spread');
     const awayTotals = awayTeamOdds?.find((odd) => odd.type == 'totals');
     const awayMoneyline = awayTeamOdds?.find((odd) => odd.type == 'moneyline');
+    const [value, setValue] = useState(''); 
+    const [errors, setErrors] = useState({}); 
+    const [hasSubmitted, setHasSubmitted] = useState(false); 
 
     useEffect(() => {
         dispatch(thunkLoadGame(gameId));
-        // dispatch(thunkLoadTeams()); 
     }, [dispatch]);
 
 
+    useEffect(() => {
+        const errors = {};
+        if (value !== typeof('number')) errors.value = 'Input must only be a number'; 
+        setErrors(errors); 
+    }, [value]);
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
+
+        setHasSubmitted(true);
+
+        if (Object.values(errors).length > 0) {
+            return;
+        } else {
+            const formData = new FormData(); 
+
+            formData.append('user_id', currentUser.id)
+            formData.append('game_id', gameId)
+            formData.append('value', value)
+        
+            await dispatch(thunkAddOdd(formData)); 
+            navigate(`/games/${gameId}`); 
+        }
+    }
 
 
 
@@ -57,7 +83,7 @@ function AddOdd() {
                             </tr>
                         </thead>
                     </table>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <table className='game-table-body'>
                             <tbody>
                                 <tr>
@@ -68,21 +94,27 @@ function AddOdd() {
                                     <td className='data-field-odds'>
                                         <input 
                                             value={homeSpread?.value}
-                                            placeholder='enter spread here'
+                                            placeholder='enter spread'
+                                            onChange={(e) => setValue(e.target.value)}
+                                            contenteditable='true'
                                         >
                                         </input>
                                     </td>
                                     <td className='data-field-odds'>
                                         <input 
                                             value={homeTotals?.value}
-                                            placeholder='enter totals here'
+                                            placeholder='enter totals'
+                                            onChange={(e) => setValue(e.target.value)}
+                                            contenteditable='true'
                                         >
                                         </input>
                                     </td>
-                                    <td className='data-field-odds'>
+                                    <td className='data-field-odds' contentEditable='true'>
                                         <input 
                                             value={homeMoneyline?.value}
-                                            placeholder='enter moneyline here'
+                                            placeholder='enter moneyline'
+                                            onChange={(e) => setValue(e.target.value)}
+                                            
                                         >
                                         </input>
                                     </td>
@@ -92,32 +124,36 @@ function AddOdd() {
                                     <td className='data-field-odds'>
                                         <input 
                                             value={awaySpread?.value}
-                                            placeholder='add spread'
+                                            placeholder='enter spread'
+                                            onChange={(e) => setValue(e.target.value)}
+                                            contenteditable='true'
                                         >
                                         </input>
                                     </td>
                                     <td className='data-field-odds'>
                                         <input 
                                             value={awayTotals?.value}
-                                            placeholder='add totals'
+                                            placeholder='enter totals'
+                                            onChange={(e) => setValue(e.target.value)}
+                                            contenteditable='true'
                                         >
                                         </input>
                                     </td>
                                     <td className='data-field-odds'>
                                         <input 
                                             value={awayMoneyline?.value}
-                                            placeholder='add moneyline'
+                                            placeholder='enter moneyline'
+                                            onChange={(e) => setValue(e.target.value)}
+                                            contenteditable='true'
                                         />
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div id='odds-submit-btn-container'>
+                            <button id='submit-odds-btn' type='submit'>Submit</button>
+                        </div>
                     </form>
-                </div>
-                <div id='odds-submit-btn-container'>
-                    <button id='submit-odds-btn'>
-                        Submit
-                    </button>
                 </div>
             </div>
         </div>
