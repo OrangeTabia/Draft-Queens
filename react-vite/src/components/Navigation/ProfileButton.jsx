@@ -42,11 +42,6 @@ function ProfileButton() {
     closeMenu();
   };
 
-  const featureComingSoon = (e) => {
-    e.preventDefault();
-    window.alert('Feature coming soon!'); 
-  }
-
   return (
     <>
       <button id="menu-item" onClick={toggleMenu}>
