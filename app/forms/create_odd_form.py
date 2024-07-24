@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import IntegerField, SelectField, FloatField
 from wtforms.validators import DataRequired, InputRequired
 
-odds_type = ['moneyline', 'spread', 'over', 'under']
+odds_type = ['moneyline', 'spread', 'totals']
 
 class OddForm(FlaskForm): 
     game_id = IntegerField('game_id', validators=[DataRequired()])

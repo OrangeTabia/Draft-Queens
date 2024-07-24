@@ -42,7 +42,7 @@ def seed_odds():
     odd5_game3 = Odd(
         user_id=1,
         game_id=3,
-        type='over',
+        type='totals',
         value=171,
         status='closed',
     )
@@ -50,7 +50,7 @@ def seed_odds():
     odd6_game4 = Odd(
         user_id=1,
         game_id=4,
-        type='under',
+        type='totals',
         value=171,
         status='open',
     )

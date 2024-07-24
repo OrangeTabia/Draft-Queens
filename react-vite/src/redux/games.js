@@ -25,9 +25,9 @@ const deleteGame = (gameId) => ({
     gameId
 });
 
-const addOdd = (odd) => ({
+const addOdd = (odds) => ({
     type: ADD_ODD,
-    odd
+    odds
 });
 
 
@@ -100,17 +100,19 @@ export const thunkDeleteGame = (gameId) => async (dispatch) => {
     }
 }; 
 
-export const thunkAddOdd = (odd) => async (dispatch) => {
-    const response = await fetch(`/api/games/${odd.gameId}/odds`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'appliction/json' },
-        body: JSON.stringify(odd)
-    }); 
-    if (response.ok) {
-        const newOdd = await response.json(); 
-        return dispatch(addOdd(newOdd)); 
-    } else {
-        return { server: 'Something went wrong. Please try again' }
+export const thunkAddOdd = (odds) => async (dispatch) => {
+    for (let singleOdd of odds) {
+        const response = await fetch(`/api/games/${singleOdd.game_id}/odds`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(singleOdd)
+        }); 
+        if (response.ok) {
+            const newOdd = await response.json(); 
+            dispatch(addOdd(newOdd)); 
+        } else {
+            return { server: 'Something went wrong. Please try again' }
+        }
     }
 };
 
@@ -154,7 +156,7 @@ function gamesReducer(state = initialState, action) {
         }
         case ADD_ODD: {
             const newState = { ...state };
-            newState[action.odd.id] = action.odd;
+            newState[action.odds.id] = action.odds;
             return newState;
         }
         default: 

@@ -156,10 +156,17 @@ def add_odd(game_id):
     Creates a new odds on a game
     """
 
+    payload = request.json
+
+    # Manually add the JSON values to the form 
+    # NOTE: The form takes care of things like authentication through the 
+    # CSRF token validation
     form = OddForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
-    print("HERES the form: ", form)
+    form['game_id'].data = payload['game_id']
+    form['team_id'].data = payload['team_id']
+    form['value'].data = payload['value']
+    form['type'].data = payload['type']
 
     # Step 1: Validate
     if form.validate_on_submit(): 
@@ -183,7 +190,7 @@ def add_odd(game_id):
             team_id=form.data['team_id'],
             type=form.data['type'],
             value=form.data['value'],
-            status="open"
+            status='open'
         )
 
         db.session.add(new_odd)

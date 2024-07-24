@@ -14,21 +14,23 @@ function AddOdd() {
     const allGames = useSelector(state => state.games.games); 
     const allTeams = useSelector(state => state.games.teams); 
     const allOdds = useSelector(state => state.games.odds);
-    const currentUser = useSelector(state => state.session.user); 
     const currentGame = allGames?.find((game) => game.id == gameId); 
     const homeTeam = allTeams?.find((team) => team.id == currentGame?.homeTeamId); 
     const awayTeam = allTeams?.find((team) => team.id == currentGame?.awayTeamId); 
+
     const formattedDate = currentGame?.startTime.split(' ').slice(0, -2).join(' ');
     const formattedTime = new Date(currentGame?.startTime).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}); 
+
     const homeTeamOdds = allOdds?.filter((odd) => odd.gameId == currentGame.id && odd.teamId == currentGame.homeTeamId); 
     const homeSpread = homeTeamOdds?.find((odd) => odd.type == 'spread'); 
     const homeTotals = homeTeamOdds?.find((odd) => odd.type == 'totals');
     const homeMoneyline = homeTeamOdds?.find((odd) => odd.type == 'moneyline');
+
     const awayTeamOdds = allOdds?.filter((odd) => odd.gameId == currentGame.id && odd.teamId == currentGame.awayTeamId); 
     const awaySpread = awayTeamOdds?.find((odd) => odd.type == 'spread');
     const awayTotals = awayTeamOdds?.find((odd) => odd.type == 'totals');
     const awayMoneyline = awayTeamOdds?.find((odd) => odd.type == 'moneyline');
-    const [value, setValue] = useState(''); 
+
     const [errors, setErrors] = useState({}); 
     const [hasSubmitted, setHasSubmitted] = useState(false); 
 
@@ -37,11 +39,29 @@ function AddOdd() {
     }, [dispatch]);
 
 
-    useEffect(() => {
-        const errors = {};
-        if (value !== typeof('number')) errors.value = 'Input must only be a number'; 
-        setErrors(errors); 
-    }, [value]);
+    const [homeSpreadOdd, setHomeSpreadOdd] = useState(homeSpread?.value);
+    const [homeTotalsOdd, setHomeTotalsOdd] = useState(homeTotals?.value);
+    const [homeMoneylineOdd, setHomeMoneyLineOdd] = useState(homeMoneyline?.value);
+    const [awaySpreadOdd, setAwaySpreadOdd] = useState(awaySpread?.value);
+    const [awayTotalsOdd, setAwayTotalsOdd] = useState(awayTotals?.value); 
+    const [awayMoneylineOdd, setAwayMoneylineOdd] = useState(awayMoneyline?.value);
+    
+    // Since our state management needs work, let's just reset these values when we properly render the odds
+    useEffect(() => { 
+        setHomeSpreadOdd(homeSpread?.value);
+        setHomeTotalsOdd(homeTotals?.value);
+        setHomeMoneyLineOdd(homeMoneyline?.value);
+        setAwaySpreadOdd(awaySpread?.value);
+        setAwayTotalsOdd(awayTotals?.value); 
+        setAwayMoneylineOdd(awayMoneyline?.value);
+    }, [allOdds])
+
+    // useEffect(() => {
+    //     const errors = {};
+    //     if (odds !== typeof('number')) errors.odds = 'Input must only be a number'; 
+    //     if (odds.length > 4) errors.odds = 'Odds must be 3 numbers or less'; 
+    //     setErrors(errors); 
+    // }, [odds]);
 
 
     const handleSubmit = async (e) => {
@@ -51,14 +71,72 @@ function AddOdd() {
 
         if (Object.values(errors).length > 0) {
             return;
-        } else {
-            const formData = new FormData(); 
 
-            formData.append('user_id', currentUser.id)
-            formData.append('game_id', gameId)
-            formData.append('value', value)
+        } else {
+
+            let odds = [];
+
+            if (homeSpreadOdd) {
+                odds.push({
+                    // user_id: currentUser.id,
+                    game_id: Number(gameId),
+                    team_id: homeTeam.id, 
+                    type: 'spread',
+                    value: homeSpreadOdd
+                })
+            }
+
+            if (homeTotalsOdd) {
+                odds.push({
+                    // user_id: currentUser.id,
+                    game_id: Number(gameId),
+                    team_id: homeTeam.id, 
+                    type: 'totals',
+                    value: homeTotalsOdd
+                })
+            }
+
+            if (homeMoneylineOdd) {
+                odds.push({
+                    // user_id: currentUser.id,
+                    game_id: Number(gameId),
+                    team_id: homeTeam.id, 
+                    type: 'moneyline',
+                    value: homeMoneylineOdd
+                })
+            }
+
+            if (awaySpreadOdd) {
+                odds.push({
+                    // user_id: currentUser.id,
+                    game_id: Number(gameId),
+                    team_id: awayTeam.id, 
+                    type: 'spread',
+                    value: awaySpreadOdd
+                })
+            }
+
+            if (awayTotalsOdd) {
+                odds.push({
+                    // user_id: currentUser.id,
+                    game_id: Number(gameId),
+                    team_id: awayTeam.id, 
+                    type: 'totals',
+                    value: awayTotalsOdd
+                })
+            }
+
+            if (awayMoneylineOdd) {
+                odds.push({
+                    // user_id: currentUser.id,
+                    game_id: Number(gameId),
+                    team_id: awayTeam.id, 
+                    type: 'moneyline',
+                    value: awayMoneylineOdd
+                })
+            }
         
-            await dispatch(thunkAddOdd(formData)); 
+            await dispatch(thunkAddOdd(odds)); 
             navigate(`/games/${gameId}`); 
         }
     }
@@ -93,28 +171,28 @@ function AddOdd() {
                                     <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={homeTeam?.logo}/>{homeTeam?.name}</div></td>
                                     <td className='data-field-odds'>
                                         <input 
-                                            value={homeSpread?.value}
+                                            value={homeSpreadOdd}
                                             placeholder='enter spread'
-                                            onChange={(e) => setValue(e.target.value)}
-                                            contenteditable='true'
+                                            onChange={(e) => setHomeSpreadOdd(e.target.value)}
+                                            contentEditable='true'
                                         >
                                         </input>
                                     </td>
                                     <td className='data-field-odds'>
                                         <input 
-                                            value={homeTotals?.value}
+                                            value={homeTotalsOdd}
                                             placeholder='enter totals'
-                                            onChange={(e) => setValue(e.target.value)}
-                                            contenteditable='true'
+                                            onChange={(e) => setHomeTotalsOdd(e.target.value)}
+                                            contentEditable='true'
                                         >
                                         </input>
                                     </td>
-                                    <td className='data-field-odds' contentEditable='true'>
+                                    <td className='data-field-odds'>
                                         <input 
-                                            value={homeMoneyline?.value}
+                                            value={homeMoneylineOdd}
                                             placeholder='enter moneyline'
-                                            onChange={(e) => setValue(e.target.value)}
-                                            
+                                            onChange={(e) => setHomeMoneyLineOdd(e.target.value)}
+                                            contentEditable='true'
                                         >
                                         </input>
                                     </td>
@@ -123,28 +201,28 @@ function AddOdd() {
                                     <td style={{width:'34%', color: 'white'}}><div className='team-and-logo'><img className='team-logo' src={awayTeam?.logo}/>{awayTeam?.name}</div></td>
                                     <td className='data-field-odds'>
                                         <input 
-                                            value={awaySpread?.value}
+                                            value={awaySpreadOdd}
                                             placeholder='enter spread'
-                                            onChange={(e) => setValue(e.target.value)}
-                                            contenteditable='true'
+                                            onChange={(e) => setAwaySpreadOdd(e.target.value)}
+                                            contentEditable='true'
                                         >
                                         </input>
                                     </td>
                                     <td className='data-field-odds'>
                                         <input 
-                                            value={awayTotals?.value}
+                                            value={awayTotalsOdd}
                                             placeholder='enter totals'
-                                            onChange={(e) => setValue(e.target.value)}
-                                            contenteditable='true'
+                                            onChange={(e) => setAwayTotalsOdd(e.target.value)}
+                                            contentEditable='true'
                                         >
                                         </input>
                                     </td>
                                     <td className='data-field-odds'>
                                         <input 
-                                            value={awayMoneyline?.value}
+                                            value={awayMoneylineOdd}
                                             placeholder='enter moneyline'
-                                            onChange={(e) => setValue(e.target.value)}
-                                            contenteditable='true'
+                                            onChange={(e) => setAwayMoneylineOdd(e.target.value)}
+                                            contentEditable='true'
                                         />
                                     </td>
                                 </tr>
