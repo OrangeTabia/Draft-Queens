@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), nullable=False, unique=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    role = db.Column(db.String(50), nullable=False)
 
     # one to many - user to teams
     team = db.relationship('Team', back_populates='user', cascade="all, delete-orphan")
@@ -40,5 +41,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email, 
+            'bookkeeper': self.is_bookkeeper
         }

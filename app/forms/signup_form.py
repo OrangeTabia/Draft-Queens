@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, RadioField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
+user_role = ['bookkeeper', 'better']
 
 def user_exists(form, field):
     # Checking if user exists
@@ -25,3 +26,4 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
+    role = RadioField('role', choices=user_role, validators=[DataRequired()])
