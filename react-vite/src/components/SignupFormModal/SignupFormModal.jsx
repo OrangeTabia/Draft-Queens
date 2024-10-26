@@ -17,6 +17,7 @@ function SignupFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [userRole, setUserRole] = useState("");
 
   const [errors, setErrors] = useState({});
   const [validations, setValidations] = useState({});
@@ -82,6 +83,7 @@ function SignupFormModal() {
         username,
         email,
         password,
+        role
       })
     );
 
@@ -178,6 +180,29 @@ function SignupFormModal() {
           {validations.confirmPassword && (
             <p className="form-errors">{validations.confirmPassword}</p>
           )}
+        </div>
+
+        <div className="radio-input-container">
+          User Role
+          <div className="radio-input">
+            <input 
+              type="radio" 
+              value="bookkeeper" 
+              checked={userRole === "bookkeeper"}
+              onChange={(e) => setUserRole(e.target.value)}
+            />
+          <label for="bookkeeper">Bookkeeper</label>
+        
+          </div>
+          <div className="radio-input">
+            <input 
+              type="radio" 
+              value="better" 
+              checked={userRole === "better"}
+              onChange={(e) => setUserRole(e.target.value)}
+            />
+            <label for="better">Better</label>
+          </div>
         </div>
 
         <button

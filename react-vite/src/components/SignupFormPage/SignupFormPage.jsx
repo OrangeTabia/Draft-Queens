@@ -11,6 +11,7 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [userRole, setUserRole] = useState("");
   const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Navigate to="/" replace={true} />;
@@ -85,6 +86,24 @@ function SignupFormPage() {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        <label>
+          Bookkeeper
+          <input 
+            type="radio" 
+            value="bookkeeper" 
+            checked={userRole === "bookkeeper"}
+            onChange={(e) => setUserRole(e.target.value)}
+          />
+        </label>
+        <label>
+          Better
+          <input 
+            type="radio" 
+            value="better" 
+            checked={userRole === "better"}
+            onChange={(e) => setUserRole(e.target.value)}
+          />
+        </label>
         <button type="submit">Sign Up</button>
       </form>
     </>

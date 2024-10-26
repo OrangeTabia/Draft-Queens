@@ -55,6 +55,7 @@ function ProfileButton() {
             <div className="dropdown-items">
               <div id='welcome-user'>Welcome, {user.username}!</div>
               <div id='welcome-email'>{user.email}</div>
+              <div id='user-role'>User Role: {user.role}</div>
               <Link to='/teams/new' className="dropdown-item">Create a Team</Link>
               <Link to='/games/new' className="dropdown-item">Create a Game</Link>
               <div className="dropdown-item" onClick={logout}>Log Out</div>
