@@ -17,7 +17,7 @@ function SignupFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [userRole, setUserRole] = useState("");
+  const [role, setRole] = useState("");
 
   const [errors, setErrors] = useState({});
   const [validations, setValidations] = useState({});
@@ -188,8 +188,8 @@ function SignupFormModal() {
             <input 
               type="radio" 
               value="bookkeeper" 
-              checked={userRole === "bookkeeper"}
-              onChange={(e) => setUserRole(e.target.value)}
+              checked={role === "bookkeeper"}
+              onChange={(e) => setRole(e.target.value)}
             />
           <label for="bookkeeper">Bookkeeper</label>
         
@@ -198,8 +198,8 @@ function SignupFormModal() {
             <input 
               type="radio" 
               value="better" 
-              checked={userRole === "better"}
-              onChange={(e) => setUserRole(e.target.value)}
+              checked={role === "better"}
+              onChange={(e) => setRole(e.target.value)}
             />
             <label for="better">Better</label>
           </div>
