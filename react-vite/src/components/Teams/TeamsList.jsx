@@ -83,7 +83,7 @@ function Teams() {
             </div>
             
             <div id={currentUser ? 'create-team-btn-container' : 'create-team-btn-container-logged-out'}>
-                {currentUser.role === 'bookkeeeper' &&
+                {currentUser &&
                 <Link id='create-team-btn' to='/teams/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/><span>&nbsp;Create a Team</span></Link>
                 }
                 <div className='search-bar'>

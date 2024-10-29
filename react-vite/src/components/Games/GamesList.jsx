@@ -97,7 +97,7 @@ function GamesList() {
                 <div id='games-and-ad-container'> 
                     <div id='games-and-btn-container'>
                         <div id={currentUser ? 'create-game-btn-container' : 'create-game-btn-container-logged-out'}>
-                        {currentUser.role === 'bookkeeper' &&
+                        {currentUser &&
                         <Link id='create-game-btn' to='/games/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/>&nbsp;Create a Game</Link>
                         }
                         <div className='search-bar'>

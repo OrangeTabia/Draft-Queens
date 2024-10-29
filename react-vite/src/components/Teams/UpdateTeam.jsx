@@ -24,7 +24,6 @@ function UpdateTeam() {
     const [errors, setErrors] = useState({}); 
     const [hasSubmitted, setHasSubmitted] = useState(false); 
     const currentUser = useSelector(state => state.session.user); 
-    console.log('Current user', currentUser)
 
 
     useEffect(() => {
@@ -77,75 +76,82 @@ function UpdateTeam() {
         }
     }
 
-    return (
-        <div className='update-container'>
-            <h1>Edit Team Details</h1>
-            <div className='update-form-container'>
-                <div className='form-and-back-btn'>
-                    <div><Link className='back-btn' to='/teams'>Go back to Teams</Link></div>
-                    <form
-                        onSubmit={handleSubmit}
-                        encType='multipart/form-data'
-                        className='create-form'
-                        >
-                        <div className='form-input'>
-                            <label>Team Name</label>
-                            <input
-                                className='input'
-                                type='text'
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+    if (currentUser?.role === 'bookkeeper') {
+        return (
+            <div className='update-container'>
+                <h1>Edit Team Details</h1>
+                <div className='update-form-container'>
+                    <div className='form-and-back-btn'>
+                        <div><Link className='back-btn' to='/teams'>Go back to Teams</Link></div>
+                        <form
+                            onSubmit={handleSubmit}
+                            encType='multipart/form-data'
+                            className='create-form'
                             >
-                            </input>
-                        </div>
-                        <div className='form-errors'>{hasSubmitted && errors.name}</div>
-                        <div className='form-input'>
-                            <label>Team Location</label>
-                            <input
-                                className='input'
-                                type='text'
-                                value={location}
-                                onChange={(e) => setLocation(e.target.value)}
-                            >
-                            </input>
-                        </div>
-                        <div className='form-errors'>{hasSubmitted && errors.location}</div>
-                        <div className='form-input'>
-                            <label value={sport}>Sport</label>
-                            {/* If there's no value set, we'll use the existing selection. Otherwise, use the current state */}
-                            <select 
-                                className='select' 
-                                value={sport || selectedTeam?.sportType} 
-                                onChange={(e) => setSport(e.target.value)}
-                            >
-                                <option value={''} disabled>Select a sport</option>
-                                <option value='basketball'>Basketball</option>
-                                <option value='soccer'>Soccer</option>
-                                <option value='rugby'>Rugby</option>
-                            </select>
-                        </div>
-                        <div className='form-errors'>{hasSubmitted && errors.sport}</div>
-                        <div className='form-input'>{
-                            <>
-                                <label>Current Image:</label>
-                                <img id='edit-image-populate' src={preview}/>
+                            <div className='form-input'>
+                                <label>Team Name</label>
                                 <input
-                                    className='select'
-                                    type='file'
-                                    // accept='image/*'
-                                    onChange={(e) => setLogo(e.target.files[0])}
+                                    className='input'
+                                    type='text'
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                 >
                                 </input>
-                            </>
-                            }
-                        </div>
-                        <button className='form-button' type='submit'>Update Team</button>
-                    </form>
+                            </div>
+                            <div className='form-errors'>{hasSubmitted && errors.name}</div>
+                            <div className='form-input'>
+                                <label>Team Location</label>
+                                <input
+                                    className='input'
+                                    type='text'
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                >
+                                </input>
+                            </div>
+                            <div className='form-errors'>{hasSubmitted && errors.location}</div>
+                            <div className='form-input'>
+                                <label value={sport}>Sport</label>
+                                {/* If there's no value set, we'll use the existing selection. Otherwise, use the current state */}
+                                <select 
+                                    className='select' 
+                                    value={sport || selectedTeam?.sportType} 
+                                    onChange={(e) => setSport(e.target.value)}
+                                >
+                                    <option value={''} disabled>Select a sport</option>
+                                    <option value='basketball'>Basketball</option>
+                                    <option value='soccer'>Soccer</option>
+                                    <option value='rugby'>Rugby</option>
+                                </select>
+                            </div>
+                            <div className='form-errors'>{hasSubmitted && errors.sport}</div>
+                            <div className='form-input'>{
+                                <>
+                                    <label>Current Image:</label>
+                                    <img id='edit-image-populate' src={preview}/>
+                                    <input
+                                        className='select'
+                                        type='file'
+                                        // accept='image/*'
+                                        onChange={(e) => setLogo(e.target.files[0])}
+                                    >
+                                    </input>
+                                </>
+                                }
+                            </div>
+                            <button className='form-button' type='submit'>Update Team</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-
-    )
+        )
+    } else {
+        return (
+            <div>
+                Content Unavailable
+            </div>
+        )
+    }
 }
 
 

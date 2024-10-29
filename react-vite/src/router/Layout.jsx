@@ -18,9 +18,7 @@ export default function Layout() {
     <>
       <ModalProvider>
         <Navigation />
-        {/* <UserRoleProvider> */}
         {isLoaded && <Outlet />}
-        {/* </UserRoleProvider> */}
         <Modal />
         <Footer />
       </ModalProvider>

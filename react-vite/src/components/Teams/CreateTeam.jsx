@@ -66,69 +66,76 @@ function AddTeam() {
         return () => URL.revokeObjectURL(objectUrl)
     }, [logo])
 
-    return (
-        <div className='create-container'>
-            <h1>Create a New Team</h1>
-            <div className='create-form-container'>
-                <div><a href='https://draft-queens.onrender.com' target='_blank' rel='noreferrer'><img src={draftQueensAd} alt='draftqueens-ad'/></a></div>
-                <div className='form-and-back-btn'>
-                    <div><Link className='back-btn' to='/teams'>Go back to Teams</Link></div>
-                    <form
-                        onSubmit={handleSubmit}
-                        encType='multipart/form-data'
-                        className='create-form'
-                        >
-                        <div className='form-input'>
-                            <label>Team Name</label>
-                            <input
-                                className='input'
-                                type='text'
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+    if (currentUser?.role === 'bookkeeper') {
+        return (
+            <div className='create-container'>
+                <h1>Create a New Team</h1>
+                <div className='create-form-container'>
+                    <div><a href='https://draft-queens.onrender.com' target='_blank' rel='noreferrer'><img src={draftQueensAd} alt='draftqueens-ad'/></a></div>
+                    <div className='form-and-back-btn'>
+                        <div><Link className='back-btn' to='/teams'>Go back to Teams</Link></div>
+                        <form
+                            onSubmit={handleSubmit}
+                            encType='multipart/form-data'
+                            className='create-form'
                             >
-                            </input>
-                        </div>
-                        <div className='form-errors'>{hasSubmitted && errors.name}</div>
-                        <div className='form-input'>
-                            <label>Team Location</label>
-                            <input
-                                className='input'
-                                type='text'
-                                value={location}
-                                onChange={(e) => setLocation(e.target.value)}
-                            >
-                            </input>
-                        </div>
-                        <div className='form-errors'>{hasSubmitted && errors.location}</div>
-                        <div className='form-input'>
-                            <label value={sport}>Sport</label>
-                            <select className='select' onChange={(e) => setSport(e.target.value)}>
-                                <option value={''} selected disabled>Select a sport</option>
-                                <option value='basketball'>Basketball</option>
-                                <option value='soccer'>Soccer</option>
-                                <option value='rugby'>Rugby</option>
-                            </select>
-                        </div>
-                        <div className='form-errors'>{hasSubmitted && errors.sport}</div>
-                        <div className='form-input' id='image-upload'>
-                            <label htmlFor='post-image-input'>Select Team Image or Logo</label>
-                            <img id='image-preview'src={preview} /> 
-                            <input
-                                className='select'
-                                id='post-image-input'
-                                type='file'
-                                onChange={(e) => setLogo(e.target.files[0])}
-                            >      
-                            </input> 
-                        </div>
-                        <button className='form-button' type='submit'>Create Team</button>
-                    </form>
+                            <div className='form-input'>
+                                <label>Team Name</label>
+                                <input
+                                    className='input'
+                                    type='text'
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                >
+                                </input>
+                            </div>
+                            <div className='form-errors'>{hasSubmitted && errors.name}</div>
+                            <div className='form-input'>
+                                <label>Team Location</label>
+                                <input
+                                    className='input'
+                                    type='text'
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                >
+                                </input>
+                            </div>
+                            <div className='form-errors'>{hasSubmitted && errors.location}</div>
+                            <div className='form-input'>
+                                <label value={sport}>Sport</label>
+                                <select className='select' onChange={(e) => setSport(e.target.value)}>
+                                    <option value={''} selected disabled>Select a sport</option>
+                                    <option value='basketball'>Basketball</option>
+                                    <option value='soccer'>Soccer</option>
+                                    <option value='rugby'>Rugby</option>
+                                </select>
+                            </div>
+                            <div className='form-errors'>{hasSubmitted && errors.sport}</div>
+                            <div className='form-input' id='image-upload'>
+                                <label htmlFor='post-image-input'>Select Team Image or Logo</label>
+                                <img id='image-preview'src={preview} /> 
+                                <input
+                                    className='select'
+                                    id='post-image-input'
+                                    type='file'
+                                    onChange={(e) => setLogo(e.target.files[0])}
+                                >      
+                                </input> 
+                            </div>
+                            <button className='form-button' type='submit'>Create Team</button>
+                        </form>
+                    </div>
+                    <div><a href='https://fanswap.onrender.com/' target='_blank' rel='noreferrer'><img src={fanswapAd} alt='fanswap-ad'/></a></div>
                 </div>
-                <div><a href='https://fanswap.onrender.com/' target='_blank' rel='noreferrer'><img src={fanswapAd} alt='fanswap-ad'/></a></div>
             </div>
-        </div>
-
-    )
+        )
+    } else {
+        return (
+            <div>
+                Content Unavailable
+            </div>
+        )
+    }
 }
 
 

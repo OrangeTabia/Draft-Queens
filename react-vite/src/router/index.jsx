@@ -10,6 +10,7 @@ import LandingPage from '../components/LandingPage/LandingPage';
 import CreateOdd from '../components/Odds/CreateOdd'; 
 import Layout from './Layout';
 
+
 export const router = createBrowserRouter([
   {
     element: <Layout />,

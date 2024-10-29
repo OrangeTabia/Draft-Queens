@@ -17,6 +17,8 @@ function AddGame() {
     const [errors, setErrors] = useState({}); 
     const [hasSubmitted, setHasSubmitted] = useState(false); 
     const teamList = useSelector(state => state.teams.teams);
+    const currentUser = useSelector(state => state.session.user); 
+    
 
     useEffect(() => {
         dispatch(thunkLoadTeams());
@@ -58,7 +60,7 @@ function AddGame() {
     const formattedDate = today.split(':').slice(0, -1).join(':'); // "2024-06-04T19:43"
 
 
-    if (teamList) {
+    if (teamList && currentUser?.role === 'bookkeeper') {
         return (
             <div className='create-container'>
                 <h1>Create a Game</h1>
@@ -115,6 +117,12 @@ function AddGame() {
                     </div>
                     <div><a href='https://fanswap.onrender.com/' target='_blank' rel='noreferrer'><img src={fanswapAd} alt='fanswap-ad'/></a></div>
                 </div>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                Content Unavailable
             </div>
         )
     }
