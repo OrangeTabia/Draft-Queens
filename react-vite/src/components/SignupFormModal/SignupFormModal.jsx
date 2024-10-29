@@ -191,7 +191,7 @@ function SignupFormModal() {
               checked={role === "bookkeeper"}
               onChange={(e) => setRole(e.target.value)}
             />
-          <label for="bookkeeper">Bookkeeper</label>
+          <label htmlFor="bookkeeper">Bookkeeper</label>
         
           </div>
           <div className="radio-input">
@@ -201,7 +201,7 @@ function SignupFormModal() {
               checked={role === "better"}
               onChange={(e) => setRole(e.target.value)}
             />
-            <label for="better">Better</label>
+            <label htmlFor="better">Better</label>
           </div>
         </div>
 

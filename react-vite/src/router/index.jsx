@@ -1,6 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom';
-// import LoginFormPage from '../components/LoginFormPage';
-// import SignupFormPage from '../components/SignupFormPage';
 import Teams from '../components/Teams/TeamsList'; 
 import CreateTeam from '../components/Teams/CreateTeam'; 
 import UpdateTeam from '../components/Teams/UpdateTeam';

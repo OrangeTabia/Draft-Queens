@@ -24,6 +24,7 @@ function UpdateTeam() {
     const [errors, setErrors] = useState({}); 
     const [hasSubmitted, setHasSubmitted] = useState(false); 
     const currentUser = useSelector(state => state.session.user); 
+    console.log('Current user', currentUser)
 
 
     useEffect(() => {
