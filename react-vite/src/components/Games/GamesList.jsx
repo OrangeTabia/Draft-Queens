@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import { thunkLoadGames } from '../../redux/games'; 
 import { thunkLoadTeams } from '../../redux/teams'; 
-// import { BiSolidEdit } from "react-icons/bi";
-// import { BiSolidTrash } from "react-icons/bi";
 import { FiPlus } from "react-icons/fi";
 import { PiBasketballLight } from "react-icons/pi";
 import { PiSoccerBallFill } from "react-icons/pi";
@@ -20,7 +18,7 @@ import { thunkLoadOdds } from '../../redux/odds';
 function GamesList() {
     const dispatch = useDispatch(); 
     const allGames = useSelector(state => state.games.games);
-    const numGames = useSelector(state => state.games.totalGames); // 18 
+    const numGames = useSelector(state => state.games.totalGames); 
     const allTeams = useSelector(state => state.teams.teams);
     const currentUser = useSelector(state => state.session.user); 
     const allOdds = useSelector(state => state.odds.odds);
@@ -29,7 +27,7 @@ function GamesList() {
     const [gamesPerPage, setGamesPerPage] = useState(10); 
     const [searchTerm, setSearchTerm] = useState('');
     const numPages = Math.ceil(numGames / gamesPerPage);
-    const gameIds = allGames?.map((game) => game.id); // [22, 21, 12, 11, 10, ... ]
+    const gameIds = allGames?.map((game) => game.id); 
 
     // Logic for filtering the teams in search bar
     let selectedTeams = allTeams;
@@ -99,7 +97,7 @@ function GamesList() {
                 <div id='games-and-ad-container'> 
                     <div id='games-and-btn-container'>
                         <div id={currentUser ? 'create-game-btn-container' : 'create-game-btn-container-logged-out'}>
-                        {currentUser &&
+                        {currentUser.role === 'bookkeeper' &&
                         <Link id='create-game-btn' to='/games/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/>&nbsp;Create a Game</Link>
                         }
                         <div className='search-bar'>

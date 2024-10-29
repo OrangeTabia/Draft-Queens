@@ -11,7 +11,6 @@ import { BiSolidTrash } from "react-icons/bi";
 import { FiPlus } from "react-icons/fi";
 import { PiBasketballLight } from "react-icons/pi";
 import { PiSoccerBallFill } from "react-icons/pi";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import './Teams.css';
 
 function Teams() {
@@ -84,7 +83,7 @@ function Teams() {
             </div>
             
             <div id={currentUser ? 'create-team-btn-container' : 'create-team-btn-container-logged-out'}>
-                {currentUser &&
+                {currentUser.role === 'bookkeeeper' &&
                 <Link id='create-team-btn' to='/teams/new'><FiPlus style={{ fontSize:'16px', color:'#f76900'}}/><span>&nbsp;Create a Team</span></Link>
                 }
                 <div className='search-bar'>
