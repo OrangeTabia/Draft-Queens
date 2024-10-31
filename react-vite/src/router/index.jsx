@@ -8,6 +8,7 @@ import CreateGame from '../components/Games/CreateGame';
 import UpdateGame from '../components/Games/UpdateGame';
 import LandingPage from '../components/LandingPage/LandingPage'; 
 import CreateOdd from '../components/Odds/CreateOdd'; 
+import BetsList from '../components/Bets/BetsList';
 import Layout from './Layout';
 
 
@@ -52,8 +53,8 @@ export const router = createBrowserRouter([
         element: <CreateOdd />
       },
       {
-        path: '/results',
-        element: <h1>Results Feature Coming Soon!</h1>
+        path: '/bets',
+        element: <BetsList />
       }
     ],
   },

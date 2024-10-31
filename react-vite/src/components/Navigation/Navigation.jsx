@@ -14,7 +14,7 @@ function Navigation() {
         <div className='dropdown-content'>
           <NavLink to="/teams" id='teams-nav'>Teams</NavLink>
           <NavLink to="/games" id='games-nav'>Games</NavLink>
-          <NavLink to="/results" id='results-nav'>Results</NavLink>
+          <NavLink to="/bets" id='results-nav'>Bets</NavLink>
         </div>
       </div>
       <div>
